@@ -188,6 +188,11 @@
                                 <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Power BI</span>
                                 <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Tableau</span>
                                 <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Advanced Excel</span>
+                                <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Microsoft 365</span>
+                                <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Adobe Analytics</span>
+                                <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Google Analytics</span>
+                                <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">CRM</span>
+                                <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Salesforce</span>
                             </div>
                         </div>
                     </div>
@@ -281,10 +286,16 @@
                 <h2 class="text-2xl font-bold section-header">Projects</h2>
                 
                 <div class="space-y-12">
+                    <!-- Gemini API integration response container -->
+                    <div id="gemini-response-container" class="bg-[#1e272c] p-4 rounded-lg hidden">
+                        <h3 class="font-semibold text-lg text-[#E0E8E1] mb-2">Gemini API Response:</h3>
+                        <p id="gemini-response-text" class="text-[#96A099]"></p>
+                    </div>
+
                     <!-- Python Project -->
                     <div>
                         <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Python Project</h3>
-                        <p class="text-[#E0E8E1] leading-relaxed">
+                        <p id="python-project-text" class="text-[#E0E8E1] leading-relaxed">
                             This project showcases my ability to use <strong>Python</strong> for sophisticated data analysis and predictive modeling. I developed a comprehensive solution for HR analytics that includes a predictive model to forecast employee retention and a resume parsing tool to streamline talent acquisition.
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4 mt-4">
@@ -293,12 +304,12 @@
                             <li class="list-item">Created detailed reports and interactive visualizations to present key insights to business stakeholders.</li>
                             <li class="list-item">Built an automated <strong>resume parsing script</strong> that extracts key information to improve hiring efficiency.</li>
                         </ul>
-                        <div class="mt-8 flex flex-col items-center space-y-4">
-                            <a href="https://markareciocareerpath.my.canva.site/avoxi-billing-analysis-february-2025-presenter-your-name-date-current-date" target="_blank" class="text-[#5A8708] hover:underline font-semibold">
+                        <div class="mt-8 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <button id="summarize-python" class="w-full sm:w-auto bg-[#5A8708] text-[#0E161B] font-semibold py-2 px-6 rounded-full transition-transform duration-300 hover:scale-105">
+                                ✨ Summarize Python Project
+                            </button>
+                            <a href="https://markareciocareerpath.my.canva.site/avoxi-billing-analysis-february-2025-presenter-your-name-date-current-date" target="_blank" class="w-full sm:w-auto text-[#5A8708] hover:underline font-semibold text-center">
                                 AVOXI Billing Analysis - Presentation
-                            </a>
-                            <a href="https://www.canva.com/design/DAGw1A7-rdo/dTxkUkPwioDAYjVAcVBM9g/edit?utm_content=DAGw1A7-rdo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-[#5A8708] hover:underline font-semibold">
-                                Workforce Analysis Presentation
                             </a>
                         </div>
                     </div>
@@ -306,11 +317,14 @@
                     <!-- Power BI Project -->
                     <div>
                         <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Power BI Project</h3>
-                        <p class="text-[#E0E8E1] leading-relaxed">
+                        <p id="powerbi-project-text" class="text-[#E0E8E1] leading-relaxed">
                             This project demonstrates my expertise in using <strong>Power BI</strong> to build a dynamic and insightful dashboard for business intelligence. I focused on connecting multiple data sources, cleaning and transforming raw data with Power Query, and designing interactive visualizations that provide actionable insights. The dashboard allows stakeholders to explore key business metrics, identify trends, and make data-driven decisions at a glance.
                         </p>
-                        <div class="mt-8 text-center">
-                            <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit?utm_content=DAGxAueHJUU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-[#5A8708] hover:underline font-semibold">
+                        <div class="mt-8 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <button id="generate-insights" class="w-full sm:w-auto bg-[#5A8708] text-[#0E161B] font-semibold py-2 px-6 rounded-full transition-transform duration-300 hover:scale-105">
+                                ✨ Generate Power BI Insights
+                            </button>
+                            <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit?utm_content=DAGxAueHJUU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="w-full sm:w-auto text-[#5A8708] hover:underline font-semibold text-center">
                                 Power BI Project
                             </a>
                         </div>
@@ -602,6 +616,68 @@
             // Start the animation
             init();
             animate();
+            
+            // Gemini API integration logic
+            const summarizeButton = document.getElementById('summarize-python');
+            const insightsButton = document.getElementById('generate-insights');
+            const pythonProjectText = document.getElementById('python-project-text').textContent;
+            const powerbiProjectText = document.getElementById('powerbi-project-text').textContent;
+            const responseContainer = document.getElementById('gemini-response-container');
+            const responseText = document.getElementById('gemini-response-text');
+
+            async function callGeminiAPI(prompt) {
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{
+                        parts: [{
+                            text: prompt
+                        }]
+                    }],
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                return result.candidates?.[0]?.content?.parts?.[0]?.text || 'No response from API.';
+            }
+
+            summarizeButton.addEventListener('click', async () => {
+                responseContainer.classList.remove('hidden');
+                responseText.textContent = 'Generating summary...';
+                
+                const prompt = `Summarize the following project description in a single, concise paragraph: "${pythonProjectText}"`;
+                try {
+                    const summary = await callGeminiAPI(prompt);
+                    responseText.textContent = summary;
+                } catch (error) {
+                    responseText.textContent = 'Failed to generate summary. Please try again later.';
+                    console.error('Gemini API Error:', error);
+                }
+            });
+
+            insightsButton.addEventListener('click', async () => {
+                responseContainer.classList.remove('hidden');
+                responseText.textContent = 'Generating insights...';
+                
+                const prompt = `Based on the following project description, provide a bulleted list of 3-5 key business insights or takeaways. Do not include a conversational intro. "${powerbiProjectText}"`;
+                try {
+                    const insights = await callGeminiAPI(prompt);
+                    responseText.textContent = insights;
+                } catch (error) {
+                    responseText.textContent = 'Failed to generate insights. Please try again later.';
+                    console.error('Gemini API Error:', error);
+                }
+            });
         };
     </script>
 </body>
