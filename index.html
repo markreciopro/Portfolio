@@ -114,6 +114,10 @@
         .analyzeo-neon-mustard {
             color: #FFDB58;
         }
+        .nav-logo {
+            width: 80px;
+            height: auto;
+        }
     </style>
 </head>
 <body class="text-[#c7d2e2] antialiased">
@@ -285,6 +289,15 @@
             <section id="tab-projects" class="tab-content py-6 px-4 mb-12 section-card" style="display: none;">
                 <h2 class="text-2xl font-bold section-header">Projects</h2>
                 
+                <!-- Main Projects Video -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-center text-[#FFDB58] mb-4">Bold to take on Data Challenges</h3>
+                    <div class="w-full aspect-video rounded-xl overflow-hidden border border-green-600">
+                        <iframe src="https://www.youtube.com/embed/D1lL2-1tw34" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                    </div>
+                    <p class="mt-4 text-center text-[#96A099]">This video showcases my projects and my approach to solving complex business problems.</p>
+                </div>
+
                 <div class="space-y-12">
                     <!-- Python Project -->
                     <div>
@@ -298,11 +311,6 @@
                             <li class="list-item">Created comprehensive reports and visualizations using <strong>Matplotlib</strong> and <strong>Seaborn</strong> to present key findings on vendor performance and client rates to stakeholders.</li>
                             <li class="list-item">Developed a process to automate data analysis workflows, enabling faster and more accurate reporting for strategic decision-making.</li>
                         </ul>
-                        <div class="mt-8 text-center">
-                             <a href="https://markareciocareerpath.my.canva.site/avoxi-billing-analysis-february-2025-presenter-your-name-date-current-date" target="_blank" class="w-full sm:w-auto text-[#5A8708] hover:underline font-semibold text-center">
-                                AVOXI Billing Analysis - Presentation
-                            </a>
-                        </div>
                     </div>
                     
                     <!-- Power BI Project -->
@@ -339,7 +347,7 @@
                         <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4 mb-6">
                             <li><strong class="font-semibold">Renegotiate with Vendors:</strong> The most urgent action is to renegotiate rates with the low-margin vendors, especially <span class="text-[#5A8708]">Vendor 1</span>. You should present the data showing that their billing model is causing significant losses. If negotiation isn't successful, it's a good idea to seek out alternative vendors.</li>
                             <li><strong class="font-semibold">Adjust Client Rates:</strong> To achieve the 45% gross margin target, it is necessary to adjust client rates. Instead of a flat rate, clients should be billed at a rate that reflects the true cost of the call, including the country and the vendor used. You can propose a new tiered pricing model.</li>
-                            <li><strong class="font-semibold">Automate with Configurable Inputs:</strong> The sheet can be improved by adding a section for "configurable increases" where Jon or anyone on the team can input desired rate increases (e.g., 7% and 20%) and have the sheet automatically calculate the new margins. This would eliminate the need for manual formula updates and allow for quick what-if analysis.</li>
+                            <li class="list-item">Automate with Configurable Inputs: The sheet can be improved by adding a section for "configurable increases" where Jon or anyone on the team can input desired rate increases (e.g., 7% and 20%) and have the sheet automatically calculate the new margins. This would eliminate the need for manual formula updates and allow for quick what-if analysis.</li>
                         </ul>
 
                         <div class="mt-8 text-center">
@@ -399,10 +407,12 @@
             <section id="tab-contact" class="tab-content py-6 px-4 mb-12 section-card" style="display: none;">
                 <h2 class="text-2xl font-bold section-header">Contact Information</h2>
                 <div class="text-center mt-4 text-lg text-[#E0E8E1]">
-                    <img src="https://i.ibb.co/zVjVh4VM/Copilot-20250916-052217.png" alt="Analyzeo Logo" class="mx-auto w-48 mb-6">
                     <a href="tel:+17027147389" class="hover:underline mx-2 font-bold text-[#5A8708]">(702) 714-7389</a>
                     <span class="font-bold text-[#96A099] mx-2">|</span>
                     <a href="mailto:mark.recio.analyzeo@gmail.com" class="hover:underline mx-2 font-bold text-[#5A8708]">mark.recio.analyzeo@gmail.com</a>
+                </div>
+                <div class="flex flex-col items-center mt-8">
+                    <img src="https://i.ibb.co/zVjVh4VM/Copilot-20250916-052217.png" alt="Analyzeo Logo" class="w-96 h-96 mb-4">
                 </div>
             </section>
 
@@ -454,121 +464,104 @@
             const CODE_COUNT = 300; // Increased sprite count for more density
             const codeSprites = [];
 
-            // Generates a canvas texture with a code snippet
-            function createCodeTexture(text) {
-                const canvas = document.createElement('canvas');
-                canvas.width = 512;
-                canvas.height = 64;
-                const context = canvas.getContext('2d');
-                context.font = '24px Monospace'; // Use a fixed-width font for code
-                context.fillStyle = '#E0E8E1';
-                context.shadowColor = '#5A8708';
-                context.shadowBlur = 40; // Increased glow effect
-                
-                // Simple syntax highlighting simulation
-                const keywords = ["import", "from", "as", "def", "return", "library", "lm", "predict", "group_by", "summarise", "ggplot", "aes", "geom_line", "SELECT", "FROM", "JOIN", "ON", "GROUP", "BY", "HAVING", "WHERE", "ORDER", "print", "fit", "to_excel", "to_json"];
-                const comments = ["#"];
-                const strings = ["'data.csv'", "'data.csv'", "'completed'", "'mark.recio.resume.csv'", "'payroll.xlsx'", "'process_improvement_metrics.xlsx'", "'recruitment_analysis.json'"];
-
-                let currentX = 0;
-                const words = text.split(" ");
-                
-                const drawText = (part, color) => {
-                    context.fillStyle = color;
-                    context.fillText(part, currentX, 32);
-                    currentX += context.measureText(part + " ").width;
-                };
-                
-                words.forEach(word => {
-                    const cleanWord = word.replace(/[\(\)\[\]\.\,']/g, ''); // Remove punctuation for checking
-                    if (keywords.includes(cleanWord)) {
-                        drawText(word, '#8B5CF6'); // Purple for keywords
-                    } else if (comments.includes(word.charAt(0))) {
-                        drawText(word, '#16A34A'); // Green for comments
-                    } else if (strings.includes(word)) {
-                        drawText(word, '#F8D167'); // Yellow for strings
-                    } else if (['data', 'new', 'df', 'KPIs', 'model', 'y_pred', 'X_train', 'y_train', 'X_test', 'employee_id'].includes(cleanWord)) {
-                         drawText(word, '#FFAB40'); // Orange for variables
-                    }
-                    else {
-                        drawText(word, '#E0E8E1'); // Default color
-                    }
-                });
-
-                return new THREE.CanvasTexture(canvas);
-            }
-
+            // Initializes the Three.js scene and populates it with text sprites
             function init() {
-                const canvas = document.getElementById('bg-canvas');
-                const aspect = window.innerWidth / window.innerHeight;
-
-                // Camera setup
-                camera = new THREE.PerspectiveCamera(75, aspect, 1, 10000);
-                camera.position.z = 1000;
-
-                // Scene setup
+                // Scene, Camera, and Renderer setup
                 scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 250;
 
-                // Renderer setup
-                renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('bg-canvas') });
+                renderer.setPixelRatio(window.devicePixelRatio);
                 renderer.setSize(window.innerWidth, window.innerHeight);
 
-                // Create sprites from code snippets
+                // Create and position the text sprites
                 for (let i = 0; i < CODE_COUNT; i++) {
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    
+                    // Style the text
+                    const font = "Normal 12px Inter";
+                    context.font = font;
                     const snippet = CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
-                    const texture = createCodeTexture(snippet);
-                    const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.5 });
-                    const sprite = new THREE.Sprite(material);
+                    const metrics = context.measureText(snippet);
+                    const textWidth = metrics.width;
+                    const textHeight = 14; 
+                    
+                    // Set canvas size and draw the text
+                    canvas.width = textWidth + 10;
+                    canvas.height = textHeight + 10;
+                    context.font = font;
+                    context.fillStyle = "#39FF14";
+                    context.fillText(snippet, 5, 15);
 
-                    // Position sprites randomly in a 3D space
+                    // Create the Three.js objects
+                    const texture = new THREE.CanvasTexture(canvas);
+                    const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.8 });
+                    const sprite = new THREE.Sprite(material);
+                    
+                    // Set the sprite's size and position
+                    sprite.scale.set(canvas.width * 0.5, canvas.height * 0.5, 1);
                     sprite.position.x = Math.random() * 2000 - 1000;
-                    sprite.position.y = Math.random() * 2000 - 1000;
+                    sprite.position.y = Math.random() * 1000 - 500;
                     sprite.position.z = Math.random() * 2000 - 1000;
 
-                    // Randomize sprite size
-                    const scale = Math.random() * 1.5 + 0.5;
-                    sprite.scale.set(scale * 100, scale * 10, 1);
-                    codeSprites.push(sprite);
+                    // Store the original position and a random rotation speed
+                    sprite.userData.originalPosition = sprite.position.clone();
+                    sprite.userData.rotationSpeed = Math.random() * 0.005 + 0.001;
+
                     scene.add(sprite);
+                    codeSprites.push(sprite);
                 }
 
+                // Event listeners for interactivity
                 document.addEventListener('mousemove', onDocumentMouseMove, false);
                 window.addEventListener('resize', onWindowResize, false);
             }
 
-            function onDocumentMouseMove(event) {
-                mouseX = (event.clientX - windowHalfX) * 0.2;
-                mouseY = (event.clientY - windowHalfY) * 0.2;
+            // Handles the animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Update camera rotation based on mouse position
+                const targetX = mouseX * 0.001;
+                const targetY = mouseY * 0.001;
+                camera.position.x += (targetX - camera.position.x) * 0.05;
+                camera.position.y += (-targetY - camera.position.y) * 0.05;
+                camera.lookAt(scene.position);
+
+                // Update sprite positions to create the floating effect
+                codeSprites.forEach(sprite => {
+                    // Move the sprite along the Z-axis
+                    sprite.position.z += 0.5;
+
+                    // If a sprite moves too far, reset its position to the back
+                    if (sprite.position.z > camera.position.z) {
+                        sprite.position.z = -1000;
+                        sprite.position.x = Math.random() * 2000 - 1000;
+                        sprite.position.y = Math.random() * 1000 - 500;
+                    }
+
+                    // Rotate the sprite
+                    sprite.rotation.z += sprite.userData.rotationSpeed;
+                });
+
+                renderer.render(scene, camera);
             }
 
+            // Updates mouse coordinates
+            function onDocumentMouseMove(event) {
+                mouseX = (event.clientX - windowHalfX) * 0.1;
+                mouseY = (event.clientY - windowHalfY) * 0.1;
+            }
+
+            // Handles window resizing to keep the animation responsive
             function onWindowResize() {
                 windowHalfX = window.innerWidth / 2;
                 windowHalfY = window.innerHeight / 2;
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-
-            function animate() {
-                requestAnimationFrame(animate);
-                render();
-            }
-
-            function render() {
-                // Move camera based on mouse position
-                camera.position.x += (mouseX - camera.position.x) * .05;
-                camera.position.y += (-mouseY - camera.position.y) * .05;
-                camera.lookAt(scene.position);
-
-                // Animate sprites
-                codeSprites.forEach(sprite => {
-                    sprite.position.z += 1; // Move the sprite towards the camera
-                    if (sprite.position.z > 1000) {
-                        sprite.position.z = -1000; // Reset position when it goes behind the camera
-                    }
-                });
-
-                renderer.render(scene, camera);
             }
 
             // Tab switching logic
