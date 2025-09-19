@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,6 +61,7 @@
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.5s ease-in-out;
+            position: relative;
         }
 
         .section-card:hover {
@@ -132,6 +133,22 @@
             left: 0;
             width: 100%;
             height: 100%;
+        }
+        /* New styling for the freelance website section canvas */
+        .freelance-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .freelance-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            color: white;
+            text-align: center;
         }
     </style>
 </head>
@@ -440,13 +457,16 @@
                 </div>
             </section>
 
-            <section id="tab-freelance-website" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel">
-                <h2 class="text-2xl font-bold section-header">Freelance Website</h2>
-                <p class="text-center text-[#E0E8E1] leading-relaxed mb-6">
-                    This tab embeds my freelance website, **Analyzeo**, for a seamless viewing experience.
-                </p>
-                <div class="iframe-container rounded-lg border-2 border-[#5A8708] overflow-hidden">
-                    <iframe src="https://markreciopro.github.io/website/" frameborder="0" allowfullscreen></iframe>
+            <section id="tab-freelance-website" class="tab-content py-6 mb-12 section-card overflow-hidden">
+                <canvas id="freelance-canvas" class="freelance-canvas"></canvas>
+                <div class="freelance-content">
+                    <h2 class="text-2xl font-bold section-header">Freelance Website</h2>
+                    <p class="text-center leading-relaxed mb-6">
+                        This is my freelance website, **Analyzeo**, for a seamless viewing experience.
+                    </p>
+                    <a href="https://markreciopro.github.io/website/" target="_blank" class="inline-block bg-[#5A8708] text-[#0E161B] font-semibold py-2 px-6 rounded-full transition-transform duration-300 hover:scale-105">
+                        View Analyzeo Website
+                    </a>
                 </div>
             </section>
 
@@ -460,17 +480,15 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Main 3D Background Animation (unchanged)
             let camera, scene, renderer, clock, mouseX = 0, mouseY = 0;
             let targetX = 0, targetY = 0;
             let windowHalfX = window.innerWidth / 2;
             let windowHalfY = window.innerHeight / 2;
             let particleGroup, nodes, lines;
-            const PARTICLE_COUNT = 350;
-            const NODE_COUNT = 50; // Fewer nodes for performance
+            const NODE_COUNT = 60;
             const FADE_DISTANCE = 50;
-
             const CODE_SNIPPETS = [
-                // Python snippets reflecting resume skills
                 "# Predictive Analysis with Python",
                 "import pandas as pd",
                 "import numpy as np",
@@ -484,8 +502,6 @@
                 "plt.show()",
                 "model = LogisticRegression().fit(X_train, y_train)",
                 "predictions = model.predict(X_test)",
-
-                // SQL snippets
                 "-- SQL for sales and HR data analysis",
                 "SELECT employee_id, attrition_rate",
                 "FROM hr_data",
@@ -496,8 +512,6 @@
                 "SELECT AVG(sales) AS avg_sales, MONTH(order_date) AS month",
                 "FROM sales_data",
                 "WHERE YEAR(order_date) = 2023",
-
-                // R snippets
                 "# R for data science and analytics",
                 "install.packages('ggplot2')",
                 "library(dplyr)",
@@ -509,13 +523,10 @@
             ];
 
             function init() {
-                // Set up the scene, camera, and renderer
                 scene = new THREE.Scene();
                 clock = new THREE.Clock();
-
                 camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
                 camera.position.z = 250;
-
                 renderer = new THREE.WebGLRenderer({
                     canvas: document.getElementById('bg-canvas'),
                     antialias: true,
@@ -523,17 +534,13 @@
                 });
                 renderer.setSize(window.innerWidth, window.innerHeight);
                 renderer.setPixelRatio(window.devicePixelRatio);
-
-                // Create the particle group to hold all the nodes and lines
                 particleGroup = new THREE.Group();
                 scene.add(particleGroup);
-
-                // Create the nodes (particles)
                 nodes = [];
                 for (let i = 0; i < NODE_COUNT; i++) {
                     const geometry = new THREE.SphereGeometry(1, 8, 8);
                     const material = new THREE.MeshBasicMaterial({
-                        color: 0x5a8708,
+                        color: 0x66fcf1,
                         transparent: true,
                     });
                     const node = new THREE.Mesh(geometry, material);
@@ -541,28 +548,25 @@
                     node.position.y = Math.random() * 400 - 200;
                     node.position.z = Math.random() * 400 - 200;
                     node.userData.velocity = new THREE.Vector3(
-                        (Math.random() - 0.5) * 0.1,
-                        (Math.random() - 0.5) * 0.1,
-                        (Math.random() - 0.5) * 0.1
+                        (Math.random() - 0.5) * 0.2,
+                        (Math.random() - 0.5) * 0.2,
+                        (Math.random() - 0.5) * 0.2
                     );
                     node.userData.codeSnippet = CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
                     nodes.push(node);
                     particleGroup.add(node);
                 }
-
-                // Create lines connecting nearby nodes
                 lines = new THREE.LineSegments(new THREE.BufferGeometry(), new THREE.LineBasicMaterial({
                     color: 0x1E90FF,
                     transparent: true,
-                    opacity: 0.5,
+                    opacity: 0.8,
                 }));
+                lines.material.vertexColors = true;
                 particleGroup.add(lines);
-
                 window.addEventListener('resize', onWindowResize, false);
                 document.addEventListener('mousemove', onMouseMove, false);
             }
 
-            // Handles window resize to maintain aspect ratio
             function onWindowResize() {
                 windowHalfX = window.innerWidth / 2;
                 windowHalfY = window.innerHeight / 2;
@@ -571,50 +575,44 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
             }
 
-            // Updates mouse position for camera movement
             function onMouseMove(event) {
                 mouseX = event.clientX - windowHalfX;
                 mouseY = event.clientY - windowHalfY;
             }
 
-            // Updates the position and opacity of the nodes and lines
             function updateParticles() {
                 const positions = [];
                 const colors = [];
                 const lineOpacity = 0.8;
                 const nodeSize = 1;
-                const minDistance = 50;
+                const minDistance = 70;
 
                 nodes.forEach(node => {
-                    // Update node position
-                    node.position.add(node.userData.velocity);
-                    // Wrap around if out of bounds
+                    node.position.add(node.userData.velocity.clone().add(new THREE.Vector3(0, 0, 0.05)));
                     if (Math.abs(node.position.x) > 200) node.position.x *= -1;
                     if (Math.abs(node.position.y) > 200) node.position.y *= -1;
                     if (Math.abs(node.position.z) > 200) node.position.z *= -1;
-
-                    // Fade out particles far from the center
+                    const scale = 1 + Math.sin(clock.getElapsedTime() * 3) * 0.2;
+                    node.scale.set(scale, scale, scale);
                     const distance = node.position.length();
-                    const opacity = Math.max(0, 1 - distance / 200);
+                    const opacity = Math.max(0.1, 1 - distance / 200);
                     node.material.opacity = opacity;
                 });
 
-                // Calculate lines
                 for (let i = 0; i < NODE_COUNT; i++) {
                     for (let j = i + 1; j < NODE_COUNT; j++) {
                         const dist = nodes[i].position.distanceTo(nodes[j].position);
                         if (dist < minDistance) {
                             positions.push(nodes[i].position.x, nodes[i].position.y, nodes[i].position.z);
                             positions.push(nodes[j].position.x, nodes[j].position.y, nodes[j].position.z);
-                            
                             const alpha = (1 - dist / minDistance) * lineOpacity;
-                            colors.push(alpha, alpha, alpha);
-                            colors.push(alpha, alpha, alpha);
+                            const lineMaterialColor = new THREE.Color(0x1E90FF);
+                            const fadedColor = lineMaterialColor.clone().lerp(new THREE.Color(0x2e4a6d), 1 - alpha);
+                            colors.push(fadedColor.r, fadedColor.g, fadedColor.b);
+                            colors.push(fadedColor.r, fadedColor.g, fadedColor.b);
                         }
                     }
                 }
-
-                // Update line geometry
                 const geometry = lines.geometry;
                 geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
                 geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
@@ -622,60 +620,114 @@
                 geometry.attributes.color.needsUpdate = true;
             }
 
-            // Renders the scene and updates camera position based on mouse
             function render() {
                 targetX = mouseX * 0.001;
                 targetY = mouseY * 0.001;
-
                 camera.position.x += (targetX - camera.position.x) * 0.05;
                 camera.position.y += (-targetY - camera.position.y) * 0.05;
                 camera.lookAt(scene.position);
-
-                // Animate the particles group
                 const delta = clock.getDelta();
                 particleGroup.rotation.y += delta * 0.05;
-
                 renderer.render(scene, camera);
             }
 
-            // Main animation loop
             function animate() {
                 requestAnimationFrame(animate);
                 updateParticles();
                 render();
             }
 
-            // Initialize Three.js scene
-            init();
-            // Start the animation loop
-            animate();
+            // New 2D Freelance Website Animation
+            const freelanceCanvas = document.getElementById('freelance-canvas');
+            const freelanceCtx = freelanceCanvas.getContext('2d');
+            let particles = [];
+            const PARTICLE_COUNT = 50;
 
-            // Tab Switching Logic
+            function initFreelanceCanvas() {
+                resizeFreelanceCanvas();
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    particles.push({
+                        x: Math.random() * freelanceCanvas.width,
+                        y: Math.random() * freelanceCanvas.height,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        radius: Math.random() * 2 + 1,
+                        pulse: Math.random() * Math.PI * 2,
+                    });
+                }
+                animateFreelanceCanvas();
+            }
+
+            function resizeFreelanceCanvas() {
+                freelanceCanvas.width = freelanceCanvas.parentElement.clientWidth;
+                freelanceCanvas.height = freelanceCanvas.parentElement.clientHeight;
+            }
+
+            function animateFreelanceCanvas() {
+                requestAnimationFrame(animateFreelanceCanvas);
+                freelanceCtx.clearRect(0, 0, freelanceCanvas.width, freelanceCanvas.height);
+
+                // Draw lines
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    for (let j = i + 1; j < PARTICLE_COUNT; j++) {
+                        const p1 = particles[i];
+                        const p2 = particles[j];
+                        const dist = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+
+                        if (dist < 120) {
+                            freelanceCtx.beginPath();
+                            freelanceCtx.moveTo(p1.x, p1.y);
+                            freelanceCtx.lineTo(p2.x, p2.y);
+                            freelanceCtx.strokeStyle = `rgba(255, 255, 255, ${1 - dist / 120})`;
+                            freelanceCtx.stroke();
+                        }
+                    }
+                }
+
+                // Draw and update particles
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    const p = particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    // Bounce off edges
+                    if (p.x < 0 || p.x > freelanceCanvas.width) p.vx *= -1;
+                    if (p.y < 0 || p.y > freelanceCanvas.height) p.vy *= -1;
+
+                    // Pulsing effect
+                    p.pulse += 0.05;
+                    const radius = p.radius + Math.sin(p.pulse) * 0.5;
+
+                    freelanceCtx.beginPath();
+                    freelanceCtx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+                    freelanceCtx.fillStyle = `rgba(255, 255, 255, 0.8)`;
+                    freelanceCtx.fill();
+                }
+            }
+
+            // Tab Switching Logic (unchanged)
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('.tab-content');
 
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    
-                    // Get the target tab from the data-tab attribute
                     const targetTab = link.dataset.tab;
-
-                    // Remove 'active' class from all links and sections
                     navLinks.forEach(nav => nav.classList.remove('active'));
                     sections.forEach(sec => sec.classList.remove('active'));
-                    
-                    // Add 'active' class to the clicked link and its corresponding section
                     link.classList.add('active');
                     document.getElementById(`tab-${targetTab}`).classList.add('active');
-
-                    // If on a desktop, scroll the main content into view
                     if (window.innerWidth >= 768) {
                         const mainContent = document.querySelector('main');
                         mainContent.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                 });
             });
+
+            // Start animations
+            init();
+            animate();
+            initFreelanceCanvas();
         });
     </script>
 </body>
