@@ -127,23 +127,23 @@
     <div class="flex flex-col md:flex-row min-h-screen">
 
         <!-- Mobile Navigation (visible on small screens) -->
-        <nav class="mobile-nav md:hidden flex justify-center space-x-2 p-4 overflow-x-auto">
-            <a href="#summary-section" class="nav-link text-center" data-tab="summary">Summary</a>
-            <a href="#experience-section" class="nav-link text-center" data-tab="experience">Experience</a>
-            <a href="#education-section" class="nav-link text-center" data-tab="education">Education</a>
-            <a href="#projects-section" class="nav-link text-center" data-tab="projects">Projects</a>
-            <a href="#contact-section" class="nav-link text-center" data-tab="contact">Contact</a>
+        <nav class="mobile-nav md:hidden flex justify-center space-x-2 p-4 overflow-x-auto" role="tablist">
+            <a href="#summary-section" class="nav-link text-center" data-tab="summary" role="tab" aria-controls="tab-summary">Summary</a>
+            <a href="#experience-section" class="nav-link text-center" data-tab="experience" role="tab" aria-controls="tab-experience">Experience</a>
+            <a href="#education-section" class="nav-link text-center" data-tab="education" role="tab" aria-controls="tab-education">Education</a>
+            <a href="#projects-section" class="nav-link text-center" data-tab="projects" role="tab" aria-controls="tab-projects">Projects</a>
+            <a href="#contact-section" class="nav-link text-center" data-tab="contact" role="tab" aria-controls="tab-contact">Contact</a>
         </nav>
 
         <!-- Left-side Navigation Bar (visible on medium screens and up) -->
-        <nav class="hidden md:flex fixed top-0 left-0 bottom-0 w-56 bg-black/30 backdrop-blur-sm z-50 p-6 flex-col items-center space-y-4">
+        <nav class="hidden md:flex fixed top-0 left-0 bottom-0 w-56 bg-black/30 backdrop-blur-sm z-50 p-6 flex-col items-center space-y-4" role="tablist">
             <h1 class="text-3xl font-extrabold text-[#E0E8E1] mb-4 text-center">Mark Anthony Recio</h1>
             <img src="https://i.ibb.co/4g7f8Pm0/Copilot-20250920-134453.png" alt="Mark Recio Logo" class="rounded-full w-40 h-auto mb-4 border-2 border-[#FF073A] shadow-lg">
-            <a href="#summary-section" class="nav-link active text-center" data-tab="summary">Summary</a>
-            <a href="#experience-section" class="nav-link text-center" data-tab="experience">Experience</a>
-            <a href="#education-section" class="nav-link text-center" data-tab="education">Education</a>
-            <a href="#projects-section" class="nav-link text-center" data-tab="projects">Projects</a>
-            <a href="#contact-section" class="nav-link text-center" data-tab="contact">Contact</a>
+            <a href="#summary-section" class="nav-link active text-center" data-tab="summary" role="tab" aria-controls="tab-summary">Summary</a>
+            <a href="#experience-section" class="nav-link text-center" data-tab="experience" role="tab" aria-controls="tab-experience">Experience</a>
+            <a href="#education-section" class="nav-link text-center" data-tab="education" role="tab" aria-controls="tab-education">Education</a>
+            <a href="#projects-section" class="nav-link text-center" data-tab="projects" role="tab" aria-controls="tab-projects">Projects</a>
+            <a href="#contact-section" class="nav-link text-center" data-tab="contact" role="tab" aria-controls="tab-contact">Contact</a>
         </nav>
 
         <!-- 3D background canvas -->
@@ -153,7 +153,7 @@
         <main class="flex-grow md:ml-56 max-w-4xl mx-auto p-4 sm:p-6 md:p-8 lg:p-10 relative z-10">
 
             <!-- Tab Content Sections -->
-            <section id="tab-summary" class="tab-content active py-6 px-4 mb-12 section-card">
+            <section id="tab-summary" class="tab-content active py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="summary-section">
                 <!-- Image of Mark Recio -->
                 <img src="https://i.ibb.co/hJZc89FM/Mark-Recio-Data-Business-Analyst.png" alt="Professional headshot of Mark Recio" class="rounded-full w-32 h-32 mx-auto mb-4 shadow-lg border-2 border-[#FF073A]">
                 <header class="text-center">
@@ -205,7 +205,7 @@
                 </div>
             </section>
 
-            <section id="tab-experience" class="tab-content py-6 px-4 mb-12 section-card" style="display: none;">
+            <section id="tab-experience" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="experience-section">
                 <h2 class="text-2xl font-bold section-header">Professional Experience</h2>
                 <div class="space-y-8">
                     <div>
@@ -240,7 +240,7 @@
                 </div>
             </section>
             
-            <section id="tab-education" class="tab-content py-6 px-4 mb-12 section-card" style="display: none;">
+            <section id="tab-education" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="education-section">
                 <h2 class="text-2xl font-bold section-header">Education & Certifications</h2>
                 <div class="space-y-6">
                     <div>
@@ -288,7 +288,7 @@
                 </div>
             </section>
             
-            <section id="tab-projects" class="tab-content py-6 px-4 mb-12 section-card" style="display: none;">
+            <section id="tab-projects" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="projects-section">
                 <h2 class="text-2xl font-bold section-header">Projects</h2>
                 
                 <div class="space-y-12">
@@ -397,15 +397,25 @@
                 </div>
             </section>
 
-            <section id="tab-contact" class="tab-content py-6 px-4 mb-12 section-card" style="display: none;">
+            <section id="tab-contact" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="contact-section">
                 <h2 class="text-2xl font-bold section-header">Contact Information</h2>
                 <div class="text-center mt-4 text-lg text-[#E0E8E1]">
                     <a href="tel:+17027147389" class="hover:underline mx-2 font-bold text-[#FF073A]">(702) 714-7389</a>
                     <span class="font-bold text-[#B2BCC9] mx-2">|</span>
                     <a href="mailto:mark.recio.analyzeo@gmail.com" class="hover:underline mx-2 font-bold text-[#00C0FF]">mark.recio.analyzeo@gmail.com</a>
                 </div>
-                <div class="flex flex-col items-center mt-8">
-                    <img src="https://i.ibb.co/4g7f8Pm0/Copilot-20250920-134453.png" alt="Analyzeo Logo" class="w-96 h-96 mb-4">
+                
+                <h3 class="text-xl font-bold text-[#FF073A] mt-8 mb-4 text-center">A Message from a Digital Professional</h3>
+                <p class="text-sm text-center text-[#B2BCC9] mb-4">This short video showcases the innovative and forward-thinking approach I bring to every project.</p>
+                <div class="rounded-lg overflow-hidden border-2 border-[#FF073A] aspect-w-16 aspect-h-9 w-full mx-auto" style="position: relative; padding-bottom: 56.25%;">
+                    <iframe 
+                        src="https://app.pixverse.ai/home?detail=show&id=361033575131414&platform=web"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full"
+                        title="A Message from a Digital Professional"
+                    ></iframe>
                 </div>
             </section>
 
@@ -417,7 +427,7 @@
     </div>
 
     <script>
-        window.onload = function() {
+        document.addEventListener('DOMContentLoaded', function() {
             let camera, scene, renderer, clock, mouseX = 0, mouseY = 0;
             let windowHalfX = window.innerWidth / 2;
             let windowHalfY = window.innerHeight / 2;
@@ -592,7 +602,7 @@
             // Start the animation
             init();
             animate();
-        };
+        });
     </script>
 </body>
 </html>
