@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,12 +17,12 @@
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            background-color: #0d1a29; /* Dark Navy Blue */
+            background-color: #0E161B;
         }
 
         /* Utility class for section headers with the vibrant accent line */
         .section-header {
-            border-bottom: 2px solid #5a8708;
+            border-bottom: 2px solid #FF073A; /* Neon red accent line */
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
             color: #E0E8E1;
@@ -35,33 +35,33 @@
             font-weight: 500;
             padding: 0.4rem 1.25rem;
             border-radius: 9999px;
-            transition-property: background-color, transform, border-color;
+            transition-property: background-color, transform, border-color, color;
             transition-duration: 300ms;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #2e4a6d; /* Muted Blue Border */
+            border: 1px solid #39FF14; /* Neon green border */
         }
 
         .nav-link:hover {
-            background-color: #2e4a6d;
-            color: #FFFFFF;
+            background-color: #00C0FF; /* Neon blue background on hover */
+            color: #0E161B;
             transform: scale(1.05);
-            border-color: #2e4a6d;
+            border-color: #00C0FF;
         }
 
         .nav-link.active {
-            background-color: #2e4a6d;
-            color: #FFFFFF;
+            background-color: #FF073A; /* Neon red background for active tab */
+            color: #0E161B;
+            border-color: #FF073A;
             pointer-events: none; /* Disable clicks on the active tab */
         }
 
         /* Card styling for sections to add visual depth */
         .section-card {
-            background-color: #122131; /* Slightly lighter navy */
+            background-color: #1E2733; /* Darker blue-gray for cards */
             padding: 2rem;
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.5s ease-in-out;
-            position: relative;
         }
 
         .section-card:hover {
@@ -87,7 +87,7 @@
                 width: 100%;
                 position: sticky;
                 top: 0;
-                background-color: #0d1a29;
+                background-color: #0E161B;
                 padding-top: 1rem;
                 padding-bottom: 1rem;
             }
@@ -95,22 +95,22 @@
         
         /* Custom color classes for a consistent theme */
         .job-title-highlight {
-            color: #FFDB58; /* Goldenrod for job titles */
+            color: #00C0FF; /* Neon blue for job titles */
         }
         
         .work-experience-highlight {
-            color: #5A8708; /* Consistent green for company names */
+            color: #FF073A; /* Neon red for company names */
         }
         
         .python-name-color {
-            color: #1E90FF; /* Dodger Blue for the "Analyzeo" name */
+            color: #39FF14; /* Neon green for the "Analyzeo" name */
         }
         
         .python-paren-color {
-            color: #FFDB58; /* A golden yellow for the Python logo */
+            color: #00C0FF; /* Neon blue for the Python logo */
         }
         .analyzeo-neon-green {
-            color: #1E90FF;
+            color: #39FF14;
         }
         .analyzeo-neon-mustard {
             color: #FFDB58;
@@ -118,37 +118,6 @@
         .nav-logo {
             width: 80px;
             height: auto;
-        }
-        /* Styling for the iframe to ensure it's responsive and fills the space */
-        .iframe-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-        }
-        .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        /* New styling for the freelance website section canvas */
-        .freelance-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        .freelance-content {
-            position: relative;
-            z-index: 1;
-            padding: 2rem;
-            color: white;
-            text-align: center;
         }
     </style>
 </head>
@@ -158,38 +127,35 @@
     <div class="flex flex-col md:flex-row min-h-screen">
 
         <!-- Mobile Navigation (visible on small screens) -->
-        <nav class="mobile-nav md:hidden flex justify-center space-x-2 p-4 overflow-x-auto" role="tablist">
-            <a href="#summary-section" class="nav-link text-center" data-tab="summary" role="tab">Summary</a>
-            <a href="#experience-section" class="nav-link text-center" data-tab="experience" role="tab">Experience</a>
-            <a href="#education-section" class="nav-link text-center" data-tab="education" role="tab">Education</a>
-            <a href="#projects-section" class="nav-link text-center" data-tab="projects" role="tab">Projects</a>
-            <a href="#contact-section" class="nav-link text-center" data-tab="contact" role="tab">Contact</a>
-            <a href="#resume-section" class="nav-link text-center" data-tab="resume" role="tab">Resume</a>
-            <a href="#freelance-website-section" class="nav-link text-center" data-tab="freelance-website" role="tab">Freelance Website</a>
+        <nav class="mobile-nav md:hidden flex justify-center space-x-2 p-4 overflow-x-auto">
+            <a href="#summary-section" class="nav-link text-center" data-tab="summary">Summary</a>
+            <a href="#experience-section" class="nav-link text-center" data-tab="experience">Experience</a>
+            <a href="#education-section" class="nav-link text-center" data-tab="education">Education</a>
+            <a href="#projects-section" class="nav-link text-center" data-tab="projects">Projects</a>
+            <a href="#contact-section" class="nav-link text-center" data-tab="contact">Contact</a>
         </nav>
 
         <!-- Left-side Navigation Bar (visible on medium screens and up) -->
-        <nav class="hidden md:flex fixed top-0 left-0 bottom-0 w-56 bg-black/30 backdrop-blur-sm z-50 p-6 flex-col items-center space-y-4" role="tablist">
+        <nav class="hidden md:flex fixed top-0 left-0 bottom-0 w-56 bg-black/30 backdrop-blur-sm z-50 p-6 flex-col items-center space-y-4">
             <h1 class="text-3xl font-extrabold text-[#E0E8E1] mb-4 text-center">Mark Anthony Recio</h1>
-            <a href="#summary-section" class="nav-link active text-center" data-tab="summary" role="tab" aria-selected="true">Summary</a>
-            <a href="#experience-section" class="nav-link text-center" data-tab="experience" role="tab">Experience</a>
-            <a href="#education-section" class="nav-link text-center" data-tab="education" role="tab">Education</a>
-            <a href="#projects-section" class="nav-link text-center" data-tab="projects" role="tab">Projects</a>
-            <a href="#contact-section" class="nav-link text-center" data-tab="contact" role="tab">Contact</a>
-            <a href="#resume-section" class="nav-link text-center" data-tab="resume" role="tab">Resume</a>
-            <a href="#freelance-website-section" class="nav-link text-center" data-tab="freelance-website" role="tab">Freelance Website</a>
+            <img src="https://i.ibb.co/4g7f8Pm0/Copilot-20250920-134453.png" alt="Mark Recio Logo" class="rounded-full w-40 h-auto mb-4 border-2 border-[#FF073A] shadow-lg">
+            <a href="#summary-section" class="nav-link active text-center" data-tab="summary">Summary</a>
+            <a href="#experience-section" class="nav-link text-center" data-tab="experience">Experience</a>
+            <a href="#education-section" class="nav-link text-center" data-tab="education">Education</a>
+            <a href="#projects-section" class="nav-link text-center" data-tab="projects">Projects</a>
+            <a href="#contact-section" class="nav-link text-center" data-tab="contact">Contact</a>
         </nav>
 
         <!-- 3D background canvas -->
-        <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full -z-10 bg-[#0d1a29]"></canvas>
+        <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full -z-10 bg-[#0E161B]"></canvas>
 
         <!-- Main content area, pushed to the right on larger screens and now centered -->
         <main class="flex-grow md:ml-56 max-w-4xl mx-auto p-4 sm:p-6 md:p-8 lg:p-10 relative z-10">
 
             <!-- Tab Content Sections -->
-            <section id="tab-summary" class="tab-content active py-6 px-4 mb-12 section-card" role="tabpanel">
+            <section id="tab-summary" class="tab-content active py-6 px-4 mb-12 section-card">
                 <!-- Image of Mark Recio -->
-                <img src="https://i.ibb.co/hJZc89FM/Mark-Recio-Data-Business-Analyst.png" alt="Professional headshot of Mark Recio" class="rounded-full w-32 h-32 mx-auto mb-4 shadow-lg border-2 border-[#5A8708]">
+                <img src="https://i.ibb.co/hJZc89FM/Mark-Recio-Data-Business-Analyst.png" alt="Professional headshot of Mark Recio" class="rounded-full w-32 h-32 mx-auto mb-4 shadow-lg border-2 border-[#FF073A]">
                 <header class="text-center">
                     <p class="text-lg sm:text-xl mb-8">
                         <span class="python-name-color">Data & Business</span>
@@ -202,39 +168,44 @@
 
                 <h2 class="text-2xl font-bold section-header mt-8">Core Competencies</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-[#2D343A] p-4 rounded-lg">
-                        <h3 class="font-semibold text-lg text-[#E0E8E1] mb-1">Business Analysis</h3>
-                        <p class="text-[#96A099] text-sm">Strategic Planning, Project Coordination, Executive Reporting.</p>
+                    <div class="bg-[#2C3645] p-4 rounded-lg">
+                        <h3 class="font-semibold text-lg text-[#00C0FF] mb-1">Business Analysis</h3>
+                        <p class="text-[#B2BCC9] text-sm">Strategic Planning, Project Coordination, Executive Reporting.</p>
                     </div>
-                    <div class="bg-[#2D343A] p-4 rounded-lg">
-                        <h3 class="font-semibold text-lg text-[#E0E8E1] mb-1">Data & HR Analytics</h3>
-                        <p class="text-[#96A099] text-sm">Predictive Modeling, Data Visualization, Performance Metrics.</p>
+                    <div class="bg-[#2C3645] p-4 rounded-lg">
+                        <h3 class="font-semibold text-lg text-[#FF073A] mb-1">Data & HR Analytics</h3>
+                        <p class="text-[#B2BCC9] text-sm">Predictive Modeling, Data Visualization, Performance Metrics.</p>
                     </div>
-                    <div class="bg-[#2D343A] p-4 rounded-lg">
-                        <h3 class="font-semibold text-lg text-[#E0E8E1] mb-1">Operations</h3>
-                        <p class="text-[#96A099] text-sm">Process Improvement, Workflow Optimization, Payroll Coordination.</p>
+                    <div class="bg-[#2C3645] p-4 rounded-lg">
+                        <h3 class="font-semibold text-lg text-[#39FF14] mb-1">Operations</h3>
+                        <p class="text-[#B2BCC9] text-sm">Process Improvement, Workflow Optimization, Payroll Coordination.</p>
                     </div>
                 </div>
                 <div class="mt-8">
                     <h3 class="font-semibold text-lg text-[#E0E8E1] mb-2">Technical Skills</h3>
-                    <div class="flex flex-wrap gap-2 mt-1">
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Visual Studio</span>
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Python</span>
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">R</span>
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">SQL</span>
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Power BI</span>
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Tableau</span>
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Advanced Excel</span>
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Microsoft 365</span>
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Adobe Analytics</span>
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Google Analytics</span>
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">CRM</span>
-                        <span class="bg-[#2D343A] text-white text-xs px-2.5 py-1 rounded-full font-medium">Salesforce</span>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium text-[#B2BCC9]">Technology</h4>
+                            <div class="flex flex-wrap gap-2 mt-1">
+                                <span class="bg-[#2C3645] text-[#39FF14] text-xs px-2.5 py-1 rounded-full font-medium">Visual Studio</span>
+                                <span class="bg-[#2C3645] text-[#FF073A] text-xs px-2.5 py-1 rounded-full font-medium">Python</span>
+                                <span class="bg-[#2C3645] text-[#00C0FF] text-xs px-2.5 py-1 rounded-full font-medium">R</span>
+                                <span class="bg-[#2C3645] text-[#39FF14] text-xs px-2.5 py-1 rounded-full font-medium">SQL</span>
+                                <span class="bg-[#2C3645] text-[#FF073A] text-xs px-2.5 py-1 rounded-full font-medium">Power BI</span>
+                                <span class="bg-[#2C3645] text-[#00C0FF] text-xs px-2.5 py-1 rounded-full font-medium">Tableau</span>
+                                <span class="bg-[#2C3645] text-[#39FF14] text-xs px-2.5 py-1 rounded-full font-medium">Advanced Excel</span>
+                                <span class="bg-[#2C3645] text-[#FF073A] text-xs px-2.5 py-1 rounded-full font-medium">Microsoft 365</span>
+                                <span class="bg-[#2C3645] text-[#00C0FF] text-xs px-2.5 py-1 rounded-full font-medium">Adobe Analytics</span>
+                                <span class="bg-[#2C3645] text-[#39FF14] text-xs px-2.5 py-1 rounded-full font-medium">Google Analytics</span>
+                                <span class="bg-[#2C3645] text-[#FF073A] text-xs px-2.5 py-1 rounded-full font-medium">CRM</span>
+                                <span class="bg-[#2C3645] text-[#00C0FF] text-xs px-2.5 py-1 rounded-full font-medium">Salesforce</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section id="tab-experience" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel">
+            <section id="tab-experience" class="tab-content py-6 px-4 mb-12 section-card" style="display: none;">
                 <h2 class="text-2xl font-bold section-header">Professional Experience</h2>
                 <div class="space-y-8">
                     <div>
@@ -258,7 +229,8 @@
                         <p class="company-name mb-2">
                             <span class="work-experience-highlight">
                                 <span class="analyzeo-neon-green">Analyze</span><span class="analyzeo-neon-mustard">o( )</span>
-                            </span> | Las Vegas, NV</p>
+                            </span> | Las Vegas, NV
+                        </p>
                         <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
                             <li class="list-item">Developed and deployed predictive models for recruitment analysis using <strong>Python</strong> and <strong>R</strong>, optimizing talent acquisition strategies.</li>
                             <li class="list-item">Architected and built dynamic <strong>Power BI dashboards</strong> that provided actionable insights for HR, marketing, and campaign performance.</li>
@@ -268,7 +240,7 @@
                 </div>
             </section>
             
-            <section id="tab-education" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel">
+            <section id="tab-education" class="tab-content py-6 px-4 mb-12 section-card" style="display: none;">
                 <h2 class="text-2xl font-bold section-header">Education & Certifications</h2>
                 <div class="space-y-6">
                     <div>
@@ -281,57 +253,48 @@
                     </div>
                     <div class="mt-4">
                         <h3 class="font-semibold text-lg text-[#E0E8E1]">Upskilled Certifications</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm text-[#96A099]">
-                            <div class="bg-[#2D343A] p-3 rounded-lg flex items-center gap-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm text-[#B2BCC9]">
+                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
                                 <span class="text-sm">Google Data Analytics - Google (Coursera)</span>
                             </div>
-                            <div class="bg-[#2D343A] p-3 rounded-lg flex items-center gap-2">
+                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
                                 <span class="text-sm">IBM Data Science Professional - IBM (Coursera)</span>
                             </div>
-                            <div class="bg-[#2D343A] p-3 rounded-lg flex items-center gap-2">
+                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
                                 <span class="text-sm">Power BI Data Analyst Associate - Microsoft (Coursera)</span>
                             </div>
-                            <div class="bg-[#2D343A] p-3 rounded-lg flex items-center gap-2">
+                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
                                 <span class="text-sm">Tableau Business Intelligence Analyst - Tableau (Coursera)</span>
                             </div>
-                            <div class="bg-[#2D343A] p-3 rounded-lg flex items-center gap-2">
+                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
                                 <span class="text-sm">Business Analytics - University of Illinois Urbana-Champaign (Coursera)</span>
                             </div>
-                            <div class="bg-[#2D343A] p-3 rounded-lg flex items-center gap-2">
+                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
                                 <span class="text-sm">Accounting Data Analytics - University of Illinois Urbana-Champaign (Coursera)</span>
                             </div>
-                            <div class="bg-[#2D343A] p-3 rounded-lg flex items-center gap-2">
+                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
                                 <span class="text-sm">Finance Data Analytics - University of Illinois Urbana-Champaign (Coursera)</span>
                             </div>
-                            <div class="bg-[#2D343A] p-3 rounded-lg flex items-center gap-2">
+                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
                                 <span class="text-sm">Financial Analysis - University of Illinois Urbana-Champaign (Coursera)</span>
                             </div>
                         </div>
                     </div>
                     <div class="mt-8 text-center">
-                        <a href="https://markareciocareerpath.my.canva.site/education-certifications" target="_blank" class="inline-block bg-[#5A8708] text-[#0E161B] font-semibold py-2 px-6 rounded-full transition-transform duration-300 hover:scale-105">
+                        <a href="https://markareciocareerpath.my.canva.site/education-certifications" target="_blank" class="inline-block bg-[#FF073A] text-[#0E161B] font-semibold py-2 px-6 rounded-full transition-transform duration-300 hover:scale-105">
                             View Credentials
                         </a>
                     </div>
                 </div>
             </section>
             
-            <section id="tab-projects" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel">
+            <section id="tab-projects" class="tab-content py-6 px-4 mb-12 section-card" style="display: none;">
                 <h2 class="text-2xl font-bold section-header">Projects</h2>
                 
-                <!-- Main Projects Video -->
-                <div class="mb-8">
-                    <h3 class="text-2xl font-bold text-center text-[#FFDB58] mb-4">Bold to take on Data Challenges</h3>
-                    <div class="w-full aspect-video rounded-xl overflow-hidden border border-blue-600">
-                        <iframe src="https://www.youtube.com/embed/D1lL2-1tw34" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
-                    </div>
-                    <p class="mt-4 text-center text-[#96A099]">This video showcases my projects and my approach to solving complex business problems.</p>
-                </div>
-
                 <div class="space-y-12">
                     <!-- Python Project -->
                     <div>
-                        <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Python Project (Avoxi Billing Analysis)</h3>
+                        <h3 class="text-xl font-bold text-[#FF073A] mb-2">Python Project (Avoxi Billing Analysis)</h3>
                         <p id="python-project-text" class="text-[#E0E8E1] leading-relaxed">
                             This project demonstrates my ability to use <strong>Python</strong> for sophisticated data analysis and reporting. I developed a solution to analyze complex billing data, identifying key financial insights and providing actionable recommendations.
                         </p>
@@ -345,29 +308,29 @@
                     
                     <!-- Power BI Project -->
                     <div>
-                        <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Power BI Project</h3>
+                        <h3 class="text-xl font-bold text-[#00C0FF] mb-2">Power BI Project</h3>
                         <p id="powerbi-project-text" class="text-[#E0E8E1] leading-relaxed">
                             This project demonstrates my expertise in using <strong>Power BI</strong> to build a dynamic and insightful dashboard for business intelligence. I focused on connecting multiple data sources, cleaning and transforming raw data with Power Query, and designing interactive visualizations that provide actionable insights. The dashboard allows stakeholders to explore key business metrics, identify trends, and make data-driven decisions at a glance.
                         </p>
                         <div class="mt-8 text-center">
-                             <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit?utm_content=DAGxAueHJUU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="w-full sm:w-auto text-[#5A8708] hover:underline font-semibold text-center">
-                                 Power BI Project
+                             <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit?utm_content=DAGxAueHJUU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="w-full sm:w-auto text-[#00C0FF] hover:underline font-semibold text-center">
+                                Power BI Project
                             </a>
                         </div>
                     </div>
                     
                     <!-- Advanced Excel Project -->
                     <div>
-                        <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Advanced Excel Project</h3>
+                        <h3 class="text-xl font-bold text-[#39FF14] mb-2">Advanced Excel Project</h3>
                         <h4 class="text-lg font-semibold text-[#E0E8E1] mb-2">Summary of Analysis</h4>
                         <p class="text-[#E0E8E1] leading-relaxed mb-4">
                             Based on the Master Billing sheet and the pivot tables, here are the key findings to present to Jon:
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4 mb-6">
                             <li><strong class="font-semibold">Low Gross Margins:</strong> The data shows that overall gross margins are lower than the target of 45%. Some vendors and countries even have negative gross margins, meaning the company is losing money on those calls.</li>
-                            <li><strong class="font-semibold">Vendor Performance:</strong> <span class="text-[#5A8708]">Vendor 1</span> is a significant drag on profitability due to its billing increment of 6 seconds. Calls with this vendor frequently result in overbilling and a negative gross margin, making it a critical area to address.</li>
-                            <li><strong class="font-semibold">Client Rates:</strong> The <span class="text-[#5A8708]">Clients Rates</span> tab shows that many clients are being billed at the same flat rate, regardless of the country they are calling from or the specific vendor. This lack of differentiation is a major reason for the low or negative margins on certain calls.</li>
-                            <li><strong class="font-semibold">Data Organization:</strong> The data was initially in separate monthly sheets, which made it difficult to get a complete picture. Consolidating the data into a single <span class="text-[#5A8708]">Master Billing</span> sheet and creating a single, comprehensive pivot table was essential for a proper analysis.</li>
+                            <li><strong class="font-semibold">Vendor Performance:</strong> <span class="text-[#39FF14]">Vendor 1</span> is a significant drag on profitability due to its billing increment of 6 seconds. Calls with this vendor frequently result in overbilling and a negative gross margin, making it a critical area to address.</li>
+                            <li><strong class="font-semibold">Client Rates:</strong> The <span class="text-[#39FF14]">Clients Rates</span> tab shows that many clients are being billed at the same flat rate, regardless of the country they are calling from or the specific vendor. This lack of differentiation is a major reason for the low or negative margins on certain calls.</li>
+                            <li><strong class="font-semibold">Data Organization:</strong> The data was initially in separate monthly sheets, which made it difficult to get a complete picture. Consolidating the data into a single <span class="text-[#39FF14]">Master Billing</span> sheet and creating a single, comprehensive pivot table was essential for a proper analysis.</li>
                         </ul>
 
                         <h4 class="text-lg font-semibold text-[#E0E8E1] mb-2">Recommendations and Next Steps</h4>
@@ -375,13 +338,13 @@
                             Here are some recommendations to discuss with Jon and the team, outside of the direct questions he asked:
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4 mb-6">
-                            <li><strong class="font-semibold">Renegotiate with Vendors:</strong> The most urgent action is to renegotiate rates with the low-margin vendors, especially <span class="text-[#5A8708]">Vendor 1</span>. You should present the data showing that their billing model is causing significant losses. If negotiation isn't successful, it's a good idea to seek out alternative vendors.</li>
-                            <li><strong class="font-semibold">Adjust Client Rates:</strong> To achieve the 45% gross margin target, it is necessary to adjust client rates. Instead of a flat rate, clients should be billed at a rate that reflects the true cost of the call, including the country and the vendor. You can propose a new tiered pricing model.</li>
+                            <li><strong class="font-semibold">Renegotiate with Vendors:</strong> The most urgent action is to renegotiate rates with the low-margin vendors, especially <span class="text-[#39FF14]">Vendor 1</span>. You should present the data showing that their billing model is causing significant losses. If negotiation isn't successful, it's a good idea to seek out alternative vendors.</li>
+                            <li><strong class="font-semibold">Adjust Client Rates:</strong> To achieve the 45% gross margin target, it is necessary to adjust client rates. Instead of a flat rate, clients should be billed at a rate that reflects the true cost of the call, including the country and the vendor used. You can propose a new tiered pricing model.</li>
                             <li class="list-item">Automate with Configurable Inputs: The sheet can be improved by adding a section for "configurable increases" where Jon or anyone on the team can input desired rate increases (e.g., 7% and 20%) and have the sheet automatically calculate the new margins. This would eliminate the need for manual formula updates and allow for quick what-if analysis.</li>
                         </ul>
 
                         <div class="mt-8 text-center">
-                            <a href="https://docs.google.com/spreadsheets/d/1Gu7P0qO6ObMs2yUO8Cwree_0tdrn5qZY1y1gSKa1Jyc/edit?usp=sharing" target="_blank" class="text-[#5A8708] hover:underline font-semibold">
+                            <a href="https://docs.google.com/spreadsheets/d/1Gu7P0qO6ObMs2yUO8Cwree_0tdrn5qZY1y1gSKa1Jyc/edit?usp=sharing" target="_blank" class="text-[#39FF14] hover:underline font-semibold">
                                 Billing_File_022025. - Google Sheets
                             </a>
                         </div>
@@ -389,12 +352,12 @@
                     
                     <!-- MySQL Project -->
                     <div>
-                        <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">MySQL Project</h3>
+                        <h3 class="text-xl font-bold text-[#FF073A] mb-2">MySQL Project</h3>
                         <p class="text-[#E0E8E1] leading-relaxed mb-6">
-                            This project, I designed and managed a relational database using <strong>MySQL</strong> to track and analyze sales data. I created a robust schema with multiple tables and used a variety of complex SQL queries, including JOINs, subqueries, and aggregate functions, to extract meaningful business insights. The project demonstrates my ability to not only store data efficiently but also to query it effectively for reporting and strategic analysis.
+                            In this project, I designed and managed a relational database using <strong>MySQL</strong> to track and analyze sales data. I created a robust schema with multiple tables and used a variety of complex SQL queries, including JOINs, subqueries, and aggregate functions, to extract meaningful business insights. The project demonstrates my ability to not only store data efficiently but also to query it effectively for reporting and strategic analysis.
                         </p>
                         <div class="mt-8 text-center">
-                            <a href="https://www.canva.com/design/DAGxNVIG9ks/BvynwaUZ2YjUIfC6xCjCbQ/edit?utm_content=DAGxNVIG9ks&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-[#5A8708] hover:underline font-semibold">
+                            <a href="https://www.canva.com/design/DAGxNVIG9ks/BvynwaUZ2YjUIfL6xCjCbQ/edit?utm_content=DAGxNVIG9ks&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="text-[#FF073A] hover:underline font-semibold">
                                 MySQL Project Presentation
                             </a>
                         </div>
@@ -402,7 +365,7 @@
 
                     <!-- Marketing Analytics Project -->
                     <div>
-                        <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">Marketing Analytics Project</h3>
+                        <h3 class="text-xl font-bold text-[#00C0FF] mb-2">Marketing Analytics Project</h3>
                         <p class="text-[#E0E8E1] leading-relaxed">
                             This project focuses on leveraging data to improve website performance and marketing strategies. It involved using analytical tools and techniques to understand user behavior, optimize content, and increase conversion rates.
                         </p>
@@ -413,7 +376,7 @@
                             <li class="list-item">Analyzed demographic data to find statistically significant differences in user behavior.</li>
                         </ul>
                         <div class="mt-8 text-center">
-                            <a href="https://pdf.ac/jtd86A-H" target="_blank" class="text-[#5A8708] hover:underline font-semibold">
+                            <a href="https://pdf.ac/jtd86A-H" target="_blank" class="text-[#00C0FF] hover:underline font-semibold">
                                 View Project PDF
                             </a>
                         </div>
@@ -421,12 +384,12 @@
                     
                     <!-- HR Analytics Project -->
                     <div>
-                        <h3 class="text-xl font-bold text-[#E0E8E1] mb-2">HR Analytics Project</h3>
+                        <h3 class="text-xl font-bold text-[#39FF14] mb-2">HR Analytics Project</h3>
                         <p class="text-[#E0E8E1] leading-relaxed mb-6">
                             This project is a comprehensive <strong>HR analytics</strong> solution built using <strong>Python</strong>. It features a script for <strong>resume parsing</strong>, which automates the extraction of key information from resumes to streamline the recruitment process. The solution also includes a predictive model to forecast employee attrition, providing data-driven insights that help with talent management and retention.
                         </p>
                         <div class="mt-8 text-center">
-                            <a href="https://markareciocareerpath.my.canva.site/dagywh-tzq" target="_blank" class="text-[#5A8708] hover:underline font-semibold">
+                            <a href="https://markareciocareerpath.my.canva.site/dagywh-tzq" target="_blank" class="text-[#39FF14] hover:underline font-semibold">
                                 HR Analytics Project Presentation
                             </a>
                         </div>
@@ -434,139 +397,160 @@
                 </div>
             </section>
 
-            <section id="tab-resume" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel">
-                <h2 class="text-2xl font-bold section-header">Recruiter's Resume</h2>
-                <p class="text-center text-[#E0E8E1] leading-relaxed mb-8">
-                    This is my full, interactive flipping book resume. It provides a comprehensive overview of my qualifications and experience, presented in a dynamic format.
-                </p>
-                <!-- Iframe for the flipping book resume -->
-                <div class="w-full aspect-[16/9] lg:aspect-[21/9] rounded-xl overflow-hidden shadow-lg border-2 border-[#5A8708] mb-8">
-                    <iframe src="https://online.flippingbook.com/view/730088165/" title="Mark Recio's Flipping Book Resume" frameborder="0" class="w-full h-full"></iframe>
-                </div>
-            </section>
-
-            <section id="tab-contact" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel">
+            <section id="tab-contact" class="tab-content py-6 px-4 mb-12 section-card" style="display: none;">
                 <h2 class="text-2xl font-bold section-header">Contact Information</h2>
                 <div class="text-center mt-4 text-lg text-[#E0E8E1]">
-                    <a href="tel:+17027147389" class="hover:underline mx-2 font-bold text-[#5A8708]">(702) 714-7389</a>
-                    <span class="font-bold text-[#96A099] mx-2">|</span>
-                    <a href="mailto:mark.recio.analyzeo@gmail.com" class="hover:underline mx-2 font-bold text-[#5A8708]">mark.recio.analyzeo@gmail.com</a>
+                    <a href="tel:+17027147389" class="hover:underline mx-2 font-bold text-[#FF073A]">(702) 714-7389</a>
+                    <span class="font-bold text-[#B2BCC9] mx-2">|</span>
+                    <a href="mailto:mark.recio.analyzeo@gmail.com" class="hover:underline mx-2 font-bold text-[#00C0FF]">mark.recio.analyzeo@gmail.com</a>
                 </div>
                 <div class="flex flex-col items-center mt-8">
-                    <img src="https://i.ibb.co/zVjVh4VM/Copilot-20250916-052217.png" alt="Analyzeo Logo" class="w-96 h-96 mb-4">
+                    <img src="https://i.ibb.co/4g7f8Pm0/Copilot-20250920-134453.png" alt="Analyzeo Logo" class="w-96 h-96 mb-4">
                 </div>
             </section>
 
-            <section id="tab-freelance-website" class="tab-content py-6 mb-12 section-card overflow-hidden">
-                <canvas id="freelance-canvas" class="freelance-canvas"></canvas>
-                <div class="freelance-content">
-                    <h2 class="text-2xl font-bold section-header">Freelance Website</h2>
-                    <p class="text-center leading-relaxed mb-6">
-                        This is my freelance website, **Analyzeo**, for a seamless viewing experience.
-                    </p>
-                    <a href="https://markreciopro.github.io/website/" target="_blank" class="inline-block bg-[#5A8708] text-[#0E161B] font-semibold py-2 px-6 rounded-full transition-transform duration-300 hover:scale-105">
-                        View Analyzeo Website
-                    </a>
-                </div>
-            </section>
-
-
-            <footer class="text-center text-sm text-[#96A099] mt-8 py-4">
-                <p>© 2023 Mark Anthony Recio. All Rights Reserved.</p>
+            <footer class="text-center text-sm text-[#B2BCC9] mt-8 py-4">
+                <p>&copy; 2023 Mark Anthony Recio. All Rights Reserved.</p>
             </footer>
 
         </main>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Main 3D Background Animation (unchanged)
+        window.onload = function() {
             let camera, scene, renderer, clock, mouseX = 0, mouseY = 0;
-            let targetX = 0, targetY = 0;
             let windowHalfX = window.innerWidth / 2;
             let windowHalfY = window.innerHeight / 2;
-            let particleGroup, nodes, lines;
-            const NODE_COUNT = 60;
-            const FADE_DISTANCE = 50;
+
             const CODE_SNIPPETS = [
+                // Python snippets reflecting resume skills
                 "# Predictive Analysis with Python",
                 "import pandas as pd",
                 "import numpy as np",
-                "import matplotlib.pyplot as plt",
-                "from sklearn.linear_model import LogisticRegression",
-                "df = pd.read_csv('billing_data.csv')",
-                "df['GrossMargin'] = (df['Sales'] - df['Cost']) / df['Sales']",
-                "plt.figure(figsize=(10, 6))",
-                "plt.plot(df['Vendor'], df['GrossMargin'])",
-                "plt.title('Vendor Performance Analysis')",
-                "plt.show()",
-                "model = LogisticRegression().fit(X_train, y_train)",
-                "predictions = model.predict(X_test)",
-                "-- SQL for sales and HR data analysis",
-                "SELECT employee_id, attrition_rate",
-                "FROM hr_data",
-                "WHERE department = 'Sales' AND attrition_rate > 0.1",
-                "GROUP BY customer_id",
-                "ORDER BY total_sales DESC",
-                "JOIN departments ON employees.dept_id = departments.id",
-                "SELECT AVG(sales) AS avg_sales, MONTH(order_date) AS month",
-                "FROM sales_data",
-                "WHERE YEAR(order_date) = 2023",
-                "# R for data science and analytics",
-                "install.packages('ggplot2')",
-                "library(dplyr)",
-                "data <- read.csv('data.csv')",
-                "summary(data)",
-                "model <- lm(y ~ x1 + x2, data = mydata)",
-                "plot(data$sales, main='Sales Trends')",
-                "data %>% group_by(country) %>% summarize(avg_margin=mean(margin))",
+                "from sklearn.model_selection import train_test_split",
+                "df = pd.read_csv('mark.recio.resume.csv')",
+                "df['performance'] = df['metrics'] * 100",
+                "model.fit(X_train, y_train)",
+                "y_pred = model.predict(X_test)",
+                // R snippets for analysis and visualization
+                "# R for workforce analytics",
+                "library(tidyverse)",
+                "data <- read.csv('mark.recio.resume.csv')",
+                "data %>% ggplot(aes(x=department, y=efficiency)) + geom_bar()",
+                "lm(productivity ~ workforce, data = data)",
+                "summary(lm(performance ~ skills))",
+                // SQL snippets for data management
+                "# SQL for operational reports",
+                "SELECT employee_id, SUM(hours) AS total_hours",
+                "FROM workforce_data GROUP BY employee_id",
+                "ORDER BY total_hours DESC",
+                "WHERE status = 'completed'",
+                // Generic snippets related to tools
+                "# Power BI / Tableau",
+                "dashboard = new PowerBIReport()",
+                "data = pd.read_excel('payroll.xlsx')",
+                "KPIs = data.group_by(company)",
+                "visualize(data)",
+                "process_improvement_metrics.xlsx",
+                "recruitment_analysis.json"
             ];
+            const NEON_COLORS = ["#39FF14", "#FF073A", "#00C0FF"];
+            const CODE_COUNT = 300; // Increased sprite count for more density
+            const codeSprites = [];
 
+            // Initializes the Three.js scene and populates it with text sprites
             function init() {
+                // Scene, Camera, and Renderer setup
                 scene = new THREE.Scene();
-                clock = new THREE.Clock();
                 camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
                 camera.position.z = 250;
-                renderer = new THREE.WebGLRenderer({
-                    canvas: document.getElementById('bg-canvas'),
-                    antialias: true,
-                    alpha: true,
-                });
-                renderer.setSize(window.innerWidth, window.innerHeight);
+
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('bg-canvas') });
                 renderer.setPixelRatio(window.devicePixelRatio);
-                particleGroup = new THREE.Group();
-                scene.add(particleGroup);
-                nodes = [];
-                for (let i = 0; i < NODE_COUNT; i++) {
-                    const geometry = new THREE.SphereGeometry(1, 8, 8);
-                    const material = new THREE.MeshBasicMaterial({
-                        color: 0x66fcf1,
-                        transparent: true,
-                    });
-                    const node = new THREE.Mesh(geometry, material);
-                    node.position.x = Math.random() * 400 - 200;
-                    node.position.y = Math.random() * 400 - 200;
-                    node.position.z = Math.random() * 400 - 200;
-                    node.userData.velocity = new THREE.Vector3(
-                        (Math.random() - 0.5) * 0.2,
-                        (Math.random() - 0.5) * 0.2,
-                        (Math.random() - 0.5) * 0.2
-                    );
-                    node.userData.codeSnippet = CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
-                    nodes.push(node);
-                    particleGroup.add(node);
+                renderer.setSize(window.innerWidth, window.innerHeight);
+
+                // Create and position the text sprites
+                for (let i = 0; i < CODE_COUNT; i++) {
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    
+                    // Style the text
+                    const font = "Normal 12px Inter";
+                    context.font = font;
+                    const snippet = CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
+                    const metrics = context.measureText(snippet);
+                    const textWidth = metrics.width;
+                    const textHeight = 14; 
+                    
+                    // Set canvas size and draw the text
+                    canvas.width = textWidth + 10;
+                    canvas.height = textHeight + 10;
+                    context.font = font;
+                    const randomColor = NEON_COLORS[Math.floor(Math.random() * NEON_COLORS.length)];
+                    context.fillStyle = randomColor;
+                    context.fillText(snippet, 5, 15);
+
+                    // Create the Three.js objects
+                    const texture = new THREE.CanvasTexture(canvas);
+                    const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.8 });
+                    const sprite = new THREE.Sprite(material);
+                    
+                    // Set the sprite's size and position
+                    sprite.scale.set(canvas.width * 0.5, canvas.height * 0.5, 1);
+                    sprite.position.x = Math.random() * 2000 - 1000;
+                    sprite.position.y = Math.random() * 1000 - 500;
+                    sprite.position.z = Math.random() * 2000 - 1000;
+
+                    // Store the original position and a random rotation speed
+                    sprite.userData.originalPosition = sprite.position.clone();
+                    sprite.userData.rotationSpeed = Math.random() * 0.005 + 0.001;
+
+                    scene.add(sprite);
+                    codeSprites.push(sprite);
                 }
-                lines = new THREE.LineSegments(new THREE.BufferGeometry(), new THREE.LineBasicMaterial({
-                    color: 0x1E90FF,
-                    transparent: true,
-                    opacity: 0.8,
-                }));
-                lines.material.vertexColors = true;
-                particleGroup.add(lines);
+
+                // Event listeners for interactivity
+                document.addEventListener('mousemove', onDocumentMouseMove, false);
                 window.addEventListener('resize', onWindowResize, false);
-                document.addEventListener('mousemove', onMouseMove, false);
             }
 
+            // Handles the animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Update camera rotation based on mouse position
+                const targetX = mouseX * 0.001;
+                const targetY = mouseY * 0.001;
+                camera.position.x += (targetX - camera.position.x) * 0.05;
+                camera.position.y += (-targetY - camera.position.y) * 0.05;
+                camera.lookAt(scene.position);
+
+                // Update sprite positions to create the floating effect
+                codeSprites.forEach(sprite => {
+                    // Move the sprite along the Z-axis
+                    sprite.position.z += 0.5;
+
+                    // If a sprite moves too far, reset its position to the back
+                    if (sprite.position.z > camera.position.z) {
+                        sprite.position.z = -1000;
+                        sprite.position.x = Math.random() * 2000 - 1000;
+                        sprite.position.y = Math.random() * 1000 - 500;
+                    }
+
+                    // Rotate the sprite
+                    sprite.rotation.z += sprite.userData.rotationSpeed;
+                });
+
+                renderer.render(scene, camera);
+            }
+
+            // Updates mouse coordinates
+            function onDocumentMouseMove(event) {
+                mouseX = (event.clientX - windowHalfX) * 0.1;
+                mouseY = (event.clientY - windowHalfY) * 0.1;
+            }
+
+            // Handles window resizing to keep the animation responsive
             function onWindowResize() {
                 windowHalfX = window.innerWidth / 2;
                 windowHalfY = window.innerHeight / 2;
@@ -575,160 +559,40 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
             }
 
-            function onMouseMove(event) {
-                mouseX = event.clientX - windowHalfX;
-                mouseY = event.clientY - windowHalfY;
-            }
+            // Tab switching logic
+            const tabLinks = document.querySelectorAll('.nav-link');
+            const tabContents = document.querySelectorAll('.tab-content');
 
-            function updateParticles() {
-                const positions = [];
-                const colors = [];
-                const lineOpacity = 0.8;
-                const nodeSize = 1;
-                const minDistance = 70;
+            tabLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const tabId = event.target.dataset.tab;
 
-                nodes.forEach(node => {
-                    node.position.add(node.userData.velocity.clone().add(new THREE.Vector3(0, 0, 0.05)));
-                    if (Math.abs(node.position.x) > 200) node.position.x *= -1;
-                    if (Math.abs(node.position.y) > 200) node.position.y *= -1;
-                    if (Math.abs(node.position.z) > 200) node.position.z *= -1;
-                    const scale = 1 + Math.sin(clock.getElapsedTime() * 3) * 0.2;
-                    node.scale.set(scale, scale, scale);
-                    const distance = node.position.length();
-                    const opacity = Math.max(0.1, 1 - distance / 200);
-                    node.material.opacity = opacity;
-                });
-
-                for (let i = 0; i < NODE_COUNT; i++) {
-                    for (let j = i + 1; j < NODE_COUNT; j++) {
-                        const dist = nodes[i].position.distanceTo(nodes[j].position);
-                        if (dist < minDistance) {
-                            positions.push(nodes[i].position.x, nodes[i].position.y, nodes[i].position.z);
-                            positions.push(nodes[j].position.x, nodes[j].position.y, nodes[j].position.z);
-                            const alpha = (1 - dist / minDistance) * lineOpacity;
-                            const lineMaterialColor = new THREE.Color(0x1E90FF);
-                            const fadedColor = lineMaterialColor.clone().lerp(new THREE.Color(0x2e4a6d), 1 - alpha);
-                            colors.push(fadedColor.r, fadedColor.g, fadedColor.b);
-                            colors.push(fadedColor.r, fadedColor.g, fadedColor.b);
-                        }
-                    }
-                }
-                const geometry = lines.geometry;
-                geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-                geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-                geometry.attributes.position.needsUpdate = true;
-                geometry.attributes.color.needsUpdate = true;
-            }
-
-            function render() {
-                targetX = mouseX * 0.001;
-                targetY = mouseY * 0.001;
-                camera.position.x += (targetX - camera.position.x) * 0.05;
-                camera.position.y += (-targetY - camera.position.y) * 0.05;
-                camera.lookAt(scene.position);
-                const delta = clock.getDelta();
-                particleGroup.rotation.y += delta * 0.05;
-                renderer.render(scene, camera);
-            }
-
-            function animate() {
-                requestAnimationFrame(animate);
-                updateParticles();
-                render();
-            }
-
-            // New 2D Freelance Website Animation
-            const freelanceCanvas = document.getElementById('freelance-canvas');
-            const freelanceCtx = freelanceCanvas.getContext('2d');
-            let particles = [];
-            const PARTICLE_COUNT = 50;
-
-            function initFreelanceCanvas() {
-                resizeFreelanceCanvas();
-                for (let i = 0; i < PARTICLE_COUNT; i++) {
-                    particles.push({
-                        x: Math.random() * freelanceCanvas.width,
-                        y: Math.random() * freelanceCanvas.height,
-                        vx: (Math.random() - 0.5) * 0.5,
-                        vy: (Math.random() - 0.5) * 0.5,
-                        radius: Math.random() * 2 + 1,
-                        pulse: Math.random() * Math.PI * 2,
+                    // Remove 'active' class from all tabs and links
+                    tabLinks.forEach(item => item.classList.remove('active'));
+                    tabContents.forEach(item => {
+                        item.classList.remove('active');
+                        item.style.display = 'none';
                     });
-                }
-                animateFreelanceCanvas();
-            }
 
-            function resizeFreelanceCanvas() {
-                freelanceCanvas.width = freelanceCanvas.parentElement.clientWidth;
-                freelanceCanvas.height = freelanceCanvas.parentElement.clientHeight;
-            }
-
-            function animateFreelanceCanvas() {
-                requestAnimationFrame(animateFreelanceCanvas);
-                freelanceCtx.clearRect(0, 0, freelanceCanvas.width, freelanceCanvas.height);
-
-                // Draw lines
-                for (let i = 0; i < PARTICLE_COUNT; i++) {
-                    for (let j = i + 1; j < PARTICLE_COUNT; j++) {
-                        const p1 = particles[i];
-                        const p2 = particles[j];
-                        const dist = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
-
-                        if (dist < 120) {
-                            freelanceCtx.beginPath();
-                            freelanceCtx.moveTo(p1.x, p1.y);
-                            freelanceCtx.lineTo(p2.x, p2.y);
-                            freelanceCtx.strokeStyle = `rgba(255, 255, 255, ${1 - dist / 120})`;
-                            freelanceCtx.stroke();
-                        }
-                    }
-                }
-
-                // Draw and update particles
-                for (let i = 0; i < PARTICLE_COUNT; i++) {
-                    const p = particles[i];
-                    p.x += p.vx;
-                    p.y += p.vy;
-
-                    // Bounce off edges
-                    if (p.x < 0 || p.x > freelanceCanvas.width) p.vx *= -1;
-                    if (p.y < 0 || p.y > freelanceCanvas.height) p.vy *= -1;
-
-                    // Pulsing effect
-                    p.pulse += 0.05;
-                    const radius = p.radius + Math.sin(p.pulse) * 0.5;
-
-                    freelanceCtx.beginPath();
-                    freelanceCtx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-                    freelanceCtx.fillStyle = `rgba(255, 255, 255, 0.8)`;
-                    freelanceCtx.fill();
-                }
-            }
-
-            // Tab Switching Logic (unchanged)
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('.tab-content');
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetTab = link.dataset.tab;
-                    navLinks.forEach(nav => nav.classList.remove('active'));
-                    sections.forEach(sec => sec.classList.remove('active'));
-                    link.classList.add('active');
-                    document.getElementById(`tab-${targetTab}`).classList.add('active');
-                    if (window.innerWidth >= 768) {
-                        const mainContent = document.querySelector('main');
-                        mainContent.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
+                    // Add 'active' class to the clicked link and corresponding tab content
+                    event.target.classList.add('active');
+                    const activeTab = document.getElementById(`tab-${tabId}`);
+                    activeTab.style.display = 'block';
+                    // Use a small timeout to allow display change before applying fade-in
+                    setTimeout(() => {
+                        activeTab.classList.add('active');
+                    }, 10);
                 });
             });
 
-            // Start animations
+            // Set the initial active tab
+            document.querySelector('.nav-link.active').click();
+
+            // Start the animation
             init();
             animate();
-            initFreelanceCanvas();
-        });
+        };
     </script>
 </body>
 </html>
