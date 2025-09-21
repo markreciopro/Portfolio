@@ -232,8 +232,7 @@
                         <p class="company-name mb-2">
                             <span class="work-experience-highlight">
                                 <span class="analyzeo-neon-red">Analyzeo</span><span class="analyzeo-neon-mustard">( )</span>
-                            </span> | Las Vegas, NV
-                        </p>
+                            </span> | Las Vegas, NV</p>
                         <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
                             <li class="list-item">Developed and deployed predictive models for recruitment analysis using <strong>Python</strong> and <strong>R</strong>, optimizing talent acquisition strategies.</li>
                             <li class="list-item">Architected and built dynamic <strong>Power BI dashboards</strong> that provided actionable insights for HR, marketing, and campaign performance.</li>
@@ -341,7 +340,7 @@
                             Here are some recommendations to discuss with Jon and the team, outside of the direct questions he asked:
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4 mb-6">
-                            <li><strong class="font-semibold">Renegotiate with Vendors:</strong> The most urgent action is to renegotiate rates with the low-margin vendors, especially <span class="text-[#39FF14]">Vendor 1</span>. You should present the data showing that their billing model is causing significant losses. If negotiation isn't successful, it's a good idea to seek out alternative vendors.</li>
+                            <li><strong class="font-semibold">Renegotiate with Vendors:</strong> The most urgent action is to renegotiate with the low-margin vendors, especially <span class="text-[#39FF14]">Vendor 1</span>. You should present the data showing that their billing model is causing significant losses. If negotiation isn't successful, it's a good idea to seek out alternative vendors.</li>
                             <li><strong class="font-semibold">Adjust Client Rates:</strong> To achieve the 45% gross margin target, it is necessary to adjust client rates. Instead of a flat rate, clients should be billed at a rate that reflects the true cost of the call, including the country and the vendor used. You can propose a new tiered pricing model.</li>
                             <li class="list-item">Automate with Configurable Inputs: The sheet can be improved by adding a section for "configurable increases" where Jon or anyone on the team can input desired rate increases (e.g., 7% and 20%) and have the sheet automatically calculate the new margins. This would eliminate the need for manual formula updates and allow for quick what-if analysis.</li>
                         </ul>
@@ -404,12 +403,17 @@
             <section id="tab-freelance" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="freelance-section">
                 <h2 class="text-2xl font-bold section-header">Freelance Consulting</h2>
                  <div class="text-center">
-                    <a href="https://ibb.co/PsVvj8Ds"><img src="https://i.ibb.co/LDsXRfND/Neon-Fox-Logo-with-Scarf.png" alt="Neon-Fox-Logo-with-Scarf" border="0" class="mx-auto my-4 w-48 h-auto"></a>
+                    <img src="https://i.ibb.co/LDsXRfND/Neon-Fox-Logo-with-Scarf.png" alt="Neon-Fox-Logo-with-Scarf" border="0" class="mx-auto my-4 w-48 h-auto">
                 </div>
                 <div class="text-[#E0E8E1] leading-relaxed mt-4">
                     <p class="text-lg font-semibold text-center mb-4">The Legend of Analyzeo</p>
                     <p class="mb-4">In a sprawling metropolis of towering data silos and labyrinthine spreadsheets, a new hero emerged from the shadows. His name was <strong>Analyzeo</strong>, a cunning and strategic fox, clad in a sleek neon scarf that pulsed with the energy of a thousand algorithms. He was no ordinary consultant; he was the city's unsung guardian against the forces of inefficiency and confusion. While other analysts focused on the grand, high-stakes games of multinational corporations, Analyzeo saw the struggle of the small and mid-sized businesses, whose potential was buried under mountains of unparsed data and unoptimized workflows.</p>
-                    <p class="mb-4">With a glance, Analyzeo could see the hidden patterns in a company's sales figures, the unseen opportunities in their customer demographics, and the silent drain of resources in their operations. He used his unique powers—a mastery of <strong>Python</strong>, the keen vision of a <strong>Power BI</strong> artist, and the relentless logic of an <strong>SQL</strong> query—to untangle complex problems. He wasn't just a number cruncher; he was a strategic ally, helping small business owners find their footing in a competitive world, transforming their raw data into a clear path forward. His clients, once lost in a fog of uncertainty, were now armed with actionable insights and the power to make confident decisions. For Analyzeo, the greatest reward was not fame or fortune, but the sight of a thriving small business, empowered by the very data that once held it back.</p>
+                    <p class="mb-4">With a glance, Analyzeo could see the hidden patterns in a company's sales figures, the unseen opportunities in their customer demographics, and the silent drain of resources in their operations. He used his unique powers—a mastery of <strong>Python</strong>, the keen vision of a <strong>Power BI</strong> artist, and the relentless logic of an <strong>SQL</strong> query—to untangle complex problems. He wasn't just a number cruncher; he was a strategic ally, helping small business owners find their footing in a competitive world, transforming their raw data into a clear path forward. For Analyzeo, the greatest reward was not fame or fortune, but the sight of a thriving small business, empowered by the very data that once held it back.</p>
+                </div>
+                <div class="mt-8 text-center">
+                    <a href="https://markreciopro.github.io/website/" target="_blank" class="inline-block bg-[#FF073A] text-[#0E161B] font-semibold py-2 px-6 rounded-full transition-transform duration-300 hover:scale-105">
+                        Access Website
+                    </a>
                 </div>
             </section>
 
@@ -437,40 +441,28 @@
             let windowHalfY = window.innerHeight / 2;
 
             const CODE_SNIPPETS = [
-                // Python snippets reflecting resume skills
-                "# Predictive Analysis with Python",
-                "import pandas as pd",
-                "import numpy as np",
-                "from sklearn.model_selection import train_test_split",
-                "df = pd.read_csv('mark.recio.resume.csv')",
-                "df['performance'] = df['metrics'] * 100",
-                "model.fit(X_train, y_train)",
-                "y_pred = model.predict(X_test)",
-                // R snippets for analysis and visualization
-                "# R for workforce analytics",
-                "library(tidyverse)",
-                "data <- read.csv('mark.recio.resume.csv')",
-                "data %>% ggplot(aes(x=department, y=efficiency)) + geom_bar()",
-                "lm(productivity ~ workforce, data = data)",
-                "summary(lm(performance ~ skills))",
-                // SQL snippets for data management
-                "# SQL for operational reports",
-                "SELECT employee_id, SUM(hours) AS total_hours",
-                "FROM workforce_data GROUP BY employee_id",
-                "ORDER BY total_hours DESC",
-                "WHERE status = 'completed'",
-                // Generic snippets related to tools
-                "# Power BI / Tableau",
-                "dashboard = new PowerBIReport()",
-                "data = pd.read_excel('payroll.xlsx')",
-                "KPIs = data.group_by(company)",
-                "visualize(data)",
-                "process_improvement_metrics.xlsx",
-                "recruitment_analysis.json"
+                // Python snippets for "Analyzeo" persona
+                "import analyzeo as az",
+                "az.data_transform(df)",
+                "az.visualize_trends(data)",
+                "az.optimize_process(metrics)",
+                "az.predict_outcomes(model)",
+                "az.strategic_plan(insights)",
+                "from analyzeo.operations import automate",
+                "from analyzeo.analytics import forecast",
+                "df = az.read_source('sales.csv')",
+                "result = az.report(df)",
+                "data_warehouse = az.connect('db.sql')",
+                "analytics_pipeline = az.build_pipeline()",
+                "analyzeo.core.model.predict(X_test)"
             ];
+            const LOGO_SNIPPETS = ["Analyzeo()"]; // The logo text
             const NEON_COLORS = ["#39FF14", "#FF073A", "#00C0FF"];
-            const CODE_COUNT = 300; // Increased sprite count for more density
+            const CODE_COUNT = 300; 
+            const LOGO_COUNT = 10; // Fewer logos for uniqueness
             const codeSprites = [];
+            const logoSprites = [];
+
 
             // Initializes the Three.js scene and populates it with text sprites
             function init() {
@@ -523,6 +515,40 @@
                     codeSprites.push(sprite);
                 }
 
+                // Create and position the logo sprites
+                for (let i = 0; i < LOGO_COUNT; i++) {
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    
+                    const font = "Normal 24px Inter";
+                    context.font = font;
+                    const snippet = LOGO_SNIPPETS[Math.floor(Math.random() * LOGO_SNIPPETS.length)];
+                    const metrics = context.measureText(snippet);
+                    const textWidth = metrics.width;
+                    const textHeight = 26; 
+                    
+                    canvas.width = textWidth + 10;
+                    canvas.height = textHeight + 10;
+                    context.font = font;
+                    context.fillStyle = "#FFDB58"; // A distinct mustard color for the logo
+                    context.fillText(snippet, 5, 25);
+
+                    const texture = new THREE.CanvasTexture(canvas);
+                    const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.9 });
+                    const sprite = new THREE.Sprite(material);
+                    
+                    sprite.scale.set(canvas.width * 0.7, canvas.height * 0.7, 1); // Make logo bigger
+                    sprite.position.x = Math.random() * 2000 - 1000;
+                    sprite.position.y = Math.random() * 1000 - 500;
+                    sprite.position.z = Math.random() * 2000 - 1000;
+
+                    sprite.userData.originalPosition = sprite.position.clone();
+                    sprite.userData.rotationSpeed = Math.random() * 0.003 + 0.0005; // Slightly slower rotation
+                    
+                    scene.add(sprite);
+                    logoSprites.push(sprite);
+                }
+
                 // Event listeners for interactivity
                 document.addEventListener('mousemove', onDocumentMouseMove, false);
                 window.addEventListener('resize', onWindowResize, false);
@@ -555,6 +581,18 @@
                     sprite.rotation.z += sprite.userData.rotationSpeed;
                 });
 
+                logoSprites.forEach(sprite => {
+                    sprite.position.z += 0.25; // Slower movement for logos
+                    
+                    if (sprite.position.z > camera.position.z) {
+                        sprite.position.z = -1000;
+                        sprite.position.x = Math.random() * 2000 - 1000;
+                        sprite.position.y = Math.random() * 1000 - 500;
+                    }
+                    sprite.rotation.z += sprite.userData.rotationSpeed;
+                });
+
+
                 renderer.render(scene, camera);
             }
 
@@ -577,31 +615,33 @@
             const tabLinks = document.querySelectorAll('.nav-link');
             const tabContents = document.querySelectorAll('.tab-content');
 
+            function showTab(tabId) {
+                // Remove 'active' class from all tabs and links
+                tabLinks.forEach(item => item.classList.remove('active'));
+                tabContents.forEach(item => {
+                    item.classList.remove('active');
+                    item.style.display = 'none';
+                });
+
+                // Add 'active' class to the corresponding link and tab content
+                document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+                const activeTab = document.getElementById(`tab-${tabId}`);
+                activeTab.style.display = 'block';
+                // Use a small timeout to allow display change before applying fade-in
+                setTimeout(() => {
+                    activeTab.classList.add('active');
+                }, 10);
+            }
+
             tabLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
                     event.preventDefault();
-                    const tabId = event.target.dataset.tab;
-
-                    // Remove 'active' class from all tabs and links
-                    tabLinks.forEach(item => item.classList.remove('active'));
-                    tabContents.forEach(item => {
-                        item.classList.remove('active');
-                        item.style.display = 'none';
-                    });
-
-                    // Add 'active' class to the clicked link and corresponding tab content
-                    event.target.classList.add('active');
-                    const activeTab = document.getElementById(`tab-${tabId}`);
-                    activeTab.style.display = 'block';
-                    // Use a small timeout to allow display change before applying fade-in
-                    setTimeout(() => {
-                        activeTab.classList.add('active');
-                    }, 10);
+                    showTab(event.target.dataset.tab);
                 });
             });
 
             // Set the initial active tab
-            document.querySelector('.nav-link.active').click();
+            showTab('summary');
 
             // Start the animation
             init();
