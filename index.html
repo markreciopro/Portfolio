@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Tailwind CSS is loaded from CDN for responsive styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Three.js is included for the 3D background animation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         /* General body styling for font and dark background */
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             background-color: #0E161B;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Utility class for section headers with the vibrant accent line */
@@ -61,27 +61,32 @@
             padding: 2rem;
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.5s ease-in-out;
-        }
-
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Fade-in animation for tab content */
-        .tab-content {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            display: none;
+            visibility: hidden;
+            transform: translateY(20px);
         }
 
-        .tab-content.active {
+        .section-card.is-visible {
             opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .section-card.active {
             display: block;
         }
 
-        /* Specific styling for mobile vs. desktop navigation */
+        .tab-content {
+            display: none;
+        }
+        
+        /* Fade-in animation for hero text */
+        .hero-text-fade-in {
+            transition: opacity 1s ease-in, transform 1s ease-in;
+        }
+
+        /* Mobile vs. desktop navigation styling */
         @media (max-width: 767px) {
             .mobile-nav {
                 width: 100%;
@@ -90,6 +95,7 @@
                 background-color: #0E161B;
                 padding-top: 1rem;
                 padding-bottom: 1rem;
+                z-index: 50;
             }
         }
         
@@ -115,9 +121,25 @@
         .analyzeo-neon-mustard {
             color: #FFDB58;
         }
-        .nav-logo {
-            width: 80px;
-            height: auto;
+
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #FF073A;
+            color: #0E161B;
+            padding: 0.75rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 100;
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
@@ -128,43 +150,43 @@
 
         <!-- Mobile Navigation (visible on small screens) -->
         <nav class="mobile-nav md:hidden flex justify-center space-x-2 p-4 overflow-x-auto" role="tablist">
-            <a href="#summary-section" class="nav-link text-center" data-tab="summary" role="tab" aria-controls="tab-summary">Summary</a>
-            <a href="#experience-section" class="nav-link text-center" data-tab="experience" role="tab" aria-controls="tab-experience">Experience</a>
-            <a href="#education-section" class="nav-link text-center" data-tab="education" role="tab" aria-controls="tab-education">Education</a>
-            <a href="#projects-section" class="nav-link text-center" data-tab="projects" role="tab" aria-controls="tab-projects">Projects</a>
-            <a href="#freelance-section" class="nav-link text-center" data-tab="freelance" role="tab" aria-controls="tab-freelance">Freelance Consulting</a>
-            <a href="#contact-section" class="nav-link text-center" data-tab="contact" role="tab" aria-controls="tab-contact">Contact</a>
+            <a href="#" class="nav-link text-center active" data-tab="summary-section" role="tab" aria-controls="tab-summary">Summary</a>
+            <a href="#" class="nav-link text-center" data-tab="experience-section" role="tab" aria-controls="tab-experience">Experience</a>
+            <a href="#" class="nav-link text-center" data-tab="education-section" role="tab" aria-controls="tab-education">Education</a>
+            <a href="#" class="nav-link text-center" data-tab="projects-section" role="tab" aria-controls="tab-projects">Projects</a>
+            <a href="#" class="nav-link text-center" data-tab="freelance-section" role="tab" aria-controls="tab-freelance">Freelance Consulting</a>
+            <a href="#" class="nav-link text-center" data-tab="contact-section" role="tab" aria-controls="tab-contact">Contact</a>
         </nav>
 
         <!-- Left-side Navigation Bar (visible on medium screens and up) -->
         <nav class="hidden md:flex fixed top-0 left-0 bottom-0 w-56 bg-black/30 backdrop-blur-sm z-50 p-6 flex-col items-center space-y-4" role="tablist">
             <h1 class="text-3xl font-extrabold text-[#E0E8E1] mb-4 text-center">Mark Anthony Recio</h1>
            
-            <a href="#summary-section" class="nav-link active text-center" data-tab="summary" role="tab" aria-controls="tab-summary">Summary</a>
-            <a href="#experience-section" class="nav-link text-center" data-tab="experience" role="tab" aria-controls="tab-experience">Experience</a>
-            <a href="#education-section" class="nav-link text-center" data-tab="education" role="tab" aria-controls="tab-education">Education</a>
-            <a href="#projects-section" class="nav-link text-center" data-tab="projects" role="tab" aria-controls="tab-projects">Projects</a>
-            <a href="#freelance-section" class="nav-link text-center" data-tab="freelance" role="tab" aria-controls="tab-freelance">Freelance Consulting</a>  
-            <a href="#contact-section" class="nav-link text-center" data-tab="contact" role="tab" aria-controls="tab-contact">Contact</a>
+            <a href="#" class="nav-link active text-center" data-tab="summary-section" role="tab" aria-controls="tab-summary">Summary</a>
+            <a href="#" class="nav-link text-center" data-tab="experience-section" role="tab" aria-controls="tab-experience">Experience</a>
+            <a href="#" class="nav-link text-center" data-tab="education-section" role="tab" aria-controls="tab-education">Education</a>
+            <a href="#" class="nav-link text-center" data-tab="projects-section" role="tab" aria-controls="tab-projects">Projects</a>
+            <a href="#" class="nav-link text-center" data-tab="freelance-section" role="tab" aria-controls="tab-freelance">Freelance Consulting</a>  
+            <a href="#" class="nav-link text-center" data-tab="contact-section" role="tab" aria-controls="tab-contact">Contact</a>
         </nav>
            
 
-        <!-- 3D background canvas -->
-        <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full -z-10 bg-[#0E161B]"></canvas>
+        <!-- 2D background canvas -->
+        <canvas id="animated-bg" class="fixed top-0 left-0 w-full h-full -z-10 bg-[#0E161B]"></canvas>
 
         <!-- Main content area, pushed to the right on larger screens and now centered -->
         <main class="flex-grow md:ml-56 max-w-4xl mx-auto p-4 sm:p-6 md:p-8 lg:p-10 relative z-10">
 
             <!-- Tab Content Sections -->
-            <section id="tab-summary" class="tab-content active py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="summary-section">
+            <section id="summary-section" class="tab-content active py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="summary-section">
                 <!-- Image of Mark Recio -->
                 <img src="https://i.ibb.co/hJZc89FM/Mark-Recio-Data-Business-Analyst.png" alt="Professional headshot of Mark Recio" class="rounded-full w-32 h-32 mx-auto mb-4 shadow-lg border-2 border-[#FF073A]">
                 <header class="text-center">
-                    <p class="text-lg sm:text-xl mb-8">
+                    <p id="hero-title" class="text-lg sm:text-xl mb-8 opacity-0 translate-y-4 hero-text-fade-in">
                         <span class="python-name-color">Data & Business</span>
                         <span class="python-paren-color">Analyst Professional</span> | Las Vegas, NV
                     </p>
-                    <p class="text-[#E0E8E1] leading-relaxed mb-6"> Data-driven business and analytics professional with expertise in HR analytics, operations, and process optimization. Skilled at transforming complex data into actionable insights using Python, R, Power BI, Tableau, and SQL. Proven track record in forecasting
+                    <p id="hero-subtitle" class="text-[#E0E8E1] leading-relaxed mb-6 opacity-0 translate-y-4 hero-text-fade-in" style="transition-delay: 0.5s;"> Data-driven business and analytics professional with expertise in HR analytics, operations, and process optimization. Skilled at transforming complex data into actionable insights using Python, R, Power BI, Tableau, and SQL. Proven track record in forecasting
 trends, optimizing workflows, and delivering measurable business results.</p>
                 </header>
 
@@ -207,7 +229,7 @@ trends, optimizing workflows, and delivering measurable business results.</p>
                 </div>
             </section>
 
-            <section id="tab-experience" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="experience-section">
+            <section id="experience-section" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="experience-section">
                 <h2 class="text-2xl font-bold section-header">Professional Experience</h2>
                 <div class="space-y-8">
                     <div>
@@ -225,7 +247,7 @@ trends, optimizing workflows, and delivering measurable business results.</p>
                     </div>
                     <div>
                         <div class="flex flex-col sm:flex-row sm:justify-between items-baseline mb-1">
-                            <h3 class="job-title job-title-highlight">Contractor</h3>
+                            <h3 class="job-title job-title-highlight">Independent Contractor</h3>
                             <span class="dates">Aug 2023 - Present</span>
                         </div>
                         <p class="company-name mb-2">
@@ -241,7 +263,7 @@ trends, optimizing workflows, and delivering measurable business results.</p>
                 </div>
             </section>
             
-            <section id="tab-education" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="education-section">
+            <section id="education-section" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="education-section">
                 <h2 class="text-2xl font-bold section-header">Education & Certifications</h2>
                 <div class="space-y-6">
                     <div>
@@ -289,7 +311,7 @@ trends, optimizing workflows, and delivering measurable business results.</p>
                 </div>
             </section>
             
-            <section id="tab-projects" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="projects-section">
+            <section id="projects-section" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="projects-section">
                 <h2 class="text-2xl font-bold section-header">Projects</h2>
                 
                 <div class="space-y-12">
@@ -396,50 +418,34 @@ trends, optimizing workflows, and delivering measurable business results.</p>
                 </section>
                 
             <!-- New Freelance Consulting Section with the superhero story -->
-            <section id="tab-freelance" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="freelance-section">
+            <section id="freelance-section" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="freelance-section">
                 <h2 class="text-2xl font-bold section-header">Freelance Consulting</h2>
                  <div class="text-center">
                     <img src="https://i.ibb.co/LDsXRfND/Neon-Fox-Logo-with-Scarf.png" alt="Neon-Fox-Logo-with-Scarf" border="0" class="mx-auto my-4 w-48 h-auto">
                 </div>
                 <div class="text-[#E0E8E1] leading-relaxed mt-4">
-                    <p class="text-lg font-semibold text-center mb-4">The Legend of Analyzeo</p>
-                    <p class="text-lg font-semibold text-center mb-4">Our partnership, forged in the heart of data.</p>
+                    <h3 class="text-lg font-semibold text-center mb-4">Contract Proposal for <span class="analyzeo-neon-green">Your Business</span></h3>
+                    <p class="text-center mb-4">Transforming your data into your greatest asset.</p>
                 <article class="prose prose-invert max-w-none text-gray-300 leading-relaxed space-y-6">
                     <p>
-                        In the dense digital forest of the modern business world, a new hero prowls. We are Analyzeo, a
-                        collective of cunning fox analysts whose intellect is as sharp as our reflexes. Our partnership,
-                        built for the information age, fights the chaos of unorganized data and the villains of
-                        inefficiency with a unified purpose.
+                        At Analyzeo, our mission is to empower businesses like yours by transforming complex, raw data into clear, actionable intelligence. We believe that every piece of data holds the key to unlocking new opportunities, optimizing operations, and gaining a competitive edge. Our comprehensive contract proposal outlines a tailored approach to address your specific business challenges through advanced data analysis.
                     </p>
                     <p>
-                        As masters of the digital realm, our suits, woven with circuit patterns, and our neon scarves,
-                        shimmering with the energy of a thousand algorithms, are a testament to our expertise. With a
-                        single glance, we can predict market shifts and expose a competitor’s weaknesses. Our powers are
-                        a refined arsenal of analytical prowess, from <strong>financial and market analytics</strong> that
-                        forecast trends, to <strong>business analytics</strong> that optimize operations, and even
-                        <strong>HR analytics</strong> that reveal a team's true potential. We hunt through petabytes of
-                        data in a heartbeat, identifying the subtle correlations that become a winning strategy.
+                        This proposal details our strategic plan, which includes an in-depth analysis of your current data infrastructure, a roadmap for implementing data-driven solutions, and a projection of the measurable outcomes you can expect. We will leverage a powerful combination of **Python**, **R**, **SQL**, and **Power BI** to provide you with insights into your financial performance, operational efficiency, and HR analytics.
                     </p>
                     <p>
-                        We are heroes found in the quiet confidence of small and mid-sized companies. Our mission is to
-                        empower these businesses, turning a startup or existing company into a market leader and helping a family
-                        business thrive by revealing untapped customer segments and streamlining their operations.
-                    </p>
-                    <p>
-                        For us, the true reward is watching a business take control of its own destiny, using data as its
-                        greatest weapon. As a partnership, we are the cunning tacticians who always know the smartest
-                        move, turning raw data into a clear path forward for those wise enough to follow our lead.
+                        By partnering with us, you are not just getting a service; you are gaining a strategic ally dedicated to your growth. This proposal is your first step toward building a data-empowered future for your company.
                     </p>
                 </div>
                 <div class="mt-8 text-center">
-                    <a href="https://markreciopro.github.io/website/" target="_blank" class="inline-block bg-[#FF073A] text-[#0E161B] font-semibold py-2 px-6 rounded-full transition-transform duration-300 hover:scale-105">
-                        Access Website
+                    <a href="https://markreciopro.github.io/cover.letter.proposal/" target="_blank" class="inline-block bg-[#FF073A] text-[#0E161B] font-semibold py-2 px-6 rounded-full transition-transform duration-300 hover:scale-105">
+                        Access Contract Proposal
                     </a>
                 </div>
             </section>
 
 
-            <section id="tab-contact" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="contact-section">
+            <section id="contact-section" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="contact-section">
                 <h2 class="text-2xl font-bold section-header">Contact Information</h2>
                 <div class="text-center mt-4 text-lg text-[#E0E8E1]">
                     <a href="tel:+17027147389" class="hover:underline mx-2 font-bold text-[#FF073A]">(702) 714-7389</a>
@@ -451,207 +457,42 @@ trends, optimizing workflows, and delivering measurable business results.</p>
             <footer class="text-center text-sm text-[#B2BCC9] mt-8 py-4">
                 <p>&copy; 2023 Mark Anthony Recio. All Rights Reserved.</p>
             </footer>
-
         </main>
     </div>
 
+    <!-- Back to top button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let camera, scene, renderer, clock, mouseX = 0, mouseY = 0;
-            let windowHalfX = window.innerWidth / 2;
-            let windowHalfY = window.innerHeight / 2;
-
-            const CODE_SNIPPETS = [
-                // Python snippets for "Analyzeo" persona
-                "import analyzeo as az",
-                "az.data_transform(df)",
-                "az.visualize_trends(data)",
-                "az.optimize_process(metrics)",
-                "az.predict_outcomes(model)",
-                "az.strategic_plan(insights)",
-                "from analyzeo.operations import automate",
-                "from analyzeo.analytics import forecast",
-                "df = az.read_source('sales.csv')",
-                "result = az.report(df)",
-                "data_warehouse = az.connect('db.sql')",
-                "analytics_pipeline = az.build_pipeline()",
-                "analyzeo.core.model.predict(X_test)"
-            ];
-            const LOGO_SNIPPETS = ["Analyzeo()"]; // The logo text
-            const NEON_COLORS = ["#39FF14", "#FF073A", "#00C0FF"];
-            const CODE_COUNT = 300; 
-            const LOGO_COUNT = 10; // Fewer logos for uniqueness
-            const codeSprites = [];
-            const logoSprites = [];
-
-
-            // Initializes the Three.js scene and populates it with text sprites
-            function init() {
-                // Scene, Camera, and Renderer setup
-                scene = new THREE.Scene();
-                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                camera.position.z = 250;
-
-                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('bg-canvas') });
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(window.innerWidth, window.innerHeight);
-
-                // Create and position the text sprites
-                for (let i = 0; i < CODE_COUNT; i++) {
-                    const canvas = document.createElement('canvas');
-                    const context = canvas.getContext('2d');
-                    
-                    // Style the text
-                    const font = "Normal 12px Inter";
-                    context.font = font;
-                    const snippet = CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
-                    const metrics = context.measureText(snippet);
-                    const textWidth = metrics.width;
-                    const textHeight = 14; 
-                    
-                    // Set canvas size and draw the text
-                    canvas.width = textWidth + 10;
-                    canvas.height = textHeight + 10;
-                    context.font = font;
-                    const randomColor = NEON_COLORS[Math.floor(Math.random() * NEON_COLORS.length)];
-                    context.fillStyle = randomColor;
-                    context.fillText(snippet, 5, 15);
-
-                    // Create the Three.js objects
-                    const texture = new THREE.CanvasTexture(canvas);
-                    const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.8 });
-                    const sprite = new THREE.Sprite(material);
-                    
-                    // Set the sprite's size and position
-                    sprite.scale.set(canvas.width * 0.5, canvas.height * 0.5, 1);
-                    sprite.position.x = Math.random() * 2000 - 1000;
-                    sprite.position.y = Math.random() * 1000 - 500;
-                    sprite.position.z = Math.random() * 2000 - 1000;
-
-                    // Store the original position and a random rotation speed
-                    sprite.userData.originalPosition = sprite.position.clone();
-                    sprite.userData.rotationSpeed = Math.random() * 0.005 + 0.001;
-
-                    scene.add(sprite);
-                    codeSprites.push(sprite);
-                }
-
-                // Create and position the logo sprites
-                for (let i = 0; i < LOGO_COUNT; i++) {
-                    const canvas = document.createElement('canvas');
-                    const context = canvas.getContext('2d');
-                    
-                    const font = "Normal 24px Inter";
-                    context.font = font;
-                    const snippet = LOGO_SNIPPETS[Math.floor(Math.random() * LOGO_SNIPPETS.length)];
-                    const metrics = context.measureText(snippet);
-                    const textWidth = metrics.width;
-                    const textHeight = 26; 
-                    
-                    canvas.width = textWidth + 10;
-                    canvas.height = textHeight + 10;
-                    context.font = font;
-                    context.fillStyle = "#FFDB58"; // A distinct mustard color for the logo
-                    context.fillText(snippet, 5, 25);
-
-                    const texture = new THREE.CanvasTexture(canvas);
-                    const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.9 });
-                    const sprite = new THREE.Sprite(material);
-                    
-                    sprite.scale.set(canvas.width * 0.7, canvas.height * 0.7, 1); // Make logo bigger
-                    sprite.position.x = Math.random() * 2000 - 1000;
-                    sprite.position.y = Math.random() * 1000 - 500;
-                    sprite.position.z = Math.random() * 2000 - 1000;
-
-                    sprite.userData.originalPosition = sprite.position.clone();
-                    sprite.userData.rotationSpeed = Math.random() * 0.003 + 0.0005; // Slightly slower rotation
-                    
-                    scene.add(sprite);
-                    logoSprites.push(sprite);
-                }
-
-                // Event listeners for interactivity
-                document.addEventListener('mousemove', onDocumentMouseMove, false);
-                window.addEventListener('resize', onWindowResize, false);
-            }
-
-            // Handles the animation loop
-            function animate() {
-                requestAnimationFrame(animate);
-
-                // Update camera rotation based on mouse position
-                const targetX = mouseX * 0.001;
-                const targetY = mouseY * 0.001;
-                camera.position.x += (targetX - camera.position.x) * 0.05;
-                camera.position.y += (-targetY - camera.position.y) * 0.05;
-                camera.lookAt(scene.position);
-
-                // Update sprite positions to create the floating effect
-                codeSprites.forEach(sprite => {
-                    // Move the sprite along the Z-axis
-                    sprite.position.z += 0.5;
-
-                    // If a sprite moves too far, reset its position to the back
-                    if (sprite.position.z > camera.position.z) {
-                        sprite.position.z = -1000;
-                        sprite.position.x = Math.random() * 2000 - 1000;
-                        sprite.position.y = Math.random() * 1000 - 500;
-                    }
-
-                    // Rotate the sprite
-                    sprite.rotation.z += sprite.userData.rotationSpeed;
-                });
-
-                logoSprites.forEach(sprite => {
-                    sprite.position.z += 0.25; // Slower movement for logos
-                    
-                    if (sprite.position.z > camera.position.z) {
-                        sprite.position.z = -1000;
-                        sprite.position.x = Math.random() * 2000 - 1000;
-                        sprite.position.y = Math.random() * 1000 - 500;
-                    }
-                    sprite.rotation.z += sprite.userData.rotationSpeed;
-                });
-
-
-                renderer.render(scene, camera);
-            }
-
-            // Updates mouse coordinates
-            function onDocumentMouseMove(event) {
-                mouseX = (event.clientX - windowHalfX) * 0.1;
-                mouseY = (event.clientY - windowHalfY) * 0.1;
-            }
-
-            // Handles window resizing to keep the animation responsive
-            function onWindowResize() {
-                windowHalfX = window.innerWidth / 2;
-                windowHalfY = window.innerHeight / 2;
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hero title and subtitle animation
+            const heroTitle = document.getElementById('hero-title');
+            const heroSubtitle = document.getElementById('hero-subtitle');
+            if (heroTitle && heroSubtitle) {
+                heroTitle.classList.remove('opacity-0', 'translate-y-4');
+                heroTitle.classList.add('opacity-100', 'translate-y-0');
+                heroSubtitle.classList.remove('opacity-0', 'translate-y-4');
+                heroSubtitle.classList.add('opacity-100', 'translate-y-0');
             }
 
             // Tab switching logic
             const tabLinks = document.querySelectorAll('.nav-link');
             const tabContents = document.querySelectorAll('.tab-content');
 
-            function showTab(tabId) {
-                // Remove 'active' class from all tabs and links
+            function showTab(sectionId) {
+                // Remove 'active' class from all links and sections
                 tabLinks.forEach(item => item.classList.remove('active'));
                 tabContents.forEach(item => {
                     item.classList.remove('active');
-                    item.style.display = 'none';
                 });
 
-                // Add 'active' class to the corresponding link and tab content
-                document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
-                const activeTab = document.getElementById(`tab-${tabId}`);
-                activeTab.style.display = 'block';
-                // Use a small timeout to allow display change before applying fade-in
-                setTimeout(() => {
-                    activeTab.classList.add('active');
-                }, 10);
+                // Add 'active' class to the corresponding link and section
+                document.querySelector(`[data-tab="${sectionId}"]`).classList.add('active');
+                document.getElementById(sectionId).classList.add('active');
             }
 
             tabLinks.forEach(link => {
@@ -662,13 +503,263 @@ trends, optimizing workflows, and delivering measurable business results.</p>
             });
 
             // Set the initial active tab
-            showTab('summary');
+            showTab('summary-section');
 
-            // Start the animation
-            init();
-            animate();
+            // Intersection Observer for section cards
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.section-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Back to top button functionality
+            const backToTopBtn = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Canvas animation logic for the background
+            const canvas = document.getElementById('animated-bg');
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            const resizeCanvas = () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            };
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            const dataLakeCount = 10;
+            const dataLakes = [];
+            const pulses = [];
+
+            function getRandomColor() {
+                const colors = ['#9FDF32', '#00A3FF', '#E0E8E1'];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            // Represents a single floating data node
+            class DataNode {
+                constructor(parentLake, index) {
+                    this.parent = parentLake;
+                    this.index = index;
+                    const angle = Math.random() * Math.PI * 2;
+                    this.distanceFromCenter = (this.parent.size / 3) + (Math.random() * (this.parent.size / 2));
+                    this.x = Math.cos(angle) * this.distanceFromCenter;
+                    this.y = Math.sin(angle) * this.distanceFromCenter;
+                    this.radius = Math.random() * 1.5 + 0.5;
+                    this.vx = (Math.random() - 0.5) * 0.3;
+                    this.vy = (Math.random() - 0.5) * 0.3;
+                    this.color = this.parent.color;
+                }
+                update() {
+                    // Chaotic movement relative to the parent lake
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    const distFromCenter = Math.sqrt(this.x * this.x + this.y * this.y);
+                    if (distFromCenter > this.parent.size * 0.8) {
+                        this.vx *= -1;
+                        this.vy *= -1;
+                    }
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.parent.x + this.x, this.parent.y + this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = 1;
+                    ctx.fill();
+                }
+            }
+
+            // Represents the main floating "data lake" cluster
+            class DataLake {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.2;
+                    this.vy = (Math.random() - 0.5) * 0.2;
+                    this.size = Math.random() * 100 + 100;
+                    this.color = getRandomColor();
+                    this.nodes = [];
+                    const nodeCount = 50;
+                    for (let i = 0; i < nodeCount; i++) {
+                        this.nodes.push(new DataNode(this, i));
+                    }
+                    this.pulseRadius = 0;
+                    this.pulseMaxRadius = this.size * 1.2;
+                    this.label = null;
+                }
+                update() {
+                    // Move the entire lake
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    // Wrap around the screen
+                    if (this.x < 0 - this.size) this.x = width + this.size;
+                    if (this.x > width + this.size) this.x = 0 - this.size;
+                    if (this.y < 0 - this.size) this.y = height + this.size;
+                    if (this.y > height + this.size) this.y = 0 - this.size;
+                    this.nodes.forEach(node => node.update());
+                    // Update pulse radius
+                    this.pulseRadius += 0.5;
+                    if (this.pulseRadius > this.pulseMaxRadius) {
+                        this.pulseRadius = 0;
+                    }
+                }
+                draw() {
+                    // Draw the internal connections
+                    const connectionDistance = 80;
+                    for (let i = 0; i < this.nodes.length; i++) {
+                        for (let j = i + 1; j < this.nodes.length; j++) {
+                            const dist = Math.sqrt(Math.pow(this.nodes[i].x - this.nodes[j].x, 2) + Math.pow(this.nodes[i].y - this.nodes[j].y, 2));
+                            if (dist < connectionDistance) {
+                                ctx.beginPath();
+                                ctx.moveTo(this.x + this.nodes[i].x, this.y + this.nodes[i].y);
+                                ctx.lineTo(this.x + this.nodes[j].x, this.y + this.nodes[j].y);
+                                ctx.strokeStyle = `rgba(159, 223, 50, ${0.5 - dist / connectionDistance})`;
+                                ctx.lineWidth = 0.5;
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                    // Draw the nodes
+                    this.nodes.forEach(node => node.draw());
+                    // Draw the pulse effect
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.pulseRadius, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(159, 223, 50, ${1 - (this.pulseRadius / this.pulseMaxRadius)})`;
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    // Draw the core of the lake
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, 5, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = 0.8;
+                    ctx.fill();
+                    // Draw the "DATA LAKE" label
+                    if (this.label) {
+                        ctx.fillStyle = '#E0E8E1';
+                        ctx.font = "14px 'Inter', sans-serif";
+                        ctx.textAlign = "center";
+                        ctx.textBaseline = "middle";
+                        ctx.globalAlpha = 1;
+                        ctx.fillText(this.label, this.x, this.y);
+                    }
+                }
+            }
+            // Initialize data lakes
+            for (let i = 0; i < dataLakeCount; i++) {
+                dataLakes.push(new DataLake());
+            }
+
+            // Assign the "DATA LAKE" label to two random, distinct lakes
+            let lake1Index = Math.floor(Math.random() * dataLakes.length);
+            let lake2Index = Math.floor(Math.random() * dataLakes.length);
+            while (lake2Index === lake1Index) {
+                lake2Index = Math.floor(Math.random() * dataLakes.length);
+            }
+            dataLakes[lake1Index].label = "DATA LAKE";
+            dataLakes[lake2Index].label = "DATA LAKE";
+            
+            // Represents a dramatic blast pulse for the background
+            class BlastingPulse {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.radius = 0;
+                    this.maxRadius = Math.random() * 200 + 100;
+                    this.opacity = 1;
+                    this.speed = Math.random() * 2 + 1;
+                    this.color = '#00A3FF';
+                }
+                update() {
+                    this.radius += this.speed;
+                    this.opacity = 1 - (this.radius / this.maxRadius);
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.strokeStyle = this.color;
+                    ctx.globalAlpha = this.opacity;
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                }
+            }
+
+            function createBlastingPulse() {
+                if (dataLakes.length > 0) {
+                    const randomLake = dataLakes[Math.floor(Math.random() * dataLakes.length)];
+                    pulses.push(new BlastingPulse(randomLake.x, randomLake.y));
+                }
+            }
+
+            setInterval(createBlastingPulse, 15000);
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+
+                // Draw connections between nearby data lakes
+                const lakeConnectionDistance = 300;
+                for (let i = 0; i < dataLakes.length; i++) {
+                    dataLakes[i].update();
+                    for (let j = i + 1; j < dataLakes.length; j++) {
+                        const lakeA = dataLakes[i];
+                        const lakeB = dataLakes[j];
+                        const dist = Math.sqrt(Math.pow(lakeA.x - lakeB.x, 2) + Math.pow(lakeA.y - lakeB.y, 2));
+                        if (dist < lakeConnectionDistance) {
+                            ctx.beginPath();
+                            ctx.moveTo(lakeA.x, lakeA.y);
+                            ctx.lineTo(lakeB.x, lakeB.y);
+                            ctx.strokeStyle = `rgba(0, 163, 255, ${0.5 - dist / lakeConnectionDistance})`;
+                            ctx.lineWidth = 1;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // Draw the data lakes themselves
+                dataLakes.forEach(lake => lake.draw());
+
+                // Draw pulses
+                for (let i = pulses.length - 1; i >= 0; i--) {
+                    pulses[i].update();
+                    pulses[i].draw();
+                    if (pulses[i].opacity <= 0) {
+                        pulses.splice(i, 1);
+                    }
+                }
+                
+                requestAnimationFrame(draw);
+            }
+
+            draw();
+
+            // The JavaScript for form submission is now removed as per the mailto protocol approach.
         });
     </script>
 </body>
 </html>
-
