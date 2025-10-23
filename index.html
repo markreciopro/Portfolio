@@ -1,294 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark Recio - Data & Business Analyst</title>
-    <!-- Inter font is loaded for a clean, professional look -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS is loaded from CDN for responsive styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Three.js is included for the 3D background animation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <style>
-        /* General body styling for font and dark background */
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            background-color: #0E161B;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mark Recio — Data & Business Analyst</title>
 
-        /* Utility class for section headers with the vibrant accent line */
-        .section-header {
-            border-bottom: 2px solid #FF073A; /* Neon red accent line */
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            color: #E0E8E1;
-        }
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        /* Navigation link styling, including hover effects */
-        .nav-link {
-            background-color: rgba(22, 27, 34, 0.5); /* Semi-transparent */
-            color: #E0E8E1;
-            font-weight: 500;
-            padding: 0.4rem 1.25rem;
-            border-radius: 9999px;
-            transition-property: background-color, transform, border-color, color;
-            transition-duration: 300ms;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #39FF14; /* Neon green border */
-        }
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        .nav-link:hover {
-            background-color: #00C0FF; /* Neon blue background on hover */
-            color: #0E161B;
-            transform: scale(1.05);
-            border-color: #00C0FF;
-        }
+  <!-- Three.js (loaded synchronously so animation script runs reliably) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-        .nav-link.active {
-            background-color: #FF073A; /* Neon red background for active tab */
-            color: #0E161B;
-            border-color: #FF073A;
-            pointer-events: none; /* Disable clicks on the active tab */
-        }
+  <style>
+    :root{
+      --bg:#0E161B;
+      --muted:#B2BCC9;
+      --text:#E0E8E1;
+      --neon-green:#39FF14;
+      --neon-red:#FF073A;
+      --neon-blue:#00C0FF;
+      --neon-mustard:#FFDB58;
+      --card:#1E2733;
+      --pill:#2C3645;
+    }
+    html,body { height:100%; }
+    body {
+      margin:0;
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
 
-        /* Card styling for sections to add visual depth */
-        .section-card {
-            background-color: #1E2733; /* Darker blue-gray for cards */
-            padding: 2rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.5s ease-in-out;
-        }
+    /* Navigation pill styles */
+    .nav-link{
+      background-color:rgba(22,27,34,0.5);
+      color:var(--text);
+      font-weight:500;
+      padding:.4rem 1.25rem;
+      border-radius:9999px;
+      transition:transform .22s cubic-bezier(.4,0,.2,1), background-color .22s, border-color .22s, color .22s;
+      border:1px solid var(--neon-green);
+      text-align:center;
+      display:inline-block;
+      white-space:nowrap;
+      cursor:pointer;
+    }
+    .nav-link:hover{ background-color:var(--neon-blue); color:var(--bg); transform:scale(1.04); border-color:var(--neon-blue); }
+    .nav-link.active{ background-color:var(--neon-red); color:var(--bg); border-color:var(--neon-red); pointer-events:none; }
 
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
+    /* Cards and headers */
+    .section-card { background:var(--card); padding:1.5rem; border-radius:.75rem; box-shadow:0 6px 18px rgba(0,0,0,.45); transition:transform .25s ease, box-shadow .25s ease; }
+    .section-card:hover{ transform:translateY(-6px); box-shadow:0 16px 36px rgba(0,0,0,.55); }
+    .section-header{ border-bottom:2px solid var(--neon-red); padding-bottom:.5rem; margin-bottom:1rem; color:var(--text); }
 
-        /* Fade-in animation for tab content */
-        .tab-content {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            display: none;
-        }
+    /* color utilities */
+    .job-title-highlight{ color:var(--neon-blue); }
+    .work-experience-highlight{ color:var(--neon-red); }
+    .python-name-color{ color:var(--neon-green); }
+    .python-paren-color{ color:var(--neon-blue); }
+    .analyzeo-neon-mustard{ color:var(--neon-mustard); }
 
-        .tab-content.active {
-            opacity: 1;
-            display: block;
-        }
+    /* canvas background */
+    #bg-canvas{ position:fixed; inset:0; width:100%; height:100%; z-index:-10; display:block; background:var(--bg); }
 
-        /* Specific styling for mobile vs. desktop navigation */
-        @media (max-width: 767px) {
-            .mobile-nav {
-                width: 100%;
-                position: sticky;
-                top: 0;
-                background-color: #0E161B;
-                padding-top: 1rem;
-                padding-bottom: 1rem;
-            }
-        }
-        
-        /* Custom color classes for a consistent theme */
-        .job-title-highlight {
-            color: #00C0FF; /* Neon blue for job titles */
-        }
-        
-        .work-experience-highlight {
-            color: #FF073A; /* Neon red for company names */
-        }
-        
-        .python-name-color {
-            color: #39FF14; /* Neon green for the "Analyzeo" name */
-        }
-        
-        .python-paren-color {
-            color: #00C0FF; /* Neon blue for the Python logo */
-        }
-        .analyzeo-neon-green {
-            color: #39FF14;
-        }
-        .analyzeo-neon-mustard {
-            color: #FFDB58;
-        }
-        .nav-logo {
-            width: 80px;
-            height: auto;
-        }
-    </style>
+    /* tab content */
+    .tab-content{ display:none; opacity:0; transition:opacity .45s ease; }
+    .tab-content.active{ display:block; opacity:1; }
+
+    /* small-screen nav */
+    @media (max-width:767px){ .mobile-nav{ position:sticky; top:0; background:var(--bg); padding:.8rem 1rem; z-index:60; } }
+
+    /* reduced motion */
+    @media (prefers-reduced-motion: reduce){ *{ transition:none!important; animation:none!important } }
+
+    img.profile { border-radius:.5rem; max-width:200px; width:100%; height:auto; display:block; margin:0 auto; }
+    .resume-frame{ width:100%; height:600px; border:0; border-radius:.5rem; background:transparent; }
+
+    /* accessibility focus */
+    .nav-link:focus { outline:2px dashed var(--neon-blue); outline-offset:4px; }
+  </style>
 </head>
-<body class="text-[#c7d2e2] antialiased">
+<body>
 
-    <!-- Overall layout container for left navigation and main content -->
-    <div class="flex flex-col md:flex-row min-h-screen">
+  <div class="flex flex-col md:flex-row min-h-screen">
 
-        <!-- Mobile Navigation (visible on small screens) -->
-        <nav class="mobile-nav md:hidden flex justify-center space-x-2 p-4 overflow-x-auto" role="tablist">
-            <a href="#summary-section" class="nav-link text-center" data-tab="summary" role="tab" aria-controls="tab-summary">Summary</a>
-            <a href="#experience-section" class="nav-link text-center" data-tab="experience" role="tab" aria-controls="tab-experience">Experience</a>
-            <a href="#education-section" class="nav-link text-center" data-tab="education" role="tab" aria-controls="tab-education">Education</a>
-            <a href="#projects-section" class="nav-link text-center" data-tab="projects" role="tab" aria-controls="tab-projects">Projects</a>
-            <a href="#contact-section" class="nav-link text-center" data-tab="contact" role="tab" aria-controls="tab-contact">Contact</a>
-        </nav>
+    <!-- Mobile nav -->
+    <nav class="mobile-nav md:hidden flex justify-center gap-2 p-4 overflow-x-auto" role="tablist" aria-label="Primary">
+      <button class="nav-link" data-tab="summary" role="tab" aria-controls="tab-summary">Summary</button>
+      <button class="nav-link" data-tab="experience" role="tab" aria-controls="tab-experience">Experience</button>
+      <button class="nav-link" data-tab="education" role="tab" aria-controls="tab-education">Education</button>
+      <button class="nav-link" data-tab="projects" role="tab" aria-controls="tab-projects">Projects</button>
+      <button class="nav-link" data-tab="resume" role="tab" aria-controls="tab-resume">Resume</button>
+      <button class="nav-link" data-tab="contact" role="tab" aria-controls="tab-contact">Contact</button>
+    </nav>
 
-        <!-- Left-side Navigation Bar (visible on medium screens and up) -->
-        <nav class="hidden md:flex fixed top-0 left-0 bottom-0 w-56 bg-black/30 backdrop-blur-sm z-50 p-6 flex-col items-center space-y-4" role="tablist">
-            <h1 class="text-3xl font-extrabold text-[#E0E8E1] mb-4 text-center">Mark Anthony Recio</h1>
-           
-            <a href="#summary-section" class="nav-link active text-center" data-tab="summary" role="tab" aria-controls="tab-summary">Summary</a>
-            <a href="#experience-section" class="nav-link text-center" data-tab="experience" role="tab" aria-controls="tab-experience">Experience</a>
-            <a href="#education-section" class="nav-link text-center" data-tab="education" role="tab" aria-controls="tab-education">Education</a>
-            <a href="#projects-section" class="nav-link text-center" data-tab="projects" role="tab" aria-controls="tab-projects">Projects</a> 
-            <a href="#contact-section" class="nav-link text-center" data-tab="contact" role="tab" aria-controls="tab-contact">Contact</a>
-        </nav>
-           
+    <!-- Left nav (desktop) -->
+    <nav class="hidden md:flex fixed inset-y-0 left-0 w-56 bg-black/30 backdrop-blur-sm z-50 p-6 flex-col items-center gap-4" role="tablist" aria-label="Primary">
+      <h1 class="text-2xl font-extrabold text-[var(--text)] text-center">Mark Anthony Recio</h1>
+      <div class="flex flex-col gap-3 w-full items-center">
+        <button class="nav-link active w-full" data-tab="summary" role="tab" aria-controls="tab-summary">Summary</button>
+        <button class="nav-link w-full" data-tab="experience" role="tab" aria-controls="tab-experience">Experience</button>
+        <button class="nav-link w-full" data-tab="education" role="tab" aria-controls="tab-education">Education</button>
+        <button class="nav-link w-full" data-tab="projects" role="tab" aria-controls="tab-projects">Projects</button>
+        <button class="nav-link w-full" data-tab="resume" role="tab" aria-controls="tab-resume">Resume</button>
+        <button class="nav-link w-full" data-tab="contact" role="tab" aria-controls="tab-contact">Contact</button>
+      </div>
+    </nav>
 
-        <!-- 3D background canvas -->
-        <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full -z-10 bg-[#0E161B]"></canvas>
+    <!-- background canvas -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-        <!-- Main content area, pushed to the right on larger screens and now centered -->
-        <main class="flex-grow md:ml-56 max-w-4xl mx-auto p-4 sm:p-6 md:p-8 lg:p-10 relative z-10">
+    <!-- main content -->
+    <main class="flex-1 max-w-4xl mx-auto p-4 sm:p-6 md:p-8 lg:p-10 relative z-10 md:ml-56">
 
-            <!-- Tab Content Sections -->
-            <section id="tab-summary" class="tab-content active py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="summary-section">
-                <!-- Image of Mark Recio -->
-              <a href="https://ibb.co/bjcM1Vrf"><img src="https://i.ibb.co/XfcrXPzw/Mark-Recio-Picture.jpg" alt="Mark-Recio-Picture" border[#FF073A]"="0"></a>
-                <header class="text-center">
-                    <p class="text-lg sm:text-xl mb-8">
-                        <span class="python-name-color">Data & Business</span>
-                        <span class="python-paren-color">Analyst Professional</span> | Las Vegas, NV
-                    </p>
-                    <p class="text-[#E0E8E1] leading-relaxed mb-6"> Data-driven business and analytics professional with expertise in HR analytics, operations, and process optimization. Skilled at transforming complex data into actionable insights using Python, R, Power BI, Tableau, and SQL. Proven track record in forecasting
-trends, optimizing workflows, and delivering measurable business results.</p>
-                </header>
+      <!-- SUMMARY -->
+      <section id="tab-summary" class="tab-content active section-card" role="tabpanel" aria-labelledby="summary-section">
+        <div class="text-center">
+          <a href="https://ibb.co/bjcM1Vrf" target="_blank" rel="noopener noreferrer">
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/XfcrXPzw/Mark-Recio-Picture.jpg" alt="Mark Anthony Recio" class="profile mb-4" />
+          </a>
+          <p class="text-lg sm:text-xl mb-4">
+            <span class="python-name-color font-semibold">Data & Business</span>
+            <span class="python-paren-color font-semibold"> Analyst Professional</span>
+            <span class="block text-sm mt-2">Las Vegas, NV</span>
+          </p>
+          <p class="text-[var(--muted)] leading-relaxed max-w-3xl mx-auto">
+            Data-driven business and analytics professional with expertise in HR analytics, operations, and process optimization. Skilled at transforming complex data into actionable insights using Python, R, Power BI, Tableau, and SQL. Proven track record in forecasting trends, optimizing workflows, and delivering measurable business results.
+          </p>
+        </div>
 
-                <h2 class="text-2xl font-bold section-header mt-8">Core Competencies</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-[#2C3645] p-4 rounded-lg">
-                        <h3 class="font-semibold text-lg text-[#00C0FF] mb-1">Business Analysis</h3>
-                        <p class="text-[#B2BCC9] text-sm">Strategic Planning, Project Coordination, Executive Reporting.</p>
-                    </div>
-                    <div class="bg-[#2C3645] p-4 rounded-lg">
-                        <h3 class="font-semibold text-lg text-[#FF073A] mb-1">Data & HR Analytics</h3>
-                        <p class="text-[#B2BCC9] text-sm">Predictive Modeling, Data Visualization, Performance Metrics.</p>
-                    </div>
-                    <div class="bg-[#2C3645] p-4 rounded-lg">
-                        <h3 class="font-semibold text-lg text-[#39FF14] mb-1">Operations</h3>
-                        <p class="text-[#B2BCC9] text-sm">Process Improvement, Workflow Optimization, Payroll Coordination.</p>
-                    </div>
-                </div>
-                <div class="mt-8">
-                    <h3 class="font-semibold text-lg text-[#E0E8E1] mb-2">Technical Skills</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <h4 class="font-medium text-[#B2BCC9]">Technology</h4>
-                            <div class="flex flex-wrap gap-2 mt-1">
-                                <span class="bg-[#2C3645] text-[#39FF14] text-xs px-2.5 py-1 rounded-full font-medium">Visual Studio</span>
-                                <span class="bg-[#2C3645] text-[#FF073A] text-xs px-2.5 py-1 rounded-full font-medium">Python</span>
-                                <span class="bg-[#2C3645] text-[#00C0FF] text-xs px-2.5 py-1 rounded-full font-medium">R</span>
-                                <span class="bg-[#2C3645] text-[#39FF14] text-xs px-2.5 py-1 rounded-full font-medium">SQL</span>
-                                <span class="bg-[#2C3645] text-[#FF073A] text-xs px-2.5 py-1 rounded-full font-medium">Power BI</span>
-                                <span class="bg-[#2C3645] text-[#00C0FF] text-xs px-2.5 py-1 rounded-full font-medium">Tableau</span>
-                                <span class="bg-[#2C3645] text-[#39FF14] text-xs px-2.5 py-1 rounded-full font-medium">Advanced Excel</span>
-                                <span class="bg-[#2C3645] text-[#FF073A] text-xs px-2.5 py-1 rounded-full font-medium">Microsoft 365</span>
-                                <span class="bg-[#2C3645] text-[#39FF14] text-xs px-2.5 py-1 rounded-full font-medium">Google Analytics</span>
-                                <span class="bg-[#2C3645] text-[#FF073A] text-xs px-2.5 py-1 rounded-full font-medium">CRM</span>
-                                <span class="bg-[#2C3645] text-[#00C0FF] text-xs px-2.5 py-1 rounded-full font-medium">Salesforce</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <h2 class="text-2xl font-bold section-header mt-8">Core Competencies</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-4 rounded-lg" style="background:var(--pill)">
+            <h3 class="font-semibold text-lg text-[var(--neon-blue)] mb-1">Business Analysis</h3>
+            <p class="text-[var(--muted)] text-sm">Strategic Planning, Project Coordination, Executive Reporting.</p>
+          </div>
+          <div class="p-4 rounded-lg" style="background:var(--pill)">
+            <h3 class="font-semibold text-lg text-[var(--neon-red)] mb-1">Data & HR Analytics</h3>
+            <p class="text-[var(--muted)] text-sm">Predictive Modeling, Data Visualization, Performance Metrics.</p>
+          </div>
+          <div class="p-4 rounded-lg" style="background:var(--pill)">
+            <h3 class="font-semibold text-lg text-[var(--neon-green)] mb-1">Operations</h3>
+            <p class="text-[var(--muted)] text-sm">Process Improvement, Workflow Optimization, Payroll Coordination.</p>
+          </div>
+        </div>
+      </section>
 
-            <section id="tab-experience" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="experience-section">
-                <h2 class="text-2xl font-bold section-header">Professional Experience</h2>
-                <div class="space-y-8">
-                    <div>
-                        <div class="flex flex-col sm:flex-row sm:justify-between items-baseline mb-1">
-                            <h3 class="job-title job-title-highlight">Operations Manager Assistant</h3>
-                            <span class="dates">Oct 2018 - Aug 2023</span>
-                        </div>
-                        <p class="company-name mb-2"><span class="work-experience-highlight">Bella Brite Services</span> | Las Vegas, NV</p>
-                        <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
-                            <li class="list-item">Managed staffing, scheduling, and event logistics for over 50 employees using Microsoft 365, ensuring seamless operations.</li>
-                            <li class="list-item">Coordinated and processed payroll, maintaining strict compliance and using <strong>Excel</strong> to generate comprehensive reports for leadership.</li>
-                            <li class="list-item">Spearheaded process improvement initiatives that led to a significant increase in overall productivity and workflow efficiency.</li>
-                            <li class="list-item">Analyzed key performance metrics to identify opportunities and implement data-driven strategies that directly drove business improvements.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="flex flex-col sm:flex-row sm:justify-between items-baseline mb-1">
-                            <h3 class="job-title job-title-highlight">Contractor</h3>
-                            <span class="dates">Aug 2023 - Present</span>
-                        </div>
-                        <p class="company-name mb-2">
-                            <span class="work-experience-highlight">
-                                <span class="analyzeo-neon-red">Analyzeo</span><span class="analyzeo-neon-mustard">( )</span>
-                            </span> | Las Vegas, NV</p>
-                        <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
-                            <li class="list-item">Developed and deployed predictive models for recruitment analysis using <strong>Python</strong> and <strong>R</strong>, optimizing talent acquisition strategies.</li>
-                            <li class="list-item">Architected and built dynamic <strong>Power BI dashboards</strong> that provided actionable insights for HR, marketing, and campaign performance.</li>
-                            <li class="list-item">Forecasted business trends and optimized resource allocation through in-depth data analysis, leading to improved efficiency and cost savings.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="tab-education" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="education-section">
-                <h2 class="text-2xl font-bold section-header">Education & Certifications</h2>
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="font-semibold text-lg text-[#E0E8E1]">Education</h3>
-                        <ul class="list-disc list-inside space-y-2 text-[#E0E8E1] text-sm pl-4">
-                            <li class="list-item">MBA - Keller Graduate School of Management, Fremont, CA</li>
-                            <li class="list-item">Graduate Certificate, Strategic Innovation & Change - University of Denver, CO</li>
-                            <li class="list-item">B.S., Technical Management - DeVry University, Fremont, CA</li>
-                        </ul>
-                    </div>
-                    <div class="mt-4">
-                        <h3 class="font-semibold text-lg text-[#E0E8E1]">Upskilled Certifications</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm text-[#B2BCC9]">
-                             <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
-                                <span class="text-sm">Human Resources Professional with Payroll Practice and Management - State of Nevada</span>
-                            </div>
-                <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
-                                <span class="text-sm">Google Data Analytics - Google (Coursera)</span>
-                            </div>
-                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
-                                <span class="text-sm">IBM Data Science Professional - IBM (Coursera)</span>
-                            </div>
-                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
-                                <span class="text-sm">Power BI Data Analyst Associate - Microsoft (Coursera)</span>
-                            </div>
-                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
-                                <span class="text-sm">Tableau Business Intelligence Analyst - Tableau (Coursera)</span>
-                            </div>
-                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
-                                <span class="text-sm">Business Analytics - University of Illinois Urbana-Champaign (Coursera)</span>
-                            </div>
-                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
-                                <span class="text-sm">Accounting Data Analytics - University of Illinois Urbana-Champaign (Coursera)</span>
-                            </div>
-                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
-                                <span class="text-sm">Finance Data Analytics - University of Illinois Urbana-Champaign (Coursera)</span>
-                            </div>
-                            <div class="bg-[#2C3645] p-3 rounded-lg flex items-center gap-2">
-                                <span class="text-sm">Financial Analysis - University of Illinois Urbana-Champaign (Coursera)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-8 text-center">
-                        <a href="https://markareciocareerpath.my.canva.site/education-certifications" target="_blank" class="inline-block bg-[#FF073A] text-[#0E161B] font-semibold py-2 px-6 rounded-full transition-transform duration-300 hover:scale-105">
-                            View Credentials
-                        </a>
-                    </div>
-                </div>
-            </section>
-            
+      <!-- EXPERIENCE -->
+      <section id="tab-experience" class="tab-content section-card py-6 px-4 mb-8" role="tabpanel" aria-labelledby="experience-section">
+        <h2 class="text-2xl font-bold section-header">Professional Experience</h2>
+        <div class="space-y-8">
+          <div>
+            <div class="flex flex-col sm:flex-row sm:justify-between items-baseline mb-1">
+              <h3 class="job-title job-title-highlight font-semibold">Operations Manager Assistant</h3>
+              <span class="text-sm text-[var(--muted)]">Oct 2018 - Aug 2023</span>
+            </div>
+            <p class="company-name mb-2"><span class="work-experience-highlight font-semibold">Bella Brite Services</span> | Las Vegas, NV</p>
+            <ul class="list-disc list-inside text-[var(--text)] text-sm pl-4 space-y-2">
+              <li>Managed staffing, scheduling, and event logistics for over 50 employees using Microsoft 365, ensuring seamless operations.</li>
+              <li>Coordinated and processed payroll, maintaining strict compliance and using <strong>Excel</strong> to generate comprehensive reports for leadership.</li>
+              <li>Spearheaded process improvement initiatives that led to a significant increase in productivity and efficiency.</li>
+              <li>Analyzed KPIs to identify opportunities and implement data-driven strategies that boosted business outcomes.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="flex flex-col sm:flex-row sm:justify-between items-baseline mb-1">
+              <h3 class="job-title job-title-highlight font-semibold">Contractor</h3>
+              <span class="text-sm text-[var(--muted)]">Aug 2023 - Present</span>
+            </div>
+            <p class="company-name mb-2">
+              <span class="work-experience-highlight font-semibold"><span style="color:var(--neon-red)">Analyzeo</span><span class="analyzeo-neon-mustard"> ( )</span></span> | Las Vegas, NV
+            </p>
+            <ul class="list-disc list-inside text-[var(--text)] text-sm pl-4 space-y-2">
+              <li>Built predictive recruitment models using <strong>Python</strong> and <strong>R</strong> to optimize talent acquisition strategies.</li>
+              <li>Designed and deployed interactive <strong>Power BI</strong> dashboards for HR and marketing stakeholders to drive decision-making.</li>
+              <li>Forecasted trends and recommended resource allocations that improved efficiency and reduced costs.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-6 text-center">
+          <a href="https://ibb.co/xt0xYnCt" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://i.ibb.co/mVwf0nDV/Analyzeo.jpg" alt="Analyzeo logo" style="max-width:240px" /></a>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="tab-education" class="tab-content section-card py-6 px-4 mb-8" role="tabpanel" aria-labelledby="education-section">
+        <h2 class="text-2xl font-bold section-header">Education & Certifications</h2>
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-lg text-[var(--text)]">Education</h3>
+            <ul class="list-disc list-inside text-sm text-[var(--text)] pl-4 space-y-1">
+              <li>MBA — Keller Graduate School of Management, Fremont, CA</li>
+              <li>Graduate Certificate, Strategic Innovation & Change — University of Denver, CO</li>
+              <li>B.S., Technical Management — DeVry University, Fremont, CA</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-lg text-[var(--text)]">Upskilled Certifications</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm text-[var(--muted)]">
+              <div class="p-3 rounded-lg" style="background:var(--pill)">Human Resources Professional with Payroll Practice and Management — State of Nevada</div>
+              <div class="p-3 rounded-lg" style="background:var(--pill)">Google Data Analytics — Google (Coursera)</div>
+              <div class="p-3 rounded-lg" style="background:var(--pill)">IBM Data Science Professional — IBM (Coursera)</div>
+              <div class="p-3 rounded-lg" style="background:var(--pill)">Power BI Data Analyst Associate — Microsoft</div>
+              <div class="p-3 rounded-lg" style="background:var(--pill)">Tableau Business Intelligence Analyst — Tableau</div>
+              <div class="p-3 rounded-lg" style="background:var(--pill)">Business Analytics — University of Illinois (Coursera)</div>
+              <div class="p-3 rounded-lg" style="background:var(--pill)">Accounting Data Analytics — University of Illinois (Coursera)</div>
+              <div class="p-3 rounded-lg" style="background:var(--pill)">Finance Data Analytics — University of Illinois (Coursera)</div>
+              <div class="p-3 rounded-lg" style="background:var(--pill)">Financial Analysis — University of Illinois (Coursera)</div>
+            </div>
+          </div>
+
+          <div class="mt-4 text-center">
+            <a href="https://markareciocareerpath.my.canva.site/education-certifications" target="_blank" rel="noopener noreferrer" class="inline-block bg-[var(--neon-red)] text-[var(--bg)] font-semibold py-2 px-6 rounded-full transition-transform hover:scale-105">View Credentials</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <!-- PROJECTS -->
             <section id="tab-projects" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="projects-section">
                 <h2 class="text-2xl font-bold section-header">Projects</h2>
                 
@@ -307,7 +247,6 @@ trends, optimizing workflows, and delivering measurable business results.</p>
                         </ul>
                     </div>
                     
-                    <!-- Power BI Project -->
                     <div>
                         <h3 class="text-xl font-bold text-[#00C0FF] mb-2">Power BI Project</h3>
                         <p id="powerbi-project-text" class="text-[#E0E8E1] leading-relaxed">
@@ -394,242 +333,250 @@ trends, optimizing workflows, and delivering measurable business results.</p>
                         </div>
                     </div>
                 </section>
-               
-                </div>
-                <div class="mt-8 text-center">
-          
-                </div>
-            </section>
+      <!-- RESUME -->
+      <section id="tab-resume" class="tab-content section-card py-6 px-4 mb-8" role="tabpanel" aria-labelledby="resume-section">
+        <h2 class="text-2xl font-bold section-header">Resume</h2>
+        <p class="text-[var(--muted)] mb-4">Download the most recent resume.</p>
 
-            <section id="tab-contact" class="tab-content py-6 px-4 mb-12 section-card" role="tabpanel" aria-labelledby="contact-section">
-                <h2 class="text-2xl font-bold section-header">Contact Information</h2>
-                <div class="text-center mt-4 text-lg text-[#E0E8E1]">
-                    <a href="tel:+17027147389" class="hover:underline mx-2 font-bold text-[#FF073A]">(702) 714-7389</a>
-                    <span class="font-bold text-[#B2BCC9] mx-2">|</span>
-                    <a href="mailto:analyzeo@proton.me" class="hover:underline mx-2 font-bold text-[#00C0FF]">analyzeo@proton.me</a>
-                </div>
-            </section>
-                
-            <footer class="text-center text-sm text-[#B2BCC9] mt-8 py-4">
-                <p>&copy; 2023 Mark Anthony Recio. All Rights Reserved.</p>
-            </footer>
+        <div class="flex flex-col sm:flex-row items-center gap-4"> 
+        </div>
 
-        </main>
-    </div>
+        <div id="resume-preview" class="mt-6 w-full" aria-hidden="true" style="display:none;">
+          <iframe id="resume-frame" class="resume-frame" title="Mark Anthony Recio Resume (PDF)" src="" loading="lazy"></iframe>
+        </div>
+<a href="https://mark-anthony-recio-resume-dot-bullets-2.tiiny.site"><img src="https://i.ibb.co/nNYbwpvk/Mark-Anthony-Recio-Resume-Dot-Bullets-2.jpg" alt="Mark-Anthony-Recio-Resume-Dot-Bullets-2" border="0"></a> </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let camera, scene, renderer, clock, mouseX = 0, mouseY = 0;
-            let windowHalfX = window.innerWidth / 2;
-            let windowHalfY = window.innerHeight / 2;
+      <!-- CONTACT -->
+      <section id="tab-contact" class="tab-content section-card py-6 px-4 mb-8" role="tabpanel" aria-labelledby="contact-section">
+        <h2 class="text-2xl font-bold section-header">Contact Information</h2>
+        <div class="text-center text-lg text-[var(--text)]">
+          <a href="tel:+17027147389" class="hover:underline mx-2 font-bold text-[var(--neon-red)]" aria-label="Call (702) 714-7389">(702) 714-7389</a>
+          <span class="font-bold text-[var(--muted)] mx-2">|</span>
+          <a href="mailto:analyzeo@proton.me" class="hover:underline mx-2 font-bold text-[var(--neon-blue)]">analyzeo@proton.me</a>
+        </div>
+      </section>
 
-            const CODE_SNIPPETS = [
-                // Python snippets for "Analyzeo" persona
-                "import analyzeo as az",
-                "az.data_transform(df)",
-                "az.visualize_trends(data)",
-                "az.optimize_process(metrics)",
-                "az.predict_outcomes(model)",
-                "az.strategic_plan(insights)",
-                "from analyzeo.operations import automate",
-                "from analyzeo.analytics import forecast",
-                "df = az.read_source('sales.csv')",
-                "result = az.report(df)",
-                "data_warehouse = az.connect('db.sql')",
-                "analytics_pipeline = az.build_pipeline()",
-                "analyzeo.core.model.predict(X_test)"
-            ];
-            const LOGO_SNIPPETS = ["Analyzeo()"]; // The logo text
-            const NEON_COLORS = ["#39FF14", "#FF073A", "#00C0FF"];
-            const CODE_COUNT = 300; 
-            const LOGO_COUNT = 10; // Fewer logos for uniqueness
-            const codeSprites = [];
-            const logoSprites = [];
+      <footer class="text-center text-sm text-[var(--muted)] mt-8 py-4">&copy; 2023 Mark Anthony Recio. All Rights Reserved.</footer>
+    </main>
+  </div>
 
+  <!-- Inline script: animation + tabs + resume logic -->
+  <script>
+  (function(){
+    // ---------- CONFIG ----------
+    // Use the uploaded file path. If you move the file to public hosting, replace this with that URL.
+    const RESUME_URL = 'sandbox:/mnt/data/Mark_Anthony_Recio_Resume_Dot_Bullets-2.pdf';
 
-            // Initializes the Three.js scene and populates it with text sprites
-            function init() {
-                // Scene, Camera, and Renderer setup
-                scene = new THREE.Scene();
-                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                camera.position.z = 250;
+    const CODE_SNIPPETS = [
+      "import analyzeo as az","az.data_transform(df)","az.visualize_trends(data)",
+      "az.optimize_process(metrics)","az.predict_outcomes(model)","az.strategic_plan(insights)",
+      "from analyzeo.operations import automate","from analyzeo.analytics import forecast",
+      "df = az.read_source('sales.csv')","result = az.report(df)","data_warehouse = az.connect('db.sql')",
+      "analytics_pipeline = az.build_pipeline()","analyzeo.core.model.predict(X_test)"
+    ];
+    const LOGO_SNIPPETS = ["Analyzeo()"];
+    const NEON_COLORS = ["#39FF14","#FF073A","#00C0FF"];
+    const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const CODE_COUNT = Math.max(60, Math.floor(window.innerWidth / 12));
+    const LOGO_COUNT = 6;
 
-                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, canvas: document.getElementById('bg-canvas') });
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(window.innerWidth, window.innerHeight);
+    // ---------- THREE.JS SETUP ----------
+    let scene, camera, renderer, codeSprites = [], logoSprites = [], rafId = null;
+    let mouseX = 0, mouseY = 0, halfX = window.innerWidth/2, halfY = window.innerHeight/2;
 
-                // Create and position the text sprites
-                for (let i = 0; i < CODE_COUNT; i++) {
-                    const canvas = document.createElement('canvas');
-                    const context = canvas.getContext('2d');
-                    
-                    // Style the text
-                    const font = "Normal 12px Inter";
-                    context.font = font;
-                    const snippet = CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
-                    const metrics = context.measureText(snippet);
-                    const textWidth = metrics.width;
-                    const textHeight = 14; 
-                    
-                    // Set canvas size and draw the text
-                    canvas.width = textWidth + 10;
-                    canvas.height = textHeight + 10;
-                    context.font = font;
-                    const randomColor = NEON_COLORS[Math.floor(Math.random() * NEON_COLORS.length)];
-                    context.fillStyle = randomColor;
-                    context.fillText(snippet, 5, 15);
+    function initThree(){
+      if(typeof THREE === 'undefined') return;
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 4000);
+      camera.position.z = 400;
 
-                    // Create the Three.js objects
-                    const texture = new THREE.CanvasTexture(canvas);
-                    const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.8 });
-                    const sprite = new THREE.Sprite(material);
-                    
-                    // Set the sprite's size and position
-                    sprite.scale.set(canvas.width * 0.5, canvas.height * 0.5, 1);
-                    sprite.position.x = Math.random() * 2000 - 1000;
-                    sprite.position.y = Math.random() * 1000 - 500;
-                    sprite.position.z = Math.random() * 2000 - 1000;
+      const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+      renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true, canvas:document.getElementById('bg-canvas') });
+      renderer.setPixelRatio(DPR);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setClearColor(0x0E161B, 1);
 
-                    // Store the original position and a random rotation speed
-                    sprite.userData.originalPosition = sprite.position.clone();
-                    sprite.userData.rotationSpeed = Math.random() * 0.005 + 0.001;
+      createTextSprites(CODE_COUNT, CODE_SNIPPETS, 12, 0.45, NEON_COLORS, codeSprites);
+      createTextSprites(LOGO_COUNT, LOGO_SNIPPETS, 22, 0.8, ["#FFDB58"], logoSprites);
 
-                    scene.add(sprite);
-                    codeSprites.push(sprite);
-                }
+      window.addEventListener('resize', onResize, { passive:true });
+      if(!REDUCED_MOTION) document.addEventListener('mousemove', onMouseMove, { passive:true });
 
-                // Create and position the logo sprites
-                for (let i = 0; i < LOGO_COUNT; i++) {
-                    const canvas = document.createElement('canvas');
-                    const context = canvas.getContext('2d');
-                    
-                    const font = "Normal 24px Inter";
-                    context.font = font;
-                    const snippet = LOGO_SNIPPETS[Math.floor(Math.random() * LOGO_SNIPPETS.length)];
-                    const metrics = context.measureText(snippet);
-                    const textWidth = metrics.width;
-                    const textHeight = 26; 
-                    
-                    canvas.width = textWidth + 10;
-                    canvas.height = textHeight + 10;
-                    context.font = font;
-                    context.fillStyle = "#FFDB58"; // A distinct mustard color for the logo
-                    context.fillText(snippet, 5, 25);
+      renderer.render(scene, camera);
+    }
 
-                    const texture = new THREE.CanvasTexture(canvas);
-                    const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.9 });
-                    const sprite = new THREE.Sprite(material);
-                    
-                    sprite.scale.set(canvas.width * 0.7, canvas.height * 0.7, 1); // Make logo bigger
-                    sprite.position.x = Math.random() * 2000 - 1000;
-                    sprite.position.y = Math.random() * 1000 - 500;
-                    sprite.position.z = Math.random() * 2000 - 1000;
+    function createTextSprites(count, snippets, fontPx, scaleFactor, colors, targetArr){
+      for(let i=0;i<count;i++){
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const text = snippets[Math.floor(Math.random()*snippets.length)];
+        const font = `${fontPx}px Inter, sans-serif`;
+        ctx.font = font;
+        const metrics = ctx.measureText(text);
+        const w = Math.ceil(metrics.width) + 12;
+        const h = Math.ceil(fontPx*1.4) + 8;
+        canvas.width = w; canvas.height = h;
+        ctx.font = font; ctx.textBaseline = 'top';
+        ctx.fillStyle = colors[Math.floor(Math.random()*colors.length)];
+        ctx.fillText(text, 6, 3);
 
-                    sprite.userData.originalPosition = sprite.position.clone();
-                    sprite.userData.rotationSpeed = Math.random() * 0.003 + 0.0005; // Slightly slower rotation
-                    
-                    scene.add(sprite);
-                    logoSprites.push(sprite);
-                }
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.needsUpdate = true;
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        const material = new THREE.SpriteMaterial({ map:texture, transparent:true, opacity:0.95 });
+        const sprite = new THREE.Sprite(material);
+        sprite.scale.set(w * scaleFactor, h * scaleFactor, 1);
+        sprite.position.set((Math.random()*2000)-1000, (Math.random()*1000)-500, (Math.random()*2000)-1000);
+        sprite.userData = { speedZ:0.15 + Math.random()*0.7, rotSpeed:(Math.random()*0.005)-0.0025 };
+        scene.add(sprite);
+        targetArr.push(sprite);
+      }
+    }
 
-                // Event listeners for interactivity
-                document.addEventListener('mousemove', onDocumentMouseMove, false);
-                window.addEventListener('resize', onWindowResize, false);
-            }
+    function onMouseMove(e){ mouseX = (e.clientX - halfX) * 0.002; mouseY = (e.clientY - halfY) * 0.002; }
+    function onResize(){ halfX = window.innerWidth/2; halfY = window.innerHeight/2; if(camera && renderer){ camera.aspect = window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); } }
 
-            // Handles the animation loop
-            function animate() {
-                requestAnimationFrame(animate);
+    function animate(){
+      if(REDUCED_MOTION){ renderer.render(scene,camera); return; }
+      rafId = requestAnimationFrame(animate);
+      camera.position.x += (mouseX*80 - camera.position.x) * 0.04;
+      camera.position.y += (-mouseY*40 - camera.position.y) * 0.04;
+      camera.lookAt(scene.position);
 
-                // Update camera rotation based on mouse position
-                const targetX = mouseX * 0.001;
-                const targetY = mouseY * 0.001;
-                camera.position.x += (targetX - camera.position.x) * 0.05;
-                camera.position.y += (-targetY - camera.position.y) * 0.05;
-                camera.lookAt(scene.position);
+      codeSprites.forEach(s=>{
+        s.position.z += s.userData.speedZ;
+        s.rotation.z += s.userData.rotSpeed;
+        if(s.position.z > camera.position.z + 200){
+          s.position.z = -1200 + (Math.random()*400);
+          s.position.x = (Math.random()*2000)-1000;
+          s.position.y = (Math.random()*1000)-500;
+        }
+      });
+      logoSprites.forEach(s=>{
+        s.position.z += s.userData.speedZ * 0.45;
+        s.rotation.z += s.userData.rotSpeed;
+        if(s.position.z > camera.position.z + 200){
+          s.position.z = -1200 + (Math.random()*400);
+          s.position.x = (Math.random()*2000)-1000;
+          s.position.y = (Math.random()*1000)-500;
+        }
+      });
 
-                // Update sprite positions to create the floating effect
-                codeSprites.forEach(sprite => {
-                    // Move the sprite along the Z-axis
-                    sprite.position.z += 0.5;
+      renderer.render(scene, camera);
+    }
 
-                    // If a sprite moves too far, reset its position to the back
-                    if (sprite.position.z > camera.position.z) {
-                        sprite.position.z = -1000;
-                        sprite.position.x = Math.random() * 2000 - 1000;
-                        sprite.position.y = Math.random() * 1000 - 500;
-                    }
+    function startThree(){
+      if(!scene) initThree();
+      if(renderer && scene && camera){ renderer.render(scene, camera); if(!REDUCED_MOTION) animate(); }
+    }
 
-                    // Rotate the sprite
-                    sprite.rotation.z += sprite.userData.rotationSpeed;
-                });
+    // ---------- Tabs ----------
+    function initTabs(){
+      const buttons = Array.from(document.querySelectorAll('.nav-link'));
+      const panels = Array.from(document.querySelectorAll('.tab-content'));
 
-                logoSprites.forEach(sprite => {
-                    sprite.position.z += 0.25; // Slower movement for logos
-                    
-                    if (sprite.position.z > camera.position.z) {
-                        sprite.position.z = -1000;
-                        sprite.position.x = Math.random() * 2000 - 1000;
-                        sprite.position.y = Math.random() * 1000 - 500;
-                    }
-                    sprite.rotation.z += sprite.userData.rotationSpeed;
-                });
+      function activate(tabId){
+        buttons.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => { p.classList.remove('active'); p.style.display = 'none'; p.setAttribute('aria-hidden','true'); });
 
+        const btn = buttons.find(b => b.dataset.tab === tabId);
+        if(btn){ btn.classList.add('active'); btn.setAttribute('aria-selected','true'); btn.focus?.(); }
+        const panel = document.getElementById('tab-' + tabId);
+        if(panel){ panel.style.display = 'block'; setTimeout(()=>panel.classList.add('active'), 20); panel.setAttribute('aria-hidden','false'); panel.focus?.(); }
+      }
 
-                renderer.render(scene, camera);
-            }
+      buttons.forEach(btn=>{
+        btn.addEventListener('click', ()=>{ activate(btn.dataset.tab); startThree(); });
+        btn.addEventListener('keydown', e=>{ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); } });
+      });
 
-            // Updates mouse coordinates
-            function onDocumentMouseMove(event) {
-                mouseX = (event.clientX - windowHalfX) * 0.1;
-                mouseY = (event.clientY - windowHalfY) * 0.1;
-            }
+      activate('summary');
+    }
 
-            // Handles window resizing to keep the animation responsive
-            function onWindowResize() {
-                windowHalfX = window.innerWidth / 2;
-                windowHalfY = window.innerHeight / 2;
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
+    // ---------- Resume preview & download ----------
+    function initResumeControls(){
+      const downloadBtn = document.getElementById('download-resume');
+      const previewToggle = document.getElementById('preview-toggle');
+      const previewContainer = document.getElementById('resume-preview');
+      const iframe = document.getElementById('resume-frame');
+      let previewLoaded = false;
 
-            // Tab switching logic
-            const tabLinks = document.querySelectorAll('.nav-link');
-            const tabContents = document.querySelectorAll('.tab-content');
+      // download handler: try to fetch file -> blob -> download; fallback to opening URL
+      downloadBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        downloadBtn.setAttribute('aria-busy', 'true');
+        try {
+          // Try to fetch the resume path
+          const resp = await fetch(RESUME_URL);
+          if(!resp.ok) throw new Error('Network response not ok');
+          const blob = await resp.blob();
+          const blobUrl = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = blobUrl;
+          a.download = 'Mark_Anthony_Recio_Resume.pdf';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(blobUrl);
+        } catch (err) {
+          // Fallback: open the URL in a new tab/window
+          console.warn('Fetch/download failed, opening file instead:', err);
+          try {
+            window.open(RESUME_URL, '_blank');
+          } catch(openErr) {
+            alert('Could not download or open the resume. If you are testing locally, consider hosting the PDF on a web server or updating the RESUME_URL to a public URL.');
+          }
+        } finally {
+          downloadBtn.removeAttribute('aria-busy');
+        }
+      });
 
-            function showTab(tabId) {
-                // Remove 'active' class from all tabs and links
-                tabLinks.forEach(item => item.classList.remove('active'));
-                tabContents.forEach(item => {
-                    item.classList.remove('active');
-                    item.style.display = 'none';
-                });
+      // preview toggle (lazy loads iframe src)
+      previewToggle.addEventListener('click', () => {
+        const isExpanded = previewToggle.getAttribute('aria-expanded') === 'true';
+        previewToggle.setAttribute('aria-expanded', String(!isExpanded));
+        if(!isExpanded){
+          previewContainer.style.display = 'block';
+          previewContainer.setAttribute('aria-hidden', 'false');
+          previewToggle.textContent = 'Hide preview';
+          if(!previewLoaded){
+            iframe.src = RESUME_URL;
+            previewLoaded = true;
+          }
+          iframe.focus?.();
+        } else {
+          previewContainer.style.display = 'none';
+          previewContainer.setAttribute('aria-hidden', 'true');
+          previewToggle.textContent = 'Preview in page';
+        }
+      });
+    }
 
-                // Add 'active' class to the corresponding link and tab content
-                document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
-                const activeTab = document.getElementById(`tab-${tabId}`);
-                activeTab.style.display = 'block';
-                // Use a small timeout to allow display change before applying fade-in
-                setTimeout(() => {
-                    activeTab.classList.add('active');
-                }, 10);
-            }
+    // ---------- Lazy start (first user gesture or timeout) ----------
+    let started = false;
+    function lazyStart(){
+      if(started) return;
+      started = true;
+      // ensure THREE is available (we included it synchronously)
+      setTimeout(() => startThree(), 250);
+    }
 
-            tabLinks.forEach(link => {
-                link.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    showTab(event.target.dataset.tab);
-                });
-            });
+    // ---------- DOM Ready ----------
+    document.addEventListener('DOMContentLoaded', () => {
+      initTabs();
+      initResumeControls();
 
-            // Set the initial active tab
-            showTab('summary');
+      // Start Three.js after a gesture or after 1s
+      const gestures = ['scroll','mousemove','touchstart','pointerdown','keydown'];
+      const handler = () => { lazyStart(); gestures.forEach(g => window.removeEventListener(g, handler)); };
+      gestures.forEach(g => window.addEventListener(g, handler, { passive:true }));
+      setTimeout(()=>lazyStart(), 1000);
 
-            // Start the animation
-            init();
-            animate();
-        });
-    </script>
+      // cleanup on unload
+      window.addEventListener('beforeunload', () => { if(rafId) cancelAnimationFrame(rafId); });
+    });
+  })();
+  </script>
 </body>
 </html>
