@@ -308,17 +308,59 @@
                     </div>
                 </section>
       <!-- RESUME -->
-      <section id="tab-resume" class="tab-content section-card py-6 px-4 mb-8" role="tabpanel" aria-labelledby="resume-section">
-        <h2 class="text-2xl font-bold section-header">Resume</h2>
-        <p class="text-[var(--muted)] mb-4">Download the most recent resume.</p>
+     <section id="tab-resume" class="tab-content section-card py-6 px-4 mb-8" role="tabpanel" aria-labelledby="resume-section">
+  <div class="flex flex-col md:flex-row justify-between items-start mb-6">
+    <div>
+      <h2 class="text-2xl font-bold section-header">Resume</h2>
+      <p class="text-[var(--muted)] mt-1">Data & Analytics professional specializing in BI, forecasting, and workforce planning.</p>
+    </div>
+    <a href="https://mark-anthony-recio-resume-dot-bullets-2.tiiny.site" 
+       target="_blank" 
+       class="mt-4 md:mt-0 inline-flex items-center bg-[var(--primary)] text-white px-5 py-2 rounded-full font-medium hover:brightness-110 transition-all shadow-sm">
+       <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+       Download PDF
+    </a>
+  </div>
 
-        <div class="flex flex-col sm:flex-row items-center gap-4"> 
-        </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+    <div class="p-3 bg-[var(--card-bg)] border border-[var(--border)] rounded-lg text-center">
+      <span class="block font-bold text-[var(--primary)]">Languages</span>
+      <span class="text-sm">Python, R, SQL</span>
+    </div>
+    <div class="p-3 bg-[var(--card-bg)] border border-[var(--border)] rounded-lg text-center">
+      <span class="block font-bold text-[var(--primary)]">BI Tools</span>
+      <span class="text-sm">Power BI, Tableau</span>
+    </div>
+    <div class="p-3 bg-[var(--card-bg)] border border-[var(--border)] rounded-lg text-center">
+      <span class="block font-bold text-[var(--primary)]">Specialty</span>
+      <span class="text-sm">Predictive Analytics</span>
+    </div>
+    <div class="p-3 bg-[var(--card-bg)] border border-[var(--border)] rounded-lg text-center">
+      <span class="block font-bold text-[var(--primary)]">Education</span>
+      <span class="text-sm">MBA</span>
+    </div>
+  </div>
 
-        <div id="resume-preview" class="mt-6 w-full" aria-hidden="true" style="display:none;">
-          <iframe id="resume-frame" class="resume-frame" title="Mark Anthony Recio Resume (PDF)" src="" loading="lazy"></iframe>
-        </div>
-<a href="https://mark-anthony-recio-resume-dot-bullets-2.tiiny.site"><img src="https://i.ibb.co/nNYbwpvk/Mark-Anthony-Recio-Resume-Dot-Bullets-2.jpg" alt="Mark-Anthony-Recio-Resume-Dot-Bullets-2" border="0"></a> </section>
+  <div class="border rounded-xl overflow-hidden bg-white shadow-inner">
+    <div class="bg-gray-100 px-4 py-2 border-b flex justify-between items-center">
+      <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">PDF Previewer</span>
+      <button onclick="document.getElementById('resume-frame').requestFullscreen()" class="text-xs text-[var(--primary)] hover:underline">Full Screen</button>
+    </div>
+    <iframe 
+      id="resume-frame" 
+      class="w-full h-[500px] md:h-[750px]" 
+      title="Mark Recio Resume 2026" 
+      src="https://mark-anthony-recio-resume-dot-bullets-2.tiiny.site" 
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <div class="mt-6 text-center">
+    <a href="https://mark-anthony-recio-resume-dot-bullets-2.tiiny.site" target="_blank">
+      <img src="https://i.ibb.co/nNYbwpvk/Mark-Anthony-Recio-Resume-Dot-Bullets-2.jpg" alt="Mark Recio Resume Thumbnail" class="mx-auto rounded border hover:shadow-lg transition-shadow max-w-[200px]">
+    </a>
+  </div>
+</section>
 
       <!-- CONTACT -->
       <section id="tab-contact" class="tab-content section-card py-6 px-4 mb-8" role="tabpanel" aria-labelledby="contact-section">
