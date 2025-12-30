@@ -314,7 +314,7 @@
       <h2 class="text-2xl font-bold section-header">Resume</h2>
       <p class="text-[var(--muted)] mt-1">Data & Analytics professional specializing in BI, forecasting, and workforce planning.</p>
     </div>
-    <a href="https://mark-anthony-recio-resume-dot-bullets-2.tiiny.site" 
+    <a href="https://mark-anthony-recio-resume-dot-bullets-2.tiiny.site/" 
        target="_blank" 
        class="mt-4 md:mt-0 inline-flex items-center bg-[var(--primary)] text-white px-5 py-2 rounded-full font-medium hover:brightness-110 transition-all shadow-sm">
        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
@@ -363,12 +363,122 @@
 </section>
 
       <!-- CONTACT -->
-      <section id="tab-contact" class="tab-content section-card py-6 px-4 mb-8" role="tabpanel" aria-labelledby="contact-section">
-        <h2 class="text-2xl font-bold section-header">Contact Information</h2>
-        <div class="text-center text-lg text-[var(--text)]">
-          <a href="tel:+17027147389" class="hover:underline mx-2 font-bold text-[var(--neon-red)]" aria-label="Call (702) 714-7389">(702) 714-7389</a>
-          <span class="font-bold text-[var(--muted)] mx-2">|</span>
-          <a href="mailto:analyzeo@proton.me" class="hover:underline mx-2 font-bold text-[var(--neon-blue)]">analyzeo@proton.me</a>
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mark Anthony Recio | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    :root {
+      --bg: #0E161B;
+      --card-bg: rgba(20, 30, 38, 0.8);
+      --neon-blue: #00C0FF;
+      --neon-red: #FF073A;
+      --neon-green: #39FF14;
+      --text: #E0E6ED;
+      --muted: #94A3B8;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .section-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+    }
+    .nav-link {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-link.active {
+      color: var(--neon-blue);
+      border-bottom: 2px solid var(--neon-blue);
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.5s ease forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .section-header { color: var(--neon-blue); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+    
+    /* New Hover Effect for Profile Photo */
+    .profile-img {
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    }
+    .profile-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--neon-blue);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6 py-12">
+    <header class="text-center mb-12">
+      <h1 class="text-5xl font-extrabold tracking-tighter mb-2">MARK ANTHONY <span class="text-[var(--neon-blue)]">RECIO</span></h1>
+      <p class="text-xl text-[var(--muted)]">Business Intelligence & Data Operations Specialist</p>
+      
+      <nav class="flex justify-center space-x-8 mt-8 border-b border-white/10 pb-4">
+        <button class="nav-link active font-bold uppercase tracking-widest text-sm" data-tab="summary">Summary</button>
+        <button class="nav-link font-bold uppercase tracking-widest text-sm" data-tab="contact">Contact</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="tab-summary" class="tab-content section-card py-8 px-8 mb-8" role="tabpanel">
+        <h2 class="text-2xl font-bold section-header">Professional Summary</h2>
+        <p class="leading-relaxed text-lg">
+          Strategic leader with over 10 years of experience in business operations and data analytics. 
+          Expert at transforming raw data into actionable insights that drive efficiency and revenue growth.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <button id="preview-toggle" class="bg-[var(--neon-blue)]/10 border border-[var(--neon-blue)] text-[var(--neon-blue)] px-6 py-2 rounded-full font-bold hover:bg-[var(--neon-blue)] hover:text-white transition">Preview Resume</button>
+          <button id="download-resume" class="bg-[var(--neon-red)]/10 border border-[var(--neon-red)] text-[var(--neon-red)] px-6 py-2 rounded-full font-bold hover:bg-[var(--neon-red)] hover:text-white transition">Download PDF</button>
+        </div>
+        
+        <div id="resume-preview" class="mt-8 hidden border border-white/10 rounded-lg overflow-hidden">
+          <iframe id="resume-frame" src="" width="100%" height="600px" class="bg-white"></iframe>
+        </div>
+      </section>
+
+      <section id="tab-contact" class="tab-content section-card py-10 px-4 mb-8" role="tabpanel" aria-labelledby="contact-section">
+        <h2 class="text-2xl font-bold section-header text-center">Contact Information</h2>
+        
+        <div class="flex flex-col items-center">
+          <div class="mb-6 relative">
+            <div class="absolute inset-0 rounded-full blur-md bg-[var(--neon-blue)] opacity-20"></div>
+            <img 
+              src="https://i.ibb.co/Z1YKvJP2/1000005160.jpg" 
+              alt="Mark Anthony Recio" 
+              class="profile-img relative w-40 h-40 rounded-full object-cover border-4 border-[var(--neon-blue)] shadow-lg shadow-[var(--neon-blue)]/20"
+            >
+          </div>
+
+          <div class="text-center text-lg text-[var(--text)] mb-6">
+            <a href="tel:+17025019385" class="hover:underline mx-2 font-bold text-[var(--neon-red)]" aria-label="Call (702) 501-9385">(702) 501-9385</a>
+            <span class="font-bold text-[var(--muted)] mx-2">|</span>
+            <a href="mailto:mark.recio.pro@gmail.com" class="hover:underline mx-2 font-bold text-[var(--neon-blue)]">mark.recio.pro@gmail.com</a>
+          </div>
+
+          <a href="https://www.linkedin.com/in/mark-anthony-recio/" target="_blank" class="flex items-center gap-2 bg-[#0077B5]/10 border border-[#0077B5] text-[#0077B5] px-8 py-3 rounded-full font-bold hover:bg-[#0077B5] hover:text-white transition-all transform hover:scale-105 shadow-lg shadow-[#0077B5]/20">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            LinkedIn Profile
+          </a>
         </div>
       </section>
 
@@ -376,11 +486,8 @@
     </main>
   </div>
 
-  <!-- Inline script: animation + tabs + resume logic -->
   <script>
   (function(){
-    // ---------- CONFIG ----------
-    // Use the uploaded file path. If you move the file to public hosting, replace this with that URL.
     const RESUME_URL = 'sandbox:/mnt/data/Mark_Anthony_Recio_Resume_Dot_Bullets-2.pdf';
 
     const CODE_SNIPPETS = [
@@ -394,10 +501,8 @@
     const NEON_COLORS = ["#39FF14","#FF073A","#00C0FF"];
     const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const CODE_COUNT = Math.max(60, Math.floor(window.innerWidth / 12));
-    const LOGO_COUNT = 6;
 
-    // ---------- THREE.JS SETUP ----------
-    let scene, camera, renderer, codeSprites = [], logoSprites = [], rafId = null;
+    let scene, camera, renderer, codeSprites = [], rafId = null;
     let mouseX = 0, mouseY = 0, halfX = window.innerWidth/2, halfY = window.innerHeight/2;
 
     function initThree(){
@@ -413,11 +518,9 @@
       renderer.setClearColor(0x0E161B, 1);
 
       createTextSprites(CODE_COUNT, CODE_SNIPPETS, 12, 0.45, NEON_COLORS, codeSprites);
-      createTextSprites(LOGO_COUNT, LOGO_SNIPPETS, 22, 0.8, ["#FFDB58"], logoSprites);
 
       window.addEventListener('resize', onResize, { passive:true });
       if(!REDUCED_MOTION) document.addEventListener('mousemove', onMouseMove, { passive:true });
-
       renderer.render(scene, camera);
     }
 
@@ -438,20 +541,25 @@
 
         const texture = new THREE.CanvasTexture(canvas);
         texture.needsUpdate = true;
-        texture.minFilter = THREE.LinearFilter;
-        texture.magFilter = THREE.LinearFilter;
         const material = new THREE.SpriteMaterial({ map:texture, transparent:true, opacity:0.95 });
         const sprite = new THREE.Sprite(material);
         sprite.scale.set(w * scaleFactor, h * scaleFactor, 1);
         sprite.position.set((Math.random()*2000)-1000, (Math.random()*1000)-500, (Math.random()*2000)-1000);
-        sprite.userData = { speedZ:0.15 + Math.random()*0.7, rotSpeed:(Math.random()*0.005)-0.0025 };
+        sprite.userData = { speedZ:0.15 + Math.random()*0.7 };
         scene.add(sprite);
         targetArr.push(sprite);
       }
     }
 
     function onMouseMove(e){ mouseX = (e.clientX - halfX) * 0.002; mouseY = (e.clientY - halfY) * 0.002; }
-    function onResize(){ halfX = window.innerWidth/2; halfY = window.innerHeight/2; if(camera && renderer){ camera.aspect = window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); } }
+    function onResize(){ 
+      halfX = window.innerWidth/2; halfY = window.innerHeight/2; 
+      if(camera && renderer){ 
+        camera.aspect = window.innerWidth/window.innerHeight; 
+        camera.updateProjectionMatrix(); 
+        renderer.setSize(window.innerWidth, window.innerHeight); 
+      } 
+    }
 
     function animate(){
       if(REDUCED_MOTION){ renderer.render(scene,camera); return; }
@@ -462,135 +570,56 @@
 
       codeSprites.forEach(s=>{
         s.position.z += s.userData.speedZ;
-        s.rotation.z += s.userData.rotSpeed;
-        if(s.position.z > camera.position.z + 200){
-          s.position.z = -1200 + (Math.random()*400);
-          s.position.x = (Math.random()*2000)-1000;
-          s.position.y = (Math.random()*1000)-500;
-        }
+        if(s.position.z > camera.position.z + 200) s.position.z = -1200;
       });
-      logoSprites.forEach(s=>{
-        s.position.z += s.userData.speedZ * 0.45;
-        s.rotation.z += s.userData.rotSpeed;
-        if(s.position.z > camera.position.z + 200){
-          s.position.z = -1200 + (Math.random()*400);
-          s.position.x = (Math.random()*2000)-1000;
-          s.position.y = (Math.random()*1000)-500;
-        }
-      });
-
       renderer.render(scene, camera);
     }
 
-    function startThree(){
-      if(!scene) initThree();
-      if(renderer && scene && camera){ renderer.render(scene, camera); if(!REDUCED_MOTION) animate(); }
-    }
-
-    // ---------- Tabs ----------
     function initTabs(){
       const buttons = Array.from(document.querySelectorAll('.nav-link'));
       const panels = Array.from(document.querySelectorAll('.tab-content'));
 
       function activate(tabId){
         buttons.forEach(b => b.classList.remove('active'));
-        panels.forEach(p => { p.classList.remove('active'); p.style.display = 'none'; p.setAttribute('aria-hidden','true'); });
-
+        panels.forEach(p => { p.classList.remove('active'); p.style.display = 'none'; });
         const btn = buttons.find(b => b.dataset.tab === tabId);
-        if(btn){ btn.classList.add('active'); btn.setAttribute('aria-selected','true'); btn.focus?.(); }
+        if(btn) btn.classList.add('active');
         const panel = document.getElementById('tab-' + tabId);
-        if(panel){ panel.style.display = 'block'; setTimeout(()=>panel.classList.add('active'), 20); panel.setAttribute('aria-hidden','false'); panel.focus?.(); }
+        if(panel){ panel.style.display = 'block'; setTimeout(()=>panel.classList.add('active'), 20); }
       }
 
       buttons.forEach(btn=>{
-        btn.addEventListener('click', ()=>{ activate(btn.dataset.tab); startThree(); });
-        btn.addEventListener('keydown', e=>{ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); } });
+        btn.addEventListener('click', ()=>{ activate(btn.dataset.tab); if(!scene) initThree(); if(!rafId) animate(); });
       });
-
       activate('summary');
     }
 
-    // ---------- Resume preview & download ----------
     function initResumeControls(){
       const downloadBtn = document.getElementById('download-resume');
       const previewToggle = document.getElementById('preview-toggle');
       const previewContainer = document.getElementById('resume-preview');
       const iframe = document.getElementById('resume-frame');
-      let previewLoaded = false;
-
-      // download handler: try to fetch file -> blob -> download; fallback to opening URL
-      downloadBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        downloadBtn.setAttribute('aria-busy', 'true');
-        try {
-          // Try to fetch the resume path
-          const resp = await fetch(RESUME_URL);
-          if(!resp.ok) throw new Error('Network response not ok');
-          const blob = await resp.blob();
-          const blobUrl = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = blobUrl;
-          a.download = 'Mark_Anthony_Recio_Resume.pdf';
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          URL.revokeObjectURL(blobUrl);
-        } catch (err) {
-          // Fallback: open the URL in a new tab/window
-          console.warn('Fetch/download failed, opening file instead:', err);
-          try {
-            window.open(RESUME_URL, '_blank');
-          } catch(openErr) {
-            alert('Could not download or open the resume. If you are testing locally, consider hosting the PDF on a web server or updating the RESUME_URL to a public URL.');
-          }
-        } finally {
-          downloadBtn.removeAttribute('aria-busy');
-        }
-      });
-
-      // preview toggle (lazy loads iframe src)
+      
+      downloadBtn.addEventListener('click', () => window.open(RESUME_URL, '_blank'));
       previewToggle.addEventListener('click', () => {
-        const isExpanded = previewToggle.getAttribute('aria-expanded') === 'true';
-        previewToggle.setAttribute('aria-expanded', String(!isExpanded));
-        if(!isExpanded){
+        const isHidden = previewContainer.style.display === 'none' || previewContainer.classList.contains('hidden');
+        if(isHidden){
           previewContainer.style.display = 'block';
-          previewContainer.setAttribute('aria-hidden', 'false');
+          previewContainer.classList.remove('hidden');
           previewToggle.textContent = 'Hide preview';
-          if(!previewLoaded){
-            iframe.src = RESUME_URL;
-            previewLoaded = true;
-          }
-          iframe.focus?.();
+          if(!iframe.src) iframe.src = RESUME_URL;
         } else {
           previewContainer.style.display = 'none';
-          previewContainer.setAttribute('aria-hidden', 'true');
-          previewToggle.textContent = 'Preview in page';
+          previewContainer.classList.add('hidden');
+          previewToggle.textContent = 'Preview Resume';
         }
       });
     }
 
-    // ---------- Lazy start (first user gesture or timeout) ----------
-    let started = false;
-    function lazyStart(){
-      if(started) return;
-      started = true;
-      // ensure THREE is available (we included it synchronously)
-      setTimeout(() => startThree(), 250);
-    }
-
-    // ---------- DOM Ready ----------
     document.addEventListener('DOMContentLoaded', () => {
       initTabs();
       initResumeControls();
-
-      // Start Three.js after a gesture or after 1s
-      const gestures = ['scroll','mousemove','touchstart','pointerdown','keydown'];
-      const handler = () => { lazyStart(); gestures.forEach(g => window.removeEventListener(g, handler)); };
-      gestures.forEach(g => window.addEventListener(g, handler, { passive:true }));
-      setTimeout(()=>lazyStart(), 1000);
-
-      // cleanup on unload
-      window.addEventListener('beforeunload', () => { if(rafId) cancelAnimationFrame(rafId); });
+      setTimeout(() => { if(!scene) initThree(); if(!rafId) animate(); }, 1000);
     });
   })();
   </script>
