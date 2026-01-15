@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -36,44 +36,90 @@
       overflow-x: hidden;
     }
 
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--pill); border-radius: 10px; }
+
     /* Navigation */
     .nav-link {
       background-color: rgba(22, 27, 34, 0.5);
       color: var(--text);
       font-weight: 500;
-      padding: .4rem 1.25rem;
+      padding: .6rem 1.25rem;
       border-radius: 9999px;
       transition: all .22s cubic-bezier(.4, 0, .2, 1);
-      border: 1px solid var(--neon-green);
+      border: 1px solid rgba(57, 255, 20, 0.3);
       text-align: center;
-      display: inline-block;
-      white-space: nowrap;
       cursor: pointer;
     }
 
-    .nav-link:hover { background-color: var(--neon-blue); color: var(--bg); transform: scale(1.04); border-color: var(--neon-blue); }
-    .nav-link.active { background-color: var(--neon-red); color: var(--bg); border-color: var(--neon-red); pointer-events: none; }
+    .nav-link:hover { 
+      background-color: var(--neon-blue); 
+      color: var(--bg); 
+      transform: translateY(-2px); 
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 15px rgba(0, 192, 255, 0.4);
+    }
+    
+    .nav-link.active { 
+      background-color: var(--neon-red); 
+      color: white; 
+      border-color: var(--neon-red); 
+      pointer-events: none;
+      box-shadow: 0 0 15px rgba(255, 7, 58, 0.4);
+    }
 
     /* Layout Components */
-    .section-card { background: var(--card); padding: 1.5rem; border-radius: .75rem; box-shadow: 0 6px 18px rgba(0,0,0,.45); transition: transform .25s ease, box-shadow .25s ease; }
-    .section-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,.55); }
-    .section-header { border-bottom: 2px solid var(--neon-red); padding-bottom: .5rem; margin-bottom: 1rem; color: var(--text); font-weight: 700; }
+    .section-card { 
+      background: var(--card); 
+      padding: 2rem; 
+      border-radius: 1rem; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .section-header { 
+      border-left: 4px solid var(--neon-red); 
+      padding-left: 1rem; 
+      margin-bottom: 1.5rem; 
+      color: white; 
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
 
     #bg-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -10; display: block; background: var(--bg); }
 
-    .tab-content { display: none; opacity: 0; }
-    .tab-content.active { display: block; opacity: 1; animation: fadeIn 0.4s ease forwards; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.5s ease-out forwards; }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    .resume-frame { width: 100%; height: 800px; border: none; border-radius: 0.5rem; }
-    img.profile { border-radius: .5rem; max-width: 200px; width: 100%; height: auto; display: block; margin: 0 auto; border: 2px solid var(--neon-blue); }
-
-    .python-name-color { color: var(--neon-green); }
-    .python-paren-color { color: var(--neon-blue); }
+    .resume-frame { width: 100%; height: 800px; border: none; border-radius: 0.5rem; background: white; }
     
+    img.profile { 
+      border-radius: 1rem; 
+      max-width: 180px; 
+      width: 100%; 
+      height: auto; 
+      margin: 0 auto; 
+      border: 3px solid var(--neon-blue);
+      box-shadow: 0 0 20px rgba(0, 192, 255, 0.2);
+    }
+
+    .cert-pill {
+      background: var(--pill);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: border 0.3s;
+    }
+    .cert-pill:hover { border-color: var(--neon-green); }
+
     @media (max-width: 767px) {
-      .mobile-nav { position: sticky; top: 0; background: var(--bg); z-index: 60; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .mobile-nav { position: sticky; top: 0; background: rgba(14, 22, 27, 0.9); backdrop-filter: blur(10px); z-index: 60; border-bottom: 1px solid rgba(255,255,255,0.1); }
       .resume-frame { height: 500px; }
     }
   </style>
@@ -81,139 +127,135 @@
 <body>
 
   <div class="flex flex-col md:flex-row min-h-screen">
-    <nav class="mobile-nav md:hidden flex justify-start gap-2 p-4 overflow-x-auto" role="tablist">
+    <nav class="mobile-nav md:hidden flex justify-start gap-2 p-4 overflow-x-auto no-scrollbar" role="tablist">
       <button class="nav-link active" data-tab="summary">Summary</button>
-      <button class="nav-link" data-tab="experience">Exp</button>
-      <button class="nav-link" data-tab="education">Edu</button>
+      <button class="nav-link" data-tab="experience">Experience</button>
+      <button class="nav-link" data-tab="education">Education</button>
       <button class="nav-link" data-tab="projects">Projects</button>
       <button class="nav-link" data-tab="resume">Resume</button>
       <button class="nav-link" data-tab="contact">Contact</button>
     </nav>
 
-    <nav class="hidden md:flex fixed inset-y-0 left-0 w-56 bg-black/30 backdrop-blur-sm z-50 p-6 flex-col items-center gap-4">
-      <h1 class="text-2xl font-extrabold text-[var(--text)] text-center leading-tight">Mark Anthony Recio</h1>
-      <div class="flex flex-col gap-3 w-full items-center mt-4">
-        <button class="nav-link active w-full" data-tab="summary">Summary</button>
-        <button class="nav-link w-full" data-tab="experience">Experience</button>
-        <button class="nav-link w-full" data-tab="education">Education</button>
-        <button class="nav-link w-full" data-tab="projects">Projects</button>
-        <button class="nav-link w-full" data-tab="resume">Resume</button>
-        <button class="nav-link w-full" data-tab="contact">Contact</button>
+    <nav class="hidden md:flex fixed inset-y-0 left-0 w-64 bg-black/40 backdrop-blur-md z-50 p-8 flex-col items-center border-r border-white/5">
+      <h1 class="text-2xl font-black text-white text-center leading-tight mb-2">Mark Anthony Recio</h1>
+      <p class="text-[var(--neon-blue)] text-xs font-mono uppercase tracking-widest mb-8">Insights & Analytics</p>
+      
+      <div class="flex flex-col gap-4 w-full">
+        <button class="nav-link active" data-tab="summary">Summary</button>
+        <button class="nav-link" data-tab="experience">Experience</button>
+        <button class="nav-link" data-tab="education">Education</button>
+        <button class="nav-link" data-tab="projects">Projects</button>
+        <button class="nav-link" data-tab="resume">Resume</button>
+        <button class="nav-link" data-tab="contact">Contact</button>
+      </div>
+
+      <div class="mt-auto text-[var(--muted)] text-[10px] text-center uppercase tracking-tighter opacity-50">
+        v2.0 // 2026
       </div>
     </nav>
 
     <canvas id="bg-canvas"></canvas>
 
-    <main class="flex-1 max-w-4xl mx-auto p-4 sm:p-6 md:p-8 lg:p-10 relative z-10 md:ml-56">
+    <main class="flex-1 max-w-5xl mx-auto p-4 sm:p-8 md:p-12 relative z-10 md:ml-64">
 
       <section id="tab-summary" class="tab-content active section-card">
-        <div class="text-center">
-          <a href="https://ibb.co/bjcM1Vrf" target="_blank">
-            <img src="https://i.ibb.co/XfcrXPzw/Mark-Recio-Picture.jpg" alt="Mark Anthony Recio" class="profile mb-4" />
-          </a>
-          <p class="text-lg sm:text-xl mb-4">
-            <span class="python-name-color font-semibold">Data & Business</span>
-            <span class="python-paren-color font-semibold"> Analyst Professional</span>
-            <span class="block text-sm mt-2">Las Vegas, NV</span>
-          </p>
-          <p class="text-[var(--muted)] leading-relaxed max-w-3xl mx-auto">
-            Data-driven business and analytics professional with expertise in HR analytics, operations, and process optimization. Skilled at transforming complex data into actionable insights using Python, R, Power BI, Tableau, and SQL.
+        <div class="text-center mb-10">
+          <img src="https://i.ibb.co/XfcrXPzw/Mark-Recio-Picture.jpg" alt="Mark Anthony Recio" class="profile mb-6" />
+          <h2 class="text-3xl font-extrabold text-white mb-2">
+            <span class="text-[var(--neon-green)]">Data & Business</span> Analyst Professional
+          </h2>
+          <p class="text-[var(--neon-blue)] font-mono text-sm mb-6">LAS VEGAS, NV</p>
+          <p class="text-[var(--muted)] leading-relaxed max-w-2xl mx-auto text-lg">
+            Data-driven professional with expertise in HR analytics, operations, and process optimization. I transform complex data into actionable insights using Python, R, Power BI, and SQL.
           </p>
         </div>
 
-        <h2 class="text-2xl font-bold section-header mt-8">Core Competencies</h2>
+        <h3 class="section-header">Core Competencies</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-4 rounded-lg bg-[var(--pill)]">
-            <h3 class="font-semibold text-lg text-[var(--neon-blue)] mb-1">Business Analysis</h3>
-            <p class="text-[var(--muted)] text-sm">Strategic Planning, Project Coordination, Executive Reporting.</p>
+          <div class="p-6 rounded-xl bg-[var(--pill)] border-b-2 border-[var(--neon-blue)]">
+            <h4 class="font-bold text-lg text-white mb-2">Business Analysis</h4>
+            <p class="text-[var(--muted)] text-sm leading-relaxed">Strategic Planning, Project Coordination, Executive Reporting.</p>
           </div>
-          <div class="p-4 rounded-lg bg-[var(--pill)]">
-            <h3 class="font-semibold text-lg text-[var(--neon-red)] mb-1">Data & HR Analytics</h3>
-            <p class="text-[var(--muted)] text-sm">Predictive Modeling, Data Visualization, Performance Metrics.</p>
+          <div class="p-6 rounded-xl bg-[var(--pill)] border-b-2 border-[var(--neon-red)]">
+            <h4 class="font-bold text-lg text-white mb-2">Data & HR Analytics</h4>
+            <p class="text-[var(--muted)] text-sm leading-relaxed">Predictive Modeling, Data Visualization, Performance Metrics.</p>
           </div>
-          <div class="p-4 rounded-lg bg-[var(--pill)]">
-            <h3 class="font-semibold text-lg text-[var(--neon-green)] mb-1">Operations</h3>
-            <p class="text-[var(--muted)] text-sm">Process Improvement, Workflow Optimization, Payroll Coordination.</p>
+          <div class="p-6 rounded-xl bg-[var(--pill)] border-b-2 border-[var(--neon-green)]">
+            <h4 class="font-bold text-lg text-white mb-2">Operations</h4>
+            <p class="text-[var(--muted)] text-sm leading-relaxed">Process Improvement, Workflow Optimization, Payroll Coordination.</p>
           </div>
         </div>
       </section>
 
-<section id="tab-experience" class="tab-content">
-  <h2 class="text-3xl font-bold mb-10 text-[var(--neon-blue)] uppercase tracking-[0.2em] border-l-4 border-[var(--neon-red)] pl-4">
-    Professional Experience
-  </h2>
-  
-  <div class="space-y-12">
-    <div class="section-card relative overflow-hidden bg-gradient-to-br from-[#1E2733] via-[#1E2733] to-[#251216] border border-white/5">
-      
-      <div class="flex flex-col items-center text-center mb-12">
-        <div class="relative group mb-8">
-          <div class="absolute inset-0 bg-[var(--neon-red)] opacity-20 blur-[60px] rounded-full"></div>
-          
-          <img src="https://i.ibb.co/ZpWFC90X/Gemini-Generated-Image-cdrvdtcdrvdtcdrv.png" 
-               class="relative h-48 md:h-56 w-auto bg-white/5 backdrop-blur-xl p-6 rounded-[2.5rem] border border-white/20 shadow-2xl transition-all duration-500 hover:scale-105" 
-               alt="MAREC Insights Logo" />
+      <section id="tab-experience" class="tab-content space-y-8">
+        <div class="section-card">
+            <h2 class="section-header">Brand Identity</h2>
+            <div class="relative overflow-hidden rounded-xl border border-white/10 shadow-2xl group">
+                <div class="aspect-video">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/pTeB3491HUg?autoplay=1&mute=1&loop=1&playlist=pTeB3491HUg&controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+            <p class="text-center text-[var(--muted)] mt-4 text-xs italic font-mono uppercase tracking-widest">MAREC Insights // Visual Identity</p>
         </div>
-        
-        <div>
-          <h3 class="text-3xl md:text-5xl font-black text-white tracking-tighter">Data Analyst / BI Consultant</h3>
-          <p class="text-[var(--neon-red)] font-bold text-xl md:text-2xl mt-2 tracking-[0.2em] uppercase">MAREC INSIGHTS</p>
-          <div class="mt-4 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black/50 border border-[var(--neon-red)]/30 text-xs font-mono text-white">
-            <span class="w-2 h-2 bg-[var(--neon-red)] rounded-full animate-pulse shadow-[0_0_8px_var(--neon-red)]"></span>
-            2023 — PRESENT
+
+        <div class="section-card relative overflow-hidden bg-gradient-to-br from-[#1E2733] to-[#251216]">
+          <div class="flex flex-col md:flex-row justify-between items-start mb-8">
+            <div>
+              <h3 class="text-2xl font-black text-white uppercase">Data Analyst / BI Consultant</h3>
+              <p class="text-[var(--neon-red)] font-bold tracking-widest uppercase">MAREC Insights</p>
+            </div>
+            <div class="mt-2 md:mt-0 px-4 py-1 rounded-full bg-black/40 border border-[var(--neon-red)]/30 text-[10px] font-mono text-white">
+              2023 — PRESENT
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-[var(--neon-red)]/50 transition-all">
+              <span class="text-[var(--neon-red)] font-bold text-xs font-mono">01</span>
+              <p class="text-sm mt-2">Built <strong>predictive recruitment models</strong> using Python/R to slash hiring lag and optimize talent pipelines.</p>
+            </div>
+            <div class="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-[var(--neon-red)]/50 transition-all">
+              <span class="text-[var(--neon-red)] font-bold text-xs font-mono">02</span>
+              <p class="text-sm mt-2">Deployed <strong>Power BI Dashboards</strong> providing stakeholders with real-time, interactive intelligence.</p>
+            </div>
+            <div class="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-[var(--neon-red)]/50 transition-all">
+              <span class="text-[var(--neon-red)] font-bold text-xs font-mono">03</span>
+              <p class="text-sm mt-2">Automated processing workflows, delivering a measurable <strong>40% efficiency gain</strong> in data tasks.</p>
+            </div>
+            <div class="p-4 rounded-lg bg-white/5 border border-white/5 hover:border-[var(--neon-red)]/50 transition-all">
+              <span class="text-[var(--neon-red)] font-bold text-xs font-mono">04</span>
+              <p class="text-sm mt-2"><strong>Marketing Analytics:</strong> Optimized ROI via Google Analytics, A/B testing, and SEO demographic strategies.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-[var(--neon-red)]/50 transition-all duration-300">
-          <div class="text-[var(--neon-red)] mb-3 text-2xl font-bold">01</div>
-          <p class="text-sm text-[var(--text)] leading-relaxed">Built <strong>predictive recruitment models</strong> using Python/R to slash hiring lag and optimize talent pipelines.</p>
+        <div class="section-card border-l-4 border-[var(--neon-blue)]">
+          <div class="flex flex-col md:flex-row justify-between items-start mb-6">
+            <div>
+              <h3 class="text-xl font-bold text-white">Operations Manager Assistant</h3>
+              <p class="text-[var(--neon-blue)] font-bold text-sm tracking-widest uppercase">Bella Brite Services</p>
+            </div>
+            <div class="text-[var(--muted)] font-mono text-xs bg-white/5 px-3 py-1 rounded border border-white/10 mt-2 md:mt-0">
+              2018 — 2023
+            </div>
+          </div>
+          <ul class="space-y-3 text-[var(--muted)] text-sm">
+            <li class="flex items-start gap-3">
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-blue)] flex-shrink-0"></span>
+              <span>Orchestrated logistics for <strong>50+ field employees</strong> via MS 365 ecosystem.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-blue)] flex-shrink-0"></span>
+              <span>Reduced operational expenses by <strong>15%</strong> through advanced cost-benefit analysis.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-blue)] flex-shrink-0"></span>
+              <span>Maintained <strong>100% accuracy</strong> in payroll and compliance over 5 years.</span>
+            </li>
+          </ul>
         </div>
-        <div class="p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-[var(--neon-red)]/50 transition-all duration-300">
-          <div class="text-[var(--neon-red)] mb-3 text-2xl font-bold">02</div>
-          <p class="text-sm text-[var(--text)] leading-relaxed">Deployed <strong>Power BI Dashboards</strong> providing stakeholders with real-time, interactive intelligence.</p>
-        </div>
-        <div class="p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-[var(--neon-red)]/50 transition-all duration-300">
-          <div class="text-[var(--neon-red)] mb-3 text-2xl font-bold">03</div>
-          <p class="text-sm text-[var(--text)] leading-relaxed">Automated processing workflows, delivering a measurable <strong>40% efficiency gain</strong> in data tasks.</p>
-        </div>
-        <div class="p-5 rounded-2xl bg-white/10 border border-[var(--neon-blue)]/40 hover:border-[var(--neon-blue)] transition-all duration-300">
-          <div class="text-[var(--neon-blue)] mb-3 text-2xl font-bold">04</div>
-          <p class="text-sm text-[var(--text)] leading-relaxed mb-4"><strong>Marketing Analytics:</strong> Optimized ROI via Google Analytics, A/B testing, and SEO demographic strategies.</p>
-          
-        </div>
-      </div>
-    </div>
+      </section>
 
-    <div class="section-card border-l-4 border-[var(--neon-blue)] bg-[#1A2129]">
-      <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-4 mb-6">
-        <div class="text-center md:text-left">
-          <h3 class="text-xl font-bold text-white">Operations Manager Assistant</h3>
-          <p class="text-[var(--neon-blue)] font-bold uppercase text-sm tracking-wider">Bella Brite Services</p>
-        </div>
-        <div class="text-[var(--muted)] font-mono text-xs bg-white/5 px-3 py-1 rounded border border-white/10">
-          2018 — 2023
-        </div>
-      </div>
-      
-      <ul class="space-y-4 text-[var(--muted)] text-sm md:text-base">
-        <li class="flex items-start gap-3">
-          <span class="text-[var(--neon-blue)] mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-blue)] flex-shrink-0"></span>
-          <span>Orchestrated logistics for <strong>50+ field employees</strong> via the MS 365 ecosystem.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-[var(--neon-blue)] mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-blue)] flex-shrink-0"></span>
-          <span>Reduced operational expenses by <strong>15%</strong> through advanced cost-benefit analysis.</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <span class="text-[var(--neon-blue)] mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-blue)] flex-shrink-0"></span>
-          <span>Maintained <strong>100% accuracy</strong> in payroll and compliance over 5 years.</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
       <section id="tab-education" class="tab-content">
   <h2 class="text-3xl font-bold mb-8 text-[var(--neon-blue)]">EDUCATION & CREDENTIALS</h2>
   
