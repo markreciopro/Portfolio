@@ -419,42 +419,113 @@
 </section>
 
      <section id="tab-resume" class="tab-content">
-  <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
+  <div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
     <div>
-      <h2 class="text-3xl font-bold text-[var(--neon-blue)]">Resume</h2>
-      <p class="text-[var(--muted)] text-sm font-mono mt-1">Data & Analytics Professional | MBA</p>
+      <h2 class="text-3xl font-bold text-[var(--neon-blue)]">Mark Anthony Recio</h2>
+      <p class="text-lg text-white font-medium mt-1">Data & Analytics Professional</p>
+      <div class="flex flex-wrap gap-2 mt-3">
+        <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] font-mono text-[var(--muted)]">MBA</span>
+        <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] font-mono text-[var(--muted)]">Python & R</span>
+        <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] font-mono text-[var(--muted)]">SQL & Power BI</span>
+      </div>
     </div>
-    
+
     <a href="https://github.com/markreciopro/Portfolio/raw/main/MAREC%20Resume.pdf" 
-       class="flex items-center gap-2 px-6 py-2 bg-[var(--neon-blue)]/10 border border-[var(--neon-blue)]/50 text-[var(--neon-blue)] rounded-full hover:bg-[var(--neon-blue)] hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(0,196,204,0.2)]"
+       class="flex items-center gap-2 px-6 py-3 bg-[var(--neon-blue)]/10 border border-[var(--neon-blue)]/50 text-[var(--neon-blue)] rounded-xl hover:bg-[var(--neon-blue)] hover:text-white transition-all duration-300 shadow-lg group"
        download>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="group-hover:translate-y-0.5 transition-transform" viewBox="0 0 16 16">
         <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
         <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
       </svg>
-      <span class="font-bold tracking-wide">Download Resume</span>
+      <span class="font-bold tracking-wide">Download Resume PDF</span>
     </a>
   </div>
 
-  <div class="section-card p-0 bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-    <div class="bg-white/5 px-4 py-2 border-b border-white/10 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
-        <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-        <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
-        <span class="text-[10px] font-mono text-[var(--muted)] ml-2 tracking-widest uppercase">Mark_Recio_Resume_v2.pdf</span>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+    <div class="space-y-10">
+      <div class="section-card bg-white/5 border-none p-6 rounded-2xl">
+        <h3 class="text-xs font-mono text-[var(--neon-blue)] uppercase tracking-widest mb-6">Professional Summary</h3>
+        <p class="text-[var(--muted)] text-sm leading-relaxed">
+          Data and analytics professional with over 10 years of combined experience transforming data into insights that improve decision-making and streamline processes.
+        </p>
       </div>
-     
+
+      <div>
+        <h3 class="text-xs font-mono text-[var(--neon-blue)] uppercase tracking-widest mb-4">Education</h3>
+        <div class="space-y-4">
+          <div>
+            <p class="text-white font-bold text-sm">MBA</p>
+            <p class="text-xs text-[var(--muted)]">Keller Graduate School of Management [cite: 32]</p>
+          </div>
+          <div>
+            <p class="text-white font-bold text-sm">Strategic Innovation & Change</p>
+            <p class="text-xs text-[var(--muted)]">Graduate Certificate, University of Denver</p>
+          </div>
+          <div>
+            <p class="text-white font-bold text-sm">B.S. Technical Management</p>
+            <p class="text-xs text-[var(--muted)]">DeVry University</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-xs font-mono text-[var(--neon-blue)] uppercase tracking-widest mb-4">Certifications</h3>
+        <ul class="text-xs text-[var(--muted)] space-y-3">
+          <li class="flex items-center gap-2">
+            <span class="w-1 h-1 bg-[var(--neon-blue)] rounded-full"></span>
+            Microsoft Power BI Data Analyst Associate
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1 h-1 bg-[var(--neon-blue)] rounded-full"></span>
+            Tableau Business Intelligence Analyst
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1 h-1 bg-[var(--neon-blue)] rounded-full"></span>
+            IBM & Google Data Analytics
+          </li>
+        </ul>
+      </div>
     </div>
-    
-    <div class="relative w-full" style="height: 850px;">
-      <iframe 
-        class="w-full h-full" 
-        src="https://github.com/markreciopro/Portfolio/raw/main/MAREC%20Resume.pdf#toolbar=0" 
-        frameborder="0">
-      </iframe>
+
+    <div class="lg:col-span-2 space-y-8">
+      <h3 class="text-xs font-mono text-[var(--neon-blue)] uppercase tracking-widest mb-2">Experience Overview</h3>
       
-      <div class="absolute inset-0 pointer-events-none border border-white/5 rounded-b-xl"></div>
+      <div class="relative pl-8 border-l border-white/10 pb-8">
+        <div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-[var(--neon-red)]"></div>
+        <div class="flex flex-col sm:flex-row justify-between items-start mb-2">
+          <h4 class="text-white font-bold text-lg">Data Analyst / BI Consultant</h4>
+          <span class="text-[10px] font-mono text-[var(--muted)] bg-white/5 px-2 py-1 rounded">Aug 2023 — Present</span>
+        </div>
+        <p class="text-[var(--neon-red)] text-xs font-bold mb-4 tracking-wide">MAREC Insights</p>
+        <ul class="text-sm text-[var(--muted)] space-y-2">
+          <li>• Deployed Power BI dashboards for HR, operations, and marketing leadership.</li>
+          <li>• Built predictive recruitment models using Python and R.</li>
+          <li>• Developed forecasting models to improve staffing accuracy.</li>
+        </ul>
+      </div>
+
+      <div class="relative pl-8 border-l border-white/10 pb-8">
+        <div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-[var(--neon-blue)]"></div>
+        <div class="flex flex-col sm:flex-row justify-between items-start mb-2">
+          <h4 class="text-white font-bold text-lg">Operations Manager Assistant</h4>
+          <span class="text-[10px] font-mono text-[var(--muted)] bg-white/5 px-2 py-1 rounded">Oct 2018 — Aug 2023</span>
+        </div>
+        <p class="text-[var(--neon-blue)] text-xs font-bold mb-4 tracking-wide">Bella Brite Services</p>
+        <ul class="text-sm text-[var(--muted)] space-y-2">
+          <li>• Managed schedules for 10-50 staff via Microsoft 365.</li>
+          <li>• Conducted analyses that reduced operating expenses by 15%.</li>
+          <li>• Maintained payroll and compliance with near-zero discrepancies.</li>
+        </ul>
+      </div>
+
+      <div class="relative pl-8 border-l border-white/10">
+        <div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-white/10"></div>
+        <h4 class="text-white/60 font-bold text-lg">Operational Leadership & Support</h4>
+        <span class="text-[10px] font-mono text-[var(--muted)]">2010 — 2015</span>
+        <p class="text-xs text-[var(--muted)] mt-2 italic">
+          Roles including Floor Manager Assistant, Account Sales Manager, and Administrator focused on Trade Show Operations and Customer Service.
+        </p>
+      </div>
     </div>
   </div>
 </section>
