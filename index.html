@@ -170,6 +170,24 @@
       font-weight: 800;
     }
 
+    /* Contact Form Styles */
+    .contact-input {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .contact-input:focus {
+      outline: none;
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 10px rgba(0, 192, 255, 0.2);
+    }
+
     @media (max-width: 767px) {
       .mobile-nav {
         position: sticky;
@@ -254,7 +272,6 @@
 
       <section id="tab-contract-site" class="tab-content section-card">
         <h2 class="text-3xl font-extrabold text-white mb-6 uppercase tracking-tight">Contract & Freelance Portal</h2>
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-10">
           <div class="space-y-4">
             <h3 class="section-header">The Story of MAREC</h3>
@@ -384,12 +401,10 @@
 
         <div class="mt-12 p-6 border border-[var(--neon-blue)] rounded-xl bg-black/40 flex flex-col items-center">
           <p class="mb-4 text-[var(--muted)] text-center">Download official credentials and transcripts:</p>
-
           <div class="flex gap-4">
             <a href="Education.pdf" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--neon-blue)] text-black font-bold rounded-lg hover:bg-white transition-all">
               VIEW PDF
             </a>
-
             <a href="Education.pdf" download="Mark_Recio_Education.pdf" class="inline-flex items-center gap-2 px-6 py-3 border border-[var(--neon-blue)] text-[var(--neon-blue)] font-bold rounded-lg hover:bg-[var(--neon-blue)] hover:text-black transition-all">
               DOWNLOAD
             </a>
@@ -434,13 +449,29 @@
       </section>
 
       <section id="tab-contact" class="tab-content section-card">
-        <div class="text-center py-10">
-          <h2 class="text-4xl font-extrabold mb-6">Let's Connect</h2>
-          <div class="space-y-4">
+        <div class="max-w-xl mx-auto py-4">
+          <h2 class="text-4xl font-extrabold mb-8 text-center">Let's Connect</h2>
+          
+          <form action="https://api.web3forms.com/submit" method="POST" class="mb-10">
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+            <input type="hidden" name="subject" value="New Contact from Portfolio Site">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="text" name="name" placeholder="Full Name" required class="contact-input">
+              <input type="email" name="email" placeholder="Email Address" required class="contact-input">
+            </div>
+            <textarea name="message" rows="5" placeholder="Your Message..." required class="contact-input"></textarea>
+            
+            <button type="submit" class="w-full bg-[var(--neon-blue)] text-black font-black py-4 rounded-xl hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(0,192,255,0.3)] uppercase tracking-widest">
+              Transmit Signal
+            </button>
+          </form>
+
+          <div class="text-center space-y-4 border-t border-white/10 pt-8">
             <p class="text-2xl font-bold text-[var(--neon-blue)]">mark.recio.pro@gmail.com</p>
             <p class="text-xl font-mono text-[var(--muted)]">(702) 501-9385</p>
             <div class="pt-8">
-              <a href="https://www.linkedin.com/in/mark-anthony-recio/" target="_blank" class="bg-[#0077B5] px-10 py-4 rounded-full font-bold text-white hover:scale-105 transition inline-block">LinkedIn Profile</a>
+              <a href="https://www.linkedin.com/in/mark-anthony-recio/" target="_blank" rel="noopener noreferrer" class="bg-[#0077B5] px-10 py-4 rounded-full font-bold text-white hover:scale-105 transition inline-block">LinkedIn Profile</a>
             </div>
           </div>
         </div>
