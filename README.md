@@ -1,10 +1,44 @@
-# MAREC Insights | Workforce Planning & Predictive Analytics
-### Founder & Lead BI Consultant 
+# 📊 MAREC Insights | Business Intelligence & Data Analytics
+### Founder & Lead BI Consultant
 
-Welcome! I help businesses optimize their operations through data-driven insights. 
-With over 10 years of experience in HR and Operations, I bridge the gap between 
-complex data and actionable business strategy.
+Welcome! I help businesses transform fragmented data into high-impact visual stories and actionable strategies. With over 10 years of experience in **HR Operations and Workforce Planning**, I bridge the gap between technical data modeling and executive-level decision-making.
 
-- 📈 **Expertise:** Power BI, Tableau, SQL, Python, R
-- 👔 **Focus:** Workforce Forecasting, HR Metrics, Process Improvement
-- 🚀 **Goal:** Reducing operational costs and improving staffing accuracy.
+---
+
+### 🛠️ Technical Stack
+* **BI & Visualization:** Power BI (Certified Associate), Tableau, Excel (Advanced/VBA)
+* **Data Science & Scripting:** Python, R, SQL
+* **Specialized Analytics:** Predictive Modeling, Forecasting, Workforce Planning, HR Metrics & KPIs
+
+---
+
+### 🚀 Featured Projects (MAREC Insights)
+
+#### [Predictive Recruitment & Workforce Planning Model](https://your-link-here.com)
+* **The Problem:** Inefficient staffing lead to high operational overhead.
+* **The Solution:** Built a predictive model using **Python and R** to forecast hiring needs based on historical turnover and seasonal trends.
+* **The Result:** Improved staffing accuracy and reduced operating expenses by 15%.
+* *Tools: Python, R, Power BI*
+
+#### [Executive HR & Operations Dashboard](https://your-link-here.com)
+* **The Problem:** Leadership lacked real-time visibility into cross-functional performance.
+* **The Solution:** Deployed an automated **SQL-backed Power BI dashboard** integrating payroll, compliance, and productivity metrics.
+* **The Result:** Streamlined reporting processes and identified key areas for process improvement.
+* *Tools: SQL, Power BI, Excel*
+
+---
+
+### 🎓 Certifications & Professional Background
+* **MBA** - Keller Graduate School of Management
+* **Microsoft Certified:** Power BI Data Analyst Associate
+* **Tableau** Business Intelligence Analyst
+* **IBM & Google** Data Analytics Professional Certificates
+
+---
+
+### 📫 Connect with MAREC Insights
+* **LinkedIn:** [linkedin.com/in/marecio](https://www.linkedin.com/in/marecio)
+* **Portfolio:** [markreciopro.github.io/Portfolio/](https://markreciopro.github.io/Portfolio/)
+* **Email:** [mark.recio.pro@gmail.com](mailto:mark.recio.pro@gmail.com)
+
+*"Transforming data into insights that improve decision-making and optimize workforce performance."*
