@@ -452,9 +452,10 @@
         <div class="max-w-xl mx-auto py-4">
           <h2 class="text-4xl font-extrabold mb-8 text-center">Let's Connect</h2>
 
-          <form action="https://api.web3forms.com/submit" method="POST" class="mb-10">
-            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="mb-10">
+            <input type="hidden" name="access_key" value="a95bf936-f0f8-4d9a-b377-cbdffbbece56">
             <input type="hidden" name="subject" value="New Contact from Portfolio Site">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input type="text" name="name" placeholder="Full Name" required class="contact-input">
@@ -462,8 +463,8 @@
             </div>
             <textarea name="message" rows="5" placeholder="Your Message..." required class="contact-input"></textarea>
 
-            <button type="submit" class="w-full bg-[var(--neon-blue)] text-black font-black py-4 rounded-xl hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(0,192,255,0.3)] uppercase tracking-widest">
-              Transmit Signal
+            <button type="submit" id="submit-btn" class="w-full bg-[var(--neon-blue)] text-black font-black py-4 rounded-xl hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(0,192,255,0.3)] uppercase tracking-widest">
+              Send Message
             </button>
           </form>
 
@@ -558,9 +559,50 @@
         });
       }
 
+      // NEW: CONTACT FORM HANDLER (Keeps user on page)
+      function initContactForm() {
+        const form = document.getElementById('contact-form');
+        const btn = document.getElementById('submit-btn');
+        if (!form) return;
+
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          btn.innerText = "TRANSMITTING...";
+          btn.disabled = true;
+
+          const formData = new FormData(form);
+          const object = Object.fromEntries(formData);
+          const json = JSON.stringify(object);
+
+          fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: json
+          })
+          .then(async (response) => {
+            if (response.status == 200) {
+              btn.innerText = "MESSAGE SENT! ✓";
+              btn.style.backgroundColor = "var(--neon-green)";
+              form.reset();
+            } else {
+              btn.innerText = "ERROR - TRY AGAIN";
+              btn.disabled = false;
+            }
+          })
+          .catch(error => {
+            btn.innerText = "CONNECTION ERROR";
+            btn.disabled = false;
+          });
+        });
+      }
+
       document.addEventListener('DOMContentLoaded', () => {
         initThree();
         initTabs();
+        initContactForm(); // Initialize the new form handler
         window.addEventListener('mousemove', e => {
           mouseX = (e.clientX - window.innerWidth / 2) * 0.05;
           mouseY = (e.clientY - window.innerHeight / 2) * 0.05;
