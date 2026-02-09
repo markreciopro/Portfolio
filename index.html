@@ -15,15 +15,16 @@
 
   <style>
     :root {
-      --bg: #0E161B;
-      --muted: #B2BCC9;
-      --text: #E0E8E1;
-      --neon-green: #39FF14;
-      --neon-red: #FF073A;
-      --neon-blue: #00C0FF;
-      --neon-mustard: #FFDB58;
-      --card: #1E2733;
-      --pill: #2C3645;
+      /* New Sophisticated Palette */
+      --bg: #0B0F13;
+      --muted: #94A3B8;
+      --text: #F8FAFC;
+      --accent-gold: #F59E0B; /* Amber/Gold */
+      --accent-blue: #38BDF8; /* Sky Blue */
+      --accent-indigo: #818CF8; /* Indigo */
+      --accent-emerald: #10B981; /* Emerald */
+      --card: #161E27;
+      --pill: #242F3D;
     }
 
     html,
@@ -63,25 +64,25 @@
       padding: .6rem 1.25rem;
       border-radius: 9999px;
       transition: all .22s cubic-bezier(.4, 0, .2, 1);
-      border: 1px solid rgba(57, 255, 20, 0.3);
+      border: 1px solid rgba(245, 158, 11, 0.2);
       text-align: center;
       cursor: pointer;
     }
 
     .nav-link:hover {
-      background-color: var(--neon-blue);
+      background-color: var(--accent-blue);
       color: var(--bg);
       transform: translateY(-2px);
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 15px rgba(0, 192, 255, 0.4);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
     }
 
     .nav-link.active {
-      background-color: var(--neon-red);
-      color: white;
-      border-color: var(--neon-red);
+      background-color: var(--accent-gold);
+      color: #000;
+      border-color: var(--accent-gold);
       pointer-events: none;
-      box-shadow: 0 0 15px rgba(255, 7, 58, 0.4);
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
     }
 
     /* Layout Components */
@@ -94,7 +95,7 @@
     }
 
     .section-header {
-      border-left: 4px solid var(--neon-red);
+      border-left: 4px solid var(--accent-gold);
       padding-left: 1rem;
       margin-bottom: 1.5rem;
       color: white;
@@ -148,8 +149,8 @@
       width: 100%;
       height: auto;
       margin: 0 auto;
-      border: 3px solid var(--neon-blue);
-      box-shadow: 0 0 20px rgba(0, 192, 255, 0.2);
+      border: 3px solid var(--accent-gold);
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
     }
 
     .cert-pill {
@@ -158,15 +159,16 @@
       border-radius: 0.5rem;
       font-size: 0.85rem;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: border 0.3s;
+      transition: all 0.3s;
     }
 
     .cert-pill:hover {
-      border-color: var(--neon-green);
+      border-color: var(--accent-gold);
+      background: rgba(245, 158, 11, 0.1);
     }
 
     .marec-accent {
-      color: var(--neon-red);
+      color: var(--accent-gold);
       font-weight: 800;
     }
 
@@ -184,15 +186,15 @@
 
     .contact-input:focus {
       outline: none;
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 10px rgba(0, 192, 255, 0.2);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
     }
 
     @media (max-width: 767px) {
       .mobile-nav {
         position: sticky;
         top: 0;
-        background: rgba(14, 22, 27, 0.9);
+        background: rgba(11, 15, 19, 0.95);
         backdrop-filter: blur(10px);
         z-index: 60;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -218,9 +220,9 @@
       <button class="nav-link" data-tab="contact">Contact</button>
     </nav>
 
-    <nav class="hidden md:flex fixed inset-y-0 left-0 w-64 bg-black/40 backdrop-blur-md z-50 p-8 flex-col items-center border-r border-white/5">
+    <nav class="hidden md:flex fixed inset-y-0 left-0 w-64 bg-black/60 backdrop-blur-lg z-50 p-8 flex-col items-center border-r border-white/5">
       <h1 class="text-2xl font-black text-white text-center leading-tight mb-2">Mark Anthony Recio</h1>
-      <p class="text-[var(--neon-blue)] text-xs font-mono uppercase tracking-widest mb-8">Insights & Analytics</p>
+      <p class="text-[var(--accent-gold)] text-xs font-mono uppercase tracking-widest mb-8">Insights & Analytics</p>
 
       <div class="flex flex-col gap-4 w-full">
         <button class="nav-link active" data-tab="summary">Summary</button>
@@ -245,9 +247,9 @@
         <div class="text-center mb-10">
           <img src="https://i.ibb.co/XfcrXPzw/Mark-Recio-Picture.jpg" alt="Mark Anthony Recio" class="profile mb-6" />
           <h2 class="text-3xl font-extrabold text-white mb-2">
-            <span class="text-[var(--neon-green)]">Data & Business</span> Analyst Professional
+            <span class="text-[var(--accent-gold)]">Data & Business</span> Analyst Professional
           </h2>
-          <p class="text-[var(--neon-blue)] font-mono text-sm mb-6">LAS VEGAS, NV</p>
+          <p class="text-[var(--accent-blue)] font-mono text-sm mb-6">LAS VEGAS, NV</p>
           <p class="text-[var(--muted)] leading-relaxed max-w-2xl mx-auto text-lg">
             Data-driven professional with expertise in HR analytics, operations, and process optimization. I transform complex data into actionable insights using Python, R, Power BI, and SQL.
           </p>
@@ -255,15 +257,15 @@
 
         <h3 class="section-header">Core Competencies</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-6 rounded-xl bg-[var(--pill)] border-b-2 border-[var(--neon-blue)]">
+          <div class="p-6 rounded-xl bg-[var(--pill)] border-b-2 border-[var(--accent-blue)]">
             <h4 class="font-bold text-lg text-white mb-2">Business Analysis</h4>
             <p class="text-[var(--muted)] text-sm leading-relaxed">Strategic Planning, Project Coordination, Executive Reporting.</p>
           </div>
-          <div class="p-6 rounded-xl bg-[var(--pill)] border-b-2 border-[var(--neon-red)]">
+          <div class="p-6 rounded-xl bg-[var(--pill)] border-b-2 border-[var(--accent-gold)]">
             <h4 class="font-bold text-lg text-white mb-2">Data & HR Analytics</h4>
             <p class="text-[var(--muted)] text-sm leading-relaxed">Predictive Modeling, Data Visualization, Performance Metrics.</p>
           </div>
-          <div class="p-6 rounded-xl bg-[var(--pill)] border-b-2 border-[var(--neon-green)]">
+          <div class="p-6 rounded-xl bg-[var(--pill)] border-b-2 border-[var(--accent-emerald)]">
             <h4 class="font-bold text-lg text-white mb-2">Operations</h4>
             <p class="text-[var(--muted)] text-sm leading-relaxed">Process Improvement, Workflow Optimization, Payroll Coordination.</p>
           </div>
@@ -286,10 +288,10 @@
               <li><span class="marec-accent">C</span>onsulting & Strategy</li>
             </ul>
           </div>
-          <div class="text-center p-8 bg-[var(--pill)] rounded-2xl border-2 border-dashed border-[var(--neon-green)]/30">
-            <p class="text-[var(--neon-green)] font-bold mb-4">FOR RECRUITERS & CLIENTS</p>
+          <div class="text-center p-8 bg-[var(--pill)] rounded-2xl border-2 border-dashed border-[var(--accent-emerald)]/30">
+            <p class="text-[var(--accent-emerald)] font-bold mb-4">FOR RECRUITERS & CLIENTS</p>
             <p class="text-sm text-[var(--muted)] mb-8">Click below to enter my dedicated contract terminal for specialized project inquiries and freelance services.</p>
-            <a href="https://markreciopro.github.io/marec/" target="_blank" class="inline-block px-10 py-4 bg-[var(--neon-green)] text-black font-black rounded-xl hover:scale-105 transition-all shadow-[0_0_20px_rgba(57,255,20,0.3)]">
+            <a href="https://markreciopro.github.io/marec/" target="_blank" class="inline-block px-10 py-4 bg-[var(--accent-emerald)] text-black font-black rounded-xl hover:scale-105 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
               VISIT CONTRACT SITE
             </a>
           </div>
@@ -297,15 +299,15 @@
       </section>
 
       <section id="tab-experience" class="tab-content space-y-8">
-        <h2 class="text-3xl font-bold mb-8 text-[var(--neon-blue)] uppercase tracking-tighter">Professional Experience</h2>
+        <h2 class="text-3xl font-bold mb-8 text-[var(--accent-blue)] uppercase tracking-tighter">Professional Experience</h2>
 
-        <div class="section-card border-l-4 border-[var(--neon-red)] bg-gradient-to-br from-[#1E2733]/50 to-transparent p-6 rounded-r-xl transition-all hover:shadow-[0_0_20px_rgba(255,49,49,0.1)]">
+        <div class="section-card border-l-4 border-[var(--accent-gold)] bg-gradient-to-br from-[#1E2733]/50 to-transparent p-6 rounded-r-xl transition-all hover:shadow-[0_0_20px_rgba(245,158,11,0.1)]">
           <div class="flex flex-col md:flex-row justify-between items-start mb-6">
             <div>
               <h3 class="text-2xl font-bold text-white">Data Analyst / BI Consultant</h3>
-              <p class="text-[var(--neon-red)] font-bold text-sm tracking-wide uppercase">Marec Insights</p>
+              <p class="text-[var(--accent-gold)] font-bold text-sm tracking-wide uppercase">Marec Insights</p>
             </div>
-            <div class="mt-2 md:mt-0 px-4 py-1 rounded-full bg-black/40 border border-[var(--neon-red)]/30 text-[10px] font-mono text-white">
+            <div class="mt-2 md:mt-0 px-4 py-1 rounded-full bg-black/40 border border-[var(--accent-gold)]/30 text-[10px] font-mono text-white">
               2023 — PRESENT
             </div>
           </div>
@@ -322,46 +324,46 @@
 
           <ul class="space-y-3 text-[var(--muted)] text-sm">
             <li class="flex items-start gap-3">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-red)] flex-shrink-0 shadow-[0_0_5px_var(--neon-red)]"></span>
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] flex-shrink-0 shadow-[0_0_5px_var(--accent-gold)]"></span>
               <span>Built <strong>predictive recruitment models</strong> using Python/R to slash hiring lag and optimize talent pipelines.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-red)] flex-shrink-0 shadow-[0_0_5px_var(--neon-red)]"></span>
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] flex-shrink-0 shadow-[0_0_5px_var(--accent-gold)]"></span>
               <span>Deployed <strong>Power BI Dashboards</strong> providing stakeholders with real-time, interactive intelligence.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-red)] flex-shrink-0 shadow-[0_0_5px_var(--neon-red)]"></span>
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] flex-shrink-0 shadow-[0_0_5px_var(--accent-gold)]"></span>
               <span>Automated processing workflows, delivering a measurable <strong>40% efficiency gain</strong> in data tasks.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-red)] flex-shrink-0 shadow-[0_0_5px_var(--neon-red)]"></span>
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] flex-shrink-0 shadow-[0_0_5px_var(--accent-gold)]"></span>
               <span>Optimized ROI through Google Analytics, A/B testing, and SEO demographic strategies.</span>
             </li>
           </ul>
         </div>
 
-        <div class="section-card border-l-4 border-[var(--neon-blue)] bg-gradient-to-br from-[#1E2733]/50 to-transparent p-6 rounded-r-xl transition-all hover:shadow-[0_0_20px_rgba(0,243,255,0.1)]">
+        <div class="section-card border-l-4 border-[var(--accent-blue)] bg-gradient-to-br from-[#1E2733]/50 to-transparent p-6 rounded-r-xl transition-all hover:shadow-[0_0_20px_rgba(56,189,248,0.1)]">
           <div class="flex flex-col md:flex-row justify-between items-start mb-6">
             <div>
               <h3 class="text-2xl font-bold text-white">Operations Manager Assistant</h3>
-              <p class="text-[var(--neon-blue)] font-bold text-sm tracking-wide uppercase">Bella Brite Services</p>
+              <p class="text-[var(--accent-blue)] font-bold text-sm tracking-wide uppercase">Bella Brite Services</p>
             </div>
-            <div class="mt-2 md:mt-0 px-4 py-1 rounded-full bg-black/40 border border-[var(--neon-blue)]/30 text-[10px] font-mono text-white">
+            <div class="mt-2 md:mt-0 px-4 py-1 rounded-full bg-black/40 border border-[var(--accent-blue)]/30 text-[10px] font-mono text-white">
               2018 — 2023
             </div>
           </div>
 
           <ul class="space-y-3 text-[var(--muted)] text-sm">
             <li class="flex items-start gap-3">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-blue)] flex-shrink-0 shadow-[0_0_5px_var(--neon-blue)]"></span>
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] flex-shrink-0 shadow-[0_0_5px_var(--accent-blue)]"></span>
               <span>Orchestrated logistics for <strong>50+ field employees</strong> via MS 365 ecosystem.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-blue)] flex-shrink-0 shadow-[0_0_5px_var(--neon-blue)]"></span>
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] flex-shrink-0 shadow-[0_0_5px_var(--accent-blue)]"></span>
               <span>Reduced operational expenses by <strong>15%</strong> through advanced cost-benefit analysis.</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--neon-blue)] flex-shrink-0 shadow-[0_0_5px_var(--neon-blue)]"></span>
+              <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] flex-shrink-0 shadow-[0_0_5px_var(--accent-blue)]"></span>
               <span>Maintained <strong>100% accuracy</strong> in payroll and compliance over 5 years.</span>
             </li>
           </ul>
@@ -369,23 +371,23 @@
       </section>
 
       <section id="tab-education" class="tab-content">
-        <h2 class="text-3xl font-bold mb-8 text-[var(--neon-blue)]">EDUCATION & CREDENTIALS</h2>
+        <h2 class="text-3xl font-bold mb-8 text-[var(--accent-blue)]">EDUCATION & CREDENTIALS</h2>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div class="space-y-4">
-            <h3 class="text-xl font-bold border-b border-[var(--neon-red)] pb-2 uppercase mb-4">Degrees</h3>
+            <h3 class="text-xl font-bold border-b border-[var(--accent-gold)] pb-2 uppercase mb-4">Degrees</h3>
             <div class="section-card">
-              <h4 class="font-bold text-lg text-[var(--neon-blue)]">B.S. Technical Management</h4>
+              <h4 class="font-bold text-lg text-[var(--accent-blue)]">B.S. Technical Management</h4>
               <p class="text-sm text-[var(--muted)]">DeVry University — Oct 2007</p>
-              <h4 class="font-bold text-lg text-[var(--neon-blue)] mt-4">MBA. Business Administration</h4>
+              <h4 class="font-bold text-lg text-[var(--accent-blue)] mt-4">MBA. Business Administration</h4>
               <p class="text-sm text-[var(--muted)]">Keller Graduate School of Management — Dec 2009</p>
             </div>
             <div class="section-card">
-              <h4 class="font-bold text-lg text-[var(--neon-blue)]">Graduate Certificate</h4>
+              <h4 class="font-bold text-lg text-[var(--accent-blue)]">Graduate Certificate</h4>
               <p class="text-sm text-[var(--muted)]">Strategic Innovation & Change — Univ. of Denver (2011)</p>
             </div>
           </div>
           <div class="space-y-4">
-            <h3 class="text-xl font-bold border-b border-[var(--neon-green)] pb-2 uppercase mb-4">Certifications</h3>
+            <h3 class="text-xl font-bold border-b border-[var(--accent-emerald)] pb-2 uppercase mb-4">Certifications</h3>
             <div class="grid grid-cols-1 gap-3">
               <div class="cert-pill">IBM Data Science Professional Certificate</div>
               <div class="cert-pill">Business, Accounting, & Finance Analytics — Univ. of Illinois</div>
@@ -399,13 +401,13 @@
           </div>
         </div>
 
-        <div class="mt-12 p-6 border border-[var(--neon-blue)] rounded-xl bg-black/40 flex flex-col items-center">
+        <div class="mt-12 p-6 border border-[var(--accent-blue)] rounded-xl bg-black/40 flex flex-col items-center">
           <p class="mb-4 text-[var(--muted)] text-center">Download official credentials and transcripts:</p>
           <div class="flex gap-4">
-            <a href="Education.pdf" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--neon-blue)] text-black font-bold rounded-lg hover:bg-white transition-all">
+            <a href="Education.pdf" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--accent-blue)] text-black font-bold rounded-lg hover:bg-white transition-all">
               VIEW PDF
             </a>
-            <a href="Education.pdf" download="Mark_Recio_Education.pdf" class="inline-flex items-center gap-2 px-6 py-3 border border-[var(--neon-blue)] text-[var(--neon-blue)] font-bold rounded-lg hover:bg-[var(--neon-blue)] hover:text-black transition-all">
+            <a href="Education.pdf" download="Mark_Recio_Education.pdf" class="inline-flex items-center gap-2 px-6 py-3 border border-[var(--accent-blue)] text-[var(--accent-blue)] font-bold rounded-lg hover:bg-[var(--accent-blue)] hover:text-black transition-all">
               DOWNLOAD
             </a>
           </div>
@@ -413,34 +415,34 @@
       </section>
 
       <section id="tab-projects" class="tab-content">
-        <h2 class="text-3xl font-bold mb-8 text-[var(--neon-blue)] uppercase">Featured Projects</h2>
+        <h2 class="text-3xl font-bold mb-8 text-[var(--accent-blue)] uppercase">Featured Projects</h2>
         <div class="space-y-8">
-          <div class="section-card border-t-4 border-[var(--neon-red)]">
+          <div class="section-card border-t-4 border-[var(--accent-gold)]">
             <img src="https://i.ibb.co/ZpWFC90X/Gemini-Generated-Image-cdrvdtcdrvdtcdrv.png" class="h-8 w-auto rounded mb-4" alt="MAREC" />
-            <h3 class="text-xl font-bold text-[var(--neon-red)] mb-3">Python Project (Avoxi Billing Analysis)</h3>
+            <h3 class="text-xl font-bold text-[var(--accent-gold)] mb-3">Python Project (Avoxi Billing Analysis)</h3>
             <p class="text-[var(--text)] text-sm mb-4 leading-relaxed">Developed a solution to analyze complex billing data, identifying key financial insights and providing actionable recommendations using Python/Pandas/Seaborn.</p>
-            <a href="https://www.canva.com/design/DAG2oSq-RU8/Rab_1KlUjw-md_9wp7vcoA/view" target="_blank" class="inline-block bg-[var(--pill)] border border-[var(--neon-red)] px-6 py-2 rounded-full text-xs font-bold hover:bg-[var(--neon-red)] hover:text-black transition">View Presentation</a>
+            <a href="https://www.canva.com/design/DAG2oSq-RU8/Rab_1KlUjw-md_9wp7vcoA/view" target="_blank" class="inline-block bg-[var(--pill)] border border-[var(--accent-gold)] px-6 py-2 rounded-full text-xs font-bold hover:bg-[var(--accent-gold)] hover:text-black transition">View Presentation</a>
           </div>
 
-          <div class="section-card border-t-4 border-[var(--neon-blue)]">
+          <div class="section-card border-t-4 border-[var(--accent-blue)]">
             <img src="https://i.ibb.co/ZpWFC90X/Gemini-Generated-Image-cdrvdtcdrvdtcdrv.png" class="h-8 w-auto rounded mb-4" alt="MAREC" />
-            <h3 class="text-xl font-bold text-[var(--neon-blue)] mb-3">Power BI Project</h3>
+            <h3 class="text-xl font-bold text-[var(--accent-blue)] mb-3">Power BI Project</h3>
             <p class="text-[var(--text)] text-sm mb-4 leading-relaxed">Designed a dynamic BI dashboard connecting multiple data sources. Optimized data flow with Power Query for real-time decision-making.</p>
-            <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit" target="_blank" class="inline-block bg-[var(--pill)] border border-[var(--neon-blue)] px-6 py-2 rounded-full text-xs font-bold hover:bg-[var(--neon-blue)] hover:text-black transition">Launch Dashboard</a>
+            <a href="https://www.canva.com/design/DAGxAueHJUU/LQQDcIK9_2qK8kzVdojmkg/edit" target="_blank" class="inline-block bg-[var(--pill)] border border-[var(--accent-blue)] px-6 py-2 rounded-full text-xs font-bold hover:bg-[var(--accent-blue)] hover:text-black transition">Launch Dashboard</a>
           </div>
 
-          <div class="section-card border-t-4 border-[var(--neon-green)]">
-            <h3 class="text-xl font-bold text-[var(--neon-green)] mb-3">Python HR Analytics Solution</h3>
+          <div class="section-card border-t-4 border-[var(--accent-emerald)]">
+            <h3 class="text-xl font-bold text-[var(--accent-emerald)] mb-3">Python HR Analytics Solution</h3>
             <p class="text-[var(--text)] text-sm mb-4 leading-relaxed">Comprehensive HR tool featuring automated resume parsing and a predictive model to forecast employee attrition.</p>
-            <a href="https://markareciocareerpath.my.canva.site/dagywh-tzq" target="_blank" class="inline-block bg-[var(--pill)] border border-[var(--neon-green)] px-6 py-2 rounded-full text-xs font-bold hover:bg-[var(--neon-green)] hover:text-black transition">View HR Presentation</a>
+            <a href="https://markareciocareerpath.my.canva.site/dagywh-tzq" target="_blank" class="inline-block bg-[var(--pill)] border border-[var(--accent-emerald)] px-6 py-2 rounded-full text-xs font-bold hover:bg-[var(--accent-emerald)] hover:text-black transition">View HR Presentation</a>
           </div>
         </div>
       </section>
 
       <section id="tab-resume" class="tab-content">
         <div class="flex justify-between items-center mb-12">
-          <h2 class="text-3xl font-bold text-[var(--neon-blue)]">Professional Resume</h2>
-          <a href="https://github.com/markreciopro/Portfolio/raw/main/MAREC%20Resume.pdf" class="px-6 py-3 bg-[var(--neon-blue)]/10 border border-[var(--neon-blue)] text-[var(--neon-blue)] rounded-xl font-bold hover:bg-[var(--neon-blue)] hover:text-white transition-all" download>Download PDF</a>
+          <h2 class="text-3xl font-bold text-[var(--accent-blue)]">Professional Resume</h2>
+          <a href="https://github.com/markreciopro/Portfolio/raw/main/MAREC%20Resume.pdf" class="px-6 py-3 bg-[var(--accent-blue)]/10 border border-[var(--accent-blue)] text-[var(--accent-blue)] rounded-xl font-bold hover:bg-[var(--accent-blue)] hover:text-white transition-all" download>Download PDF</a>
         </div>
         <div class="section-card">
           <h3 class="section-header">Career Summary</h3>
@@ -463,13 +465,13 @@
             </div>
             <textarea name="message" rows="5" placeholder="Your Message..." required class="contact-input"></textarea>
 
-            <button type="submit" id="submit-btn" class="w-full bg-[var(--neon-blue)] text-black font-black py-4 rounded-xl hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(0,192,255,0.3)] uppercase tracking-widest">
+            <button type="submit" id="submit-btn" class="w-full bg-[var(--accent-gold)] text-black font-black py-4 rounded-xl hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(245,158,11,0.3)] uppercase tracking-widest">
               Send Message
             </button>
           </form>
 
           <div class="text-center space-y-4 border-t border-white/10 pt-8">
-            <p class="text-2xl font-bold text-[var(--neon-blue)]">mark.recio.pro@gmail.com</p>
+            <p class="text-2xl font-bold text-[var(--accent-blue)]">mark.recio.pro@gmail.com</p>
             <p class="text-xl font-mono text-[var(--muted)]">(702) 501-9385</p>
             <div class="pt-8">
               <a href="https://www.linkedin.com/in/mark-anthony-recio/" target="_blank" rel="noopener noreferrer" class="bg-[#0077B5] px-10 py-4 rounded-full font-bold text-white hover:scale-105 transition inline-block">LinkedIn Profile</a>
@@ -486,9 +488,9 @@
 
   <script>
     (function() {
-      // THREE.JS CONFIG
+      // UPDATED NEON COLORS IN CANVAS TO MATCH NEW THEME
       const CODE_SNIPPETS = ["import analyzeo as az", "az.data_transform(df)", "SELECT * FROM DATA", "az.predict_outcomes()", "PowerBI.render()", "ggplot(data)"];
-      const NEON_COLORS = ["#39FF14", "#FF073A", "#00C0FF"];
+      const THEME_COLORS = ["#F59E0B", "#38BDF8", "#818CF8"]; // Gold, Blue, Indigo
       let scene, camera, renderer, codeSprites = [];
       let mouseX = 0, mouseY = 0;
 
@@ -512,7 +514,7 @@
           ctx.font = '20px monospace';
           spriteCanvas.width = ctx.measureText(txt).width + 10;
           spriteCanvas.height = 30;
-          ctx.fillStyle = NEON_COLORS[Math.floor(Math.random() * NEON_COLORS.length)];
+          ctx.fillStyle = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];
           ctx.fillText(txt, 0, 20);
           const tex = new THREE.CanvasTexture(spriteCanvas);
           const mat = new THREE.SpriteMaterial({
@@ -559,7 +561,6 @@
         });
       }
 
-      // NEW: CONTACT FORM HANDLER (Keeps user on page)
       function initContactForm() {
         const form = document.getElementById('contact-form');
         const btn = document.getElementById('submit-btn');
@@ -585,7 +586,7 @@
           .then(async (response) => {
             if (response.status == 200) {
               btn.innerText = "MESSAGE SENT! ✓";
-              btn.style.backgroundColor = "var(--neon-green)";
+              btn.style.backgroundColor = "var(--accent-emerald)";
               form.reset();
             } else {
               btn.innerText = "ERROR - TRY AGAIN";
@@ -602,7 +603,7 @@
       document.addEventListener('DOMContentLoaded', () => {
         initThree();
         initTabs();
-        initContactForm(); // Initialize the new form handler
+        initContactForm();
         window.addEventListener('mousemove', e => {
           mouseX = (e.clientX - window.innerWidth / 2) * 0.05;
           mouseY = (e.clientY - window.innerHeight / 2) * 0.05;
