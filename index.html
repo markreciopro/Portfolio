@@ -570,44 +570,78 @@
         </div>
       </section>
 
-     <section id="tab-resume" class="tab-content">
+   <section id="tab-resume" class="tab-content">
   <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-12">
-    
-    <!-- Title -->
-    <h2 class="text-3xl font-bold text-[var(--accent-blue)]">
-      Professional Resume
-    </h2>
+    <div>
+      <h2 class="text-3xl font-bold text-[var(--accent-blue)]">Professional Resume</h2>
+      <p class="text-[var(--muted)] text-sm mt-1 tracking-wide uppercase">Strategic Data & Business Analyst</p>
+    </div>
 
-    <!-- Download Button -->
     <a 
       href="https://raw.githubusercontent.com/markreciopro/Portfolio/main/2026%20Resume.pdf"
       download="Mark_Recio_Resume.pdf"
       target="_blank"
-      class="inline-flex items-center gap-2 px-6 py-3 
-             bg-[var(--accent-blue)]/10 border border-[var(--accent-blue)] 
-             text-[var(--accent-blue)] rounded-xl font-semibold 
-             hover:bg-[var(--accent-blue)] hover:text-white 
-             transition-all duration-300 shadow-sm hover:shadow-lg"
+      class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--accent-blue)]/10 border border-[var(--accent-blue)] text-[var(--accent-blue)] rounded-xl font-semibold hover:bg-[var(--accent-blue)] hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg"
     >
-      <!-- Icon -->
       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M12 16v-8m0 8l-3-3m3 3l3-3M4 20h16" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v-8m0 8l-3-3m3 3l3-3M4 20h16" />
       </svg>
-
-      Download PDF
+      Download Resume PDF
     </a>
-
   </div>
 
-  <!-- Resume Content -->
-  <div class="section-card">
-    <h3 class="section-header">Career Summary</h3>
-    <p class="text-[var(--muted)] leading-relaxed">
-      Data and analytics professional with over 10+ years of experience leveraging workforce analytics, 
-      predictive modeling, and data visualization to drive strategic decision-making and operational efficiency. 
-      Proven ability to reduce costs, optimize workforce planning, and deliver actionable insights using tools 
-      such as Python, SQL, Power BI, and Excel.
+  <div class="section-card mb-8 p-6 bg-white/5 border border-[var(--muted)]/10 rounded-2xl">
+    <h3 class="section-header border-b border-[var(--accent-blue)]/20 pb-3 mb-4">Career Summary</h3>
+    <p class="text-[var(--muted)] leading-relaxed text-lg">
+      Strategic Lead and Business Analyst with over 10 years of experience bridging technical data engineering with executive strategy. 
+      Expert in developing ROI-driven decision infrastructure, optimizing financial margins, and automating workforce analytics. 
+      Skilled in Python, SQL, Power BI, and Tableau to transform complex datasets into actionable business intelligence for small and mid-sized enterprises.
+    </p>
+  </div>
+
+  <div class="section-card p-6 bg-white/5 border border-[var(--muted)]/10 rounded-2xl">
+    <h3 class="section-header border-b border-[var(--accent-blue)]/20 pb-3 mb-6">Strategic Endorsements & Professional References</h3>
+    
+    <div class="mb-10 p-6 border-l-4 border-[var(--accent-blue)] bg-[var(--accent-blue)]/5 italic text-[var(--muted)] rounded-r-xl">
+      <p class="text-lg">"Mark’s ability to architect data solutions and provide strategic insights has been a significant asset to our decision-making process."</p>
+      <span class="block mt-3 font-bold not-italic text-[var(--accent-blue)]">— Ken Arancibia, CEO, Synergy Staffing Solutions</span>
+    </div>
+
+    <div class="mb-10 pl-4 border-l-2 border-[var(--muted)]/30">
+      <div class="flex items-center gap-2 mb-2">
+        <h4 class="text-xl font-bold text-[var(--foreground)]">Bella Brite Services</h4>
+        <span class="text-xs px-2 py-1 bg-[var(--muted)]/10 text-[var(--muted)] rounded">2018 – 2023</span>
+      </div>
+      <p class="text-[var(--muted)] leading-relaxed mb-4">
+        Operational references highlighting a <span class="text-[var(--accent-blue)] font-semibold">15% reduction in operational costs</span>. 
+        Through the implementation of custom workforce analytics and process optimization models, I provided leadership with the decision infrastructure necessary to scale efficiently.
+      </p>
+    </div>
+
+    <div class="bg-[var(--accent-blue)]/5 rounded-2xl p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6 border border-[var(--accent-blue)]/20 shadow-inner">
+      <div class="max-w-xl">
+        <h5 class="font-bold text-[var(--foreground)] text-xl mb-1">Professional Reference Portfolio</h5>
+        <p class="text-sm text-[var(--muted)] leading-relaxed">
+          Access a comprehensive list of executive and operational leadership contacts. 
+          Verified professional references from Synergy Staffing Solutions and Bella Brite Services.
+        </p>
+      </div>
+      
+      <a 
+        href="https://raw.githubusercontent.com/markreciopro/Portfolio/main/Professional%20References%20.pdf" 
+        download="Mark_Recio_References.pdf"
+        target="_blank"
+        class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[var(--accent-blue)] text-white rounded-xl font-bold hover:bg-[var(--accent-blue)]/80 hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        Download Reference List
+      </a>
+    </div>
+
+    <p class="text-center text-[11px] uppercase tracking-[0.2em] text-[var(--muted)] mt-8 opacity-50">
+      Confidentiality notice: Intended for professional verification and direct hiring purposes only.
     </p>
   </div>
 </section>
