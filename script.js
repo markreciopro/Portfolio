@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mark Anthony Recio | Data & Workforce Analytics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- ── SIDEBAR ──────────────────────── -->
+    <nav class="sidebar">
+      <h1 class="brand">Mark Anthony Recio</h1>
+      <p class="tag">Data &amp; Workforce Analytics</p>
+
+      <div class="nav">
+        <button class="nav-link active" data-tab="summary">Summary</button>
+        <button class="nav-link" data-tab="contract-site">Contract Website</button>
+        <button class="nav-link" data-tab="experience">Experience</button>
+        <button class="nav-link" data-tab="education">Education</button>
+        <button class="nav-link" data-tab="projects">Projects</button>
+        <button class="nav-link" data-tab="resume">Resume</button>
+        <button class="nav-link" data-tab="contact">Contact</button>
+      </div>
+
+      <div class="version">v2.2 // 2026</div>
+    </nav>
+
+    <!-- ── MAIN ─────────────────────────── -->
+    <main class="main">
+
+      <!-- SUMMARY -->
+      <section id="tab-summary" class="tab-content active section-card summary-layout">
+        <div class="summary-left">
+          <img src="https://i.ibb.co/XfcrXPzw/Mark-Recio-Picture.jpg" class="profile" alt="Mark Anthony Recio" />
+        </div>
+
+        <div class="summary-right">
+          <h2><span class="steel">Data &amp; Workforce</span> Analytics Professional</h2>
+          <p class="sky mono">LAS VEGAS, NV &nbsp;·&nbsp; Open to Relocation</p>
+
+          <p class="muted" style="margin-top:12px;">
+            Data and analytics professional with 7+ years of experience delivering end-to-end BI solutions,
+            predictive workforce models, and executive reporting systems that drive business strategy.
+            I specialize in transforming HR, operations, and workforce data into clear, decision-ready insights.
+          </p>
+
+          <p class="muted">
+            My work spans full-stack ETL pipeline development, Power BI dashboard design, forecasting models,
+            KPI frameworks, and reporting automation. Backed by an MBA and dual IBM data science credentials,
+            I bring hands-on fluency in Python, R, SQL, Power BI, Tableau, and advanced Excel—equally effective
+            as an individual contributor or embedded analytics partner.
+          </p>
+
+          <div class="summary-links">
+            <a href="https://www.linkedin.com/in/marecio/" target="_blank" rel="noopener" class="btn-steel">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTRACT -->
+      <section id="tab-contract-site" class="tab-content section-card">
+        <h2>Contract &amp; <span class="teal">Freelance Portal</span></h2>
+
+        <div class="grid2">
+          <div>
+            <p class="section-header">MAREC Framework</p>
+            <ul class="marec-list">
+              <li><span>M</span> Modeling &amp; Forecasting</li>
+              <li><span>A</span> Analytical Insights</li>
+              <li><span>R</span> Reporting</li>
+              <li><span>E</span> Efficiency</li>
+              <li><span>C</span> Consulting</li>
+            </ul>
+            <p class="muted">
+              I support organizations with contract analytics and BI work—building dashboards, forecasting models,
+              and reporting systems that scale.
+            </p>
+
+            <!-- SERVICES FLYER DOWNLOAD -->
+            <div class="flyer-download">
+              <p class="flyer-label">📄 Services Overview</p>
+              <p class="muted" style="font-size:0.82rem; margin-bottom:12px;">
+                Rates, scope, and contract terms for HR analytics &amp; BI engagements.
+              </p>
+              <a href="https://github.com/markreciopro/Portfolio/blob/main/MAREC%20Flyer.pdf"
+                 target="_blank" rel="noopener" class="btn-steel">
+                ⬇ Download Services Agreement
+              </a>
+            </div>
+          </div>
+
+          <div class="video">
+            <iframe src="https://www.youtube.com/embed/osrFEJkhISo?mute=1&loop=1&playlist=osrFEJkhISo"
+                    allowfullscreen title="MAREC Insights Overview"></iframe>
+          </div>
+        </div>
+
+        <div class="cta">
+          <a href="https://marec.site/" target="_blank" rel="noopener" class="btn-teal">ENTER CONTRACT SITE →</a>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="tab-experience" class="tab-content">
+        <h2 class="sky">Professional Experience</h2>
+
+        <div class="card border-steel">
+          <h3>Data &amp; Workforce Analytics Consultant</h3>
+          <p class="steel mono">MAREC Insights · Aug 2023 – Present · Las Vegas, NV</p>
+          <p class="muted" style="margin-top:8px;">
+            Deliver end-to-end BI solutions, predictive workforce models, and executive reporting systems supporting HR, operations, and leadership strategy.
+          </p>
+          <ul>
+            <li>Architected a full-stack <strong>ETL pipeline</strong> (R → Power BI) powering the Marec HR360 dashboard with real-time recruiting, labor demand, and workforce quality insights.</li>
+            <li>Built <strong>predictive workforce forecasting models</strong> in Python and R, reducing scheduling gaps for large-scale event deployments of 500+ contractors.</li>
+            <li>Produced a <strong>21‑slide executive analytics presentation</strong> for Synergy × AFR, delivering labor cost breakdowns, KPI benchmarks, and hiring recommendations adopted by leadership.</li>
+            <li>Designed and automated <strong>SQL, Python, and Excel reporting workflows</strong>, cutting manual processing time and improving real-time visibility across HR and operations.</li>
+            <li>Maintained <strong>data integrity</strong> across recruiting, onboarding, and compliance workflows, ensuring clean, audit-ready pipelines for BI reporting.</li>
+          </ul>
+        </div>
+
+        <div class="card border-sky">
+          <h3>Operations &amp; Workforce Coordinator</h3>
+          <p class="sky mono">Bella Brite Services · Oct 2018 – Aug 2023 · Las Vegas, NV</p>
+          <p class="muted" style="margin-top:8px;">
+            Supported operations, workforce scheduling, payroll accuracy, and data-driven cost optimization initiatives.
+          </p>
+          <ul>
+            <li>Drove a <strong>15% reduction</strong> in operational expenses through analysis of scheduling patterns, labor utilization, and cost variance.</li>
+            <li>Developed Excel-based <strong>workforce tracking and reporting tools</strong> for scheduling, payroll, timekeeping, and compliance.</li>
+            <li>Managed scheduling for <strong>10–50 employees</strong> across multiple operational workflows.</li>
+            <li>Partnered with leadership to translate workforce data into <strong>actionable staffing strategies</strong>, forming the foundation for later BI projects.</li>
+          </ul>
+        </div>
+
+        <div class="card border-indigo">
+          <h3>Additional Experience</h3>
+          <ul class="muted">
+            <li>Supervisor / Team Lead – Event Staffing</li>
+            <li>Trade Show Operations – Floor Manager Assistant</li>
+            <li>Convention Customer Service Representative</li>
+            <li>Administrative Coordinator – Staffing Operations</li>
+            <li>Account Sales Manager – Logistics Operations</li>
+            <li>Administrator – Synergy Placement Agency</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="tab-education" class="tab-content section-card">
+        <h2 class="sky">Education &amp; Credentials</h2>
+
+        <ul>
+          <li><strong>MBA</strong> – Keller Graduate School of Management</li>
+          <li><strong>Graduate Certificate – Strategic Innovation &amp; Change</strong>, University of Denver</li>
+          <li><strong>B.S. Technical Management</strong> – DeVry University</li>
+        </ul>
+
+        <h3 class="sky" style="margin-top:22px; margin-bottom:10px;">Certifications</h3>
+        <ul>
+          <li>Microsoft Power BI Data Analyst Associate</li>
+          <li>Tableau Business Intelligence Analyst</li>
+          <li>IBM Data Science Professional Certificate</li>
+          <li>IBM Data Analytics</li>
+          <li>Google Data Analytics</li>
+          <li>Business Analytics – University of Illinois</li>
+          <li>HR &amp; Payroll Certification – Nevada</li>
+        </ul>
+
+        <div style="margin-top:20px;">
+          <a href="https://markareciocareerpath.my.canva.site/education-certifications"
+             target="_blank" rel="noopener" class="btn-steel">
+            🎓 View Full Credentials
+          </a>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="tab-projects" class="tab-content section-card">
+        <h2 class="sky">Featured Projects</h2>
+
+        <div class="proj-card border-steel">
+          <h3>EDC 2026 Workforce Intelligence Presentation</h3>
+          <p class="muted">
+            Comprehensive workforce analytics presentation for the EDC 2026 operations model.
+            Includes staffing demand forecasting, credentialing readiness, onboarding flow optimization,
+            workforce quality scoring, and executive-level insights for large-scale event workforce planning.
+          </p>
+          <div class="project-actions">
+            <a href="https://www.canva.com/design/DAHLYJFMTow/6XL1U6ceypzmtNENRTP2bw/view"
+               target="_blank" rel="noopener" class="btn-outline">
+              🎆 View EDC 2026 Presentation
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-card border-sky">
+          <h3>AFM 2025 Workforce Intelligence Presentation</h3>
+          <p class="muted">
+            End-to-end workforce analytics project for Synergy Staffing Solutions and the AFM client.
+            Includes funnel analysis, time-to-fill trends, workforce quality metrics, predictive staffing models,
+            and a full executive-ready insights narrative.
+          </p>
+          <div class="project-actions">
+            <a href="https://www.canva.com/design/DAHLRfJZ1z8/hFb9EdJRpHRFfwBbG5gZ6Q/view"
+               target="_blank" rel="noopener" class="btn-outline">
+              📘 View AFM 2025 Presentation
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-card border-teal">
+          <h3>Bella Brite Workforce Cost Reduction</h3>
+          <p class="muted">
+            Reporting and scheduling improvements that reduced operational expenses by 15% through better
+            workforce planning and visibility.
+          </p>
+          <div class="project-actions">
+            <a href="https://www.canva.com/design/DAHE6kFQ6pc/gcjl5beEG6ETHX4CgOl2hg/view"
+               target="_blank" rel="noopener" class="btn-outline">
+              📉 View Case Study
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-card border-indigo">
+          <h3>Election Runners</h3>
+          <p class="muted">
+            Secure voting system development and contract execution.
+          </p>
+          <div class="project-actions">
+            <a href="https://electionrunners.com/" target="_blank" rel="noopener" class="btn-outline">
+              🔐 Visit Site
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESUME -->
+      <section id="tab-resume" class="tab-content section-card">
+        <h2 class="sky">Resume</h2>
+
+        <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+          <iframe
+            src="https://markreciopro.github.io/Portfolio/Mark_Recio_Resume_PowerBroad.pdf"
+            class="resume-frame"
+            title="Mark Anthony Recio — Resume"
+            width="100%"
+            style="height:800px; border:none; display:block;"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="https://markreciopro.github.io/Portfolio/Mark_Recio_Resume_PowerBroad.pdf"
+             target="_blank" rel="noopener" class="btn-steel">View PDF</a>
+          <a href="https://markreciopro.github.io/Portfolio/Mark_Recio_Resume_PowerBroad.pdf"
+             download="Mark_Recio_Resume.pdf" class="btn-teal">Download PDF</a>
+        </div>
+
+        <p class="muted" style="margin-top:10px; font-size:0.82rem;">
+          If the viewer does not load, use the buttons above to open or download.
+        </p>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="tab-contact" class="tab-content section-card">
+        <h2 class="sky">Contact Information</h2>
+
+        <p style="margin-bottom:6px;"><span class="dim mono">Name &nbsp;&nbsp;</span> <strong>Mark A. Recio</strong></p>
+        <p style="margin-bottom:6px;"><span class="dim mono">Phone </span> <span class="silver">(702) 763-2573</span></p>
+        <p style="margin-bottom:20px;"><span class="dim mono">Email &nbsp;</span>
+          <a href="mailto:mark.recio.pro@gmail.com" class="steel">mark.recio.pro@gmail.com</a>
+        </p>
+
+        <a href="https://www.linkedin.com/in/mark-anthony-recio/"
+           target="_blank" rel="noopener" class="btn-steel">
+          LinkedIn
+        </a>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
