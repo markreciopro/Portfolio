@@ -285,14 +285,32 @@
         </div>
       </section>
 
+<!-- Fade-in animation (add in your main CSS file) -->
+<style>
+  @keyframes resumeFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .resume-fade-in {
+    animation: resumeFadeIn 0.7s ease-out both;
+  }
+</style>
+
 <!-- RESUME -->
-<section id="tab-resume" class="tab-content section-card">
+<section id="tab-resume" class="tab-content section-card resume-fade-in">
   <h2 class="sky">Resume</h2>
 
   <!-- Embedded PDF Viewer -->
   <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden;">
     <iframe
-      src="https://raw.githubusercontent.com/markreciopro/Portfolio/main/Mark_Recio_Resume_2026_Balanced.pdf"
+      src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/markreciopro/Portfolio/main/Mark_Recio_Resume_2026_Balanced.pdf&embedded=true"
       class="resume-frame"
       title="Mark Anthony Recio — Resume"
       width="100%"
@@ -304,7 +322,7 @@
   </div>
 
   <!-- Action Buttons -->
-  <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
+  <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
     <a 
       href="https://raw.githubusercontent.com/markreciopro/Portfolio/main/Mark_Recio_Resume_2026_Balanced.pdf"
       target="_blank" 
@@ -321,7 +339,7 @@
     </a>
   </div>
 
-  <p class="muted" style="margin-top:10px; font-size:0.82rem;">
+  <p class="muted" style="margin-top:10px; font-size:0.82rem; text-align:center;">
     If the viewer does not load, use the buttons above to open or download.
   </p>
 </section>
